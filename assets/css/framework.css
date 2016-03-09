@@ -1,0 +1,347 @@
+body{
+	/*background: url(../images/bg_default.jpg) no-repeat fixed;*/
+	background:#E4E3DE;
+	margin: 0px;
+	padding: 0px;
+}
+.container{
+	position: relative;
+	height:100vh;
+	width:100%;
+	/*background: red;*/
+	padding-top: 50px;
+	overflow: auto;
+}
+.task-bar{
+	display: block;
+	position: fixed;
+	top: 0px;
+	padding-left: 3px;
+	height: 50px;
+	width: 100%;
+	color:#F1F1F1;
+	/*background: rgba(95,95,95,.2);*/
+	background:rgba(54,55,58,1);
+	box-shadow: -1px 1px 3px rgba(0,0,0,.1); 
+	-webkit-box-shadow: -1px 1px 3px rgba(0,0,0,.1); 
+	font-family:"palatino linotype"; 
+	text-align: left;
+	z-index: 101;
+}
+/*TASK BAR ITEM*/
+.task-bar .task-bar-item{
+	display: inline-block;
+	position: relative;
+	margin-right: 2px;
+	min-width: 100px;
+	max-width: 150px;
+	padding: 10px;
+	line-height: 30px;
+	/*background: red;*/
+	/*box-shadow: inset 0px 1px 1px 1px rgba(0,0,0,.1);*/
+	/*border-right: solid 1px rgba(255,255,255,.2);*/
+	transition: ease .2s;
+	-webkit-transition: ease .2s;
+	font-size: 20px;
+	cursor: default;
+	float: left;
+	text-align: center;
+	overflow: hidden;
+	text-transform: capitalize;
+	/*padding-right: 5px;*/
+}
+.task-bar .task-bar-item:hover, .task-bar .task-bar-item.active:hover{
+	/*box-shadow: inset 0px 1px 1px 1px rgba(255,255,255,.1), inset 0px -60px 50px -10px rgba(255,255,255,.2);*/
+	box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);
+	-webkit-box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);
+	background: rgba(0,172,237,1);
+}
+.task-bar .task-bar-item.active{
+	box-shadow: inset 0px 1px 1px 1px rgba(255,255,255,.1), inset 0px -60px 50px -10px rgba(255,255,255,.2);
+	-webkit-box-shadow: inset 0px 1px 1px 1px rgba(255,255,255,.1), inset 0px -60px 50px -10px rgba(255,255,255,.2);
+	/*box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);*/
+	background: rgba(0,172,237,1)
+}		
+
+/*TASK BAR ITEM MENU*/
+.task-bar .task-bar-item.menu{
+	display: block;
+	float: right;
+	box-shadow: none;
+	font-size: 30px;
+	border: none;
+	background:rgba(44,45,48,1);
+	text-transform: uppercase;
+}
+.task-bar .task-bar-item.menu:hover{
+	/*box-shadow:none;*/
+	box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);
+	-webkit-box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);
+	background: rgba(230,65,60,1);
+}
+.task-bar .task-bar-item.menu.active{
+	background: rgba(230,65,60,1);	
+}
+
+/*MENU CONTAINER*/
+.menu-container{
+	display: none;
+	position: fixed;
+	top:50px;
+	right: 0px;
+	/*padding:0px 10px 10px 10px;*/
+	width: 500px;
+	height: 430px;
+	background:rgba(54,55,58,.8);
+	box-shadow: -2px 2px 10px rgba(0,0,0,.3);
+	-webkit-box-shadow: -2px 2px 10px rgba(0,0,0,.3);
+	z-index: 100;
+}
+.menu-container .menu-title{
+	display: block;
+	position: relative;
+	/*background: red;*/
+	margin-top:3px;
+	padding: 0px 20px;
+	text-align: right;
+}
+.menu-container .menu-title .menu-title-text{
+	display: inline-block;
+	cursor: pointer;
+	padding:5px 10px;
+	color:#F1F1F1;
+}
+.menu-container .menu-title .menu-title-text:hover{
+	background:rgba(44,45,48,.5);
+}
+.menu-container .menu-back{
+	display: none;
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	justify-content: center; /* align horizontal */
+	align-items: center; /* align vertical */
+	cursor: pointer;
+	height: 100%;
+	width: 20px;
+	color: rgba(241,241,241,.5);
+	background:rgba(44,45,48,.2);
+}
+.menu-container .menu-back:hover{
+	color: rgba(241,241,241,1);
+	background:rgba(44,45,48,.5);	
+}
+
+.menu-container .menu-contents{
+	display: block;
+	position: relative;
+	margin-left: 20px;
+	overflow: hidden;
+	float: left;
+	/*z-index: 102;*/
+	/*background: red;*/
+}
+.menu{
+	display: block;
+	position: relative;
+	width:475px; 
+	/*background: red;*/
+	z-index:101; 
+	float: left;
+}
+.menu-container .menu-contents-hidden{
+	display: none;
+}
+
+.menu-container-back{
+	display: none;
+	position: fixed;
+	top:0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.2);
+	z-index: 99;
+}
+
+/*TASK CONTAINER*/
+.task-container{
+	display: none;
+	position: fixed;
+	top: 50px;
+	height: 100%;
+	width: 100%;
+	padding-bottom: 80px;
+	background:#E4E3DE;
+}
+/*.task-container{
+	display: none;
+	width: 100%;
+	height: 100%;
+	padding-bottom: 30px;
+	background:#E4E3DE;
+	/*background: red;
+	/*overflow: visible;*/
+	/*border:solid 1px red;*/
+/*}*/
+
+.task-container .title-bar{
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	/*box-shadow: inset 0px 1px 1px 1px rgba(255,255,255,.1), inset 0px -60px 50px -10px rgba(255,255,255,.3);*/
+	-webkit-box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);
+	box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);
+	/*background:#32BCF0;*/
+	text-align: center;
+}
+.task-container .title-bar .title-buttons{
+	float: left;
+}
+.task-container .title-bar .title-buttons .btn-close{
+	min-width: 50px;
+}
+.task-container .title-bar .title{
+	display: inline-block;
+	position: relative;
+	padding: 5px;
+	line-height: 20px;
+	font-size: 20px;
+}
+.task-container .contents{
+	display: block;
+	position: relative;
+	top:30px;
+	height: 100%;
+	overflow: auto;
+	border-bottom: solid 1px rgba(54,55,58,1);
+}
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*CUSTOM THEME*/
+.btn.btn-close{
+	border-radius: 0px;
+	height: 30px;
+	padding: 5px;
+}
+.btn.btn-minimize{
+	border-radius: 0px;
+	height: 30px;
+	padding: 5px;
+	background-color:transparent;
+	border-color: transparent;
+	color: black;
+}
+.btn.btn-primary {
+  background: #504f63;
+  border: 1px solid #393847;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:focus,
+.btn.btn-primary:active,
+.btn.btn-primary.active {
+  background: #403f4f;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.btn.btn-info {
+  background: #4dd4fd;
+  border: 1px solid #1bc8fc;
+}
+.btn.btn-info:hover,
+.btn.btn-info:focus,
+.btn.btn-info:active,
+.btn.btn-info.active {
+  background: #2acbfd;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.btn.btn-success {
+  background: #9ad268;
+  border: 1px solid #80c641;
+}
+.btn.btn-success:hover,
+.btn.btn-success:focus,
+.btn.btn-success:active,
+.btn.btn-success.active {
+  background: #88ca4c;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.btn.btn-warning {
+  background: #ffc545;
+  border: 1px solid #ffb512;
+}
+.btn.btn-warning:hover,
+.btn.btn-warning:focus,
+.btn.btn-warning:active,
+.btn.btn-warning.active {
+  background: #ffba21;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.btn.btn-danger {
+  background: #fe402b;
+  border: 1px solid #f51901;
+}
+.btn.btn-danger:hover,
+.btn.btn-danger:focus,
+.btn.btn-danger:active,
+.btn.btn-danger.active {
+  background: #fe2007;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.btn.menu-btn {
+	margin: 15px;
+	padding: 10px 0px;
+	width: 125px;
+	font-size: 40px;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	overflow: hidden;
+}
+.btn.menu-btn span {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  overflow-wrap: break-word;
+  /*word-wrap: break-word;*/
+}
