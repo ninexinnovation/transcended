@@ -74,6 +74,7 @@ function toggleMenu(){
 			$("#menu-item").addClass("active");
 		}else{
 			$("#menu-item").removeClass("active");
+			resetMenu();
 		}
 	});
 	$(".menu-container-back").fadeToggle(100);
@@ -158,5 +159,11 @@ function slideRight(element){
 		});
 	}
 }
-
+function resetMenu(){
+	$(".menu.main").css("opacity",'1').css("left","0px");
+	$(".menu.sub").each(function(index,element){
+		$(".menu-contents-hidden").append(element);
+	});
+	$(".menu-back").css("display","none");
+}
 

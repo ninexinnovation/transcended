@@ -7,23 +7,17 @@
 <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/css/framework.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>assets/css/form.css" rel="stylesheet">
 </head>
   <body>
-    <div class="container">
+    <div class="container-main container">
       <!-- Dashboard contents goes here -->
-      <h1>asdf1</h1>
-      <h1>asdf</h1>
-      <h1>asdf</h1>
-      <h1>asdf</h1>
-      <h1>asdf</h1>
-      <h1>asdf</h1>
-      <h1>asdf</h1>
-      <h1>asdf</h1>
-      <h1>asdf</h1>
-      <h1>asdf</h1>
-      <h1>asdf</h1>
-      <h1>asdf</h1>
-      <h1>asdf1212</h1>
+      <form>
+          <div class="form-inline">
+            <label for="txt">aaaa</label>
+            <input type="text" class="form-control" id="txt" placeholder="First"></input>
+          </div>
+      </form>
 
     </div>
     <!-- TASK BAR -->
