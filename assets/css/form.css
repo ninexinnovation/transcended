@@ -9,3 +9,13 @@
 	background: #fff;
 	box-shadow: none;
 }
+
+.btn{
+	border-radius:0px;
+}
+*:focus{
+	outline: none;
+}
+.btn:focus, .btn:active{
+	outline: none;
+}
