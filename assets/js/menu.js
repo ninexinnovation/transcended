@@ -19,8 +19,8 @@ $(document).ready(function(){
 			$("#menu-item").removeClass("active");
 			$(".menu-container").hide(100);
 			$(".menu-container-back").fadeOut(100);
-
-			hideShowTask($(this));
+			resetMenu();
+			hideShowTask($(this)); // title bar task has been hide
 		}
 	});
 	
@@ -57,10 +57,12 @@ $(document).ready(function(){
 				loadTask($("body"),title,text,function(){
 					title_bar_items.prepend("<span class='task-bar-item' data-containerId="+title+">"+text+"</span>");
 					$("[data-containerId='"+title+"']").trigger("click");
+					
 				});
 			}else{
 				if(!$("[data-containerId='"+title+"']").hasClass("active")){
 					$("[data-containerId='"+title+"']").trigger("click");
+					
 				}else{
 					toggleMenu();
 				}
@@ -165,5 +167,6 @@ function resetMenu(){
 		$(".menu-contents-hidden").append(element);
 	});
 	$(".menu-back").css("display","none");
+	// console.log("reset");
 }
 

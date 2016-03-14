@@ -60,6 +60,10 @@
     <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/menu.js"></script>
+    <?php 
+      // $array=["data"=>["value1"=>"value1data"]];
+      // echo json_encode($array)
+    ?>
     <!-- <script id="loadScript"></script> -->
   </body>
 </html>
