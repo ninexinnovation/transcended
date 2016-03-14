@@ -1,6 +1,6 @@
-<div class="panel panel-primary">
+<div class="container">
 		
-	<div class="panel-body">
+	<!-- <div class="panel-body"> -->
 			<div class="form-group">
 			    <label for="name">Task ID</label>
 			    <input type="number" class="form-control" id="ClId" placeholder="Enter Clerk ID" disabled required>
@@ -23,5 +23,5 @@
 
   			<button type="submit" class="btn btn-success">Submit</button>
 
-	</div>
+	<!-- </div> -->
 </div>
