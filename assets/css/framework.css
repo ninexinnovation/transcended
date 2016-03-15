@@ -36,6 +36,7 @@ body{
 	min-width: 100px;
 	max-width: 150px;
 	padding: 10px;
+	max-height: 50px;
 	line-height: 30px;
 	/*background: red;*/
 	/*box-shadow: inset 0px 1px 1px 1px rgba(0,0,0,.1);*/
@@ -47,7 +48,8 @@ body{
 	float: left;
 	text-align: center;
 	overflow: hidden;
-	text-transform: capitalize;
+	text-transform:capitalize;
+	word-break: break-all;
 	/*padding-right: 5px;*/
 }
 .task-bar .task-bar-item:hover, .task-bar .task-bar-item.active:hover{
