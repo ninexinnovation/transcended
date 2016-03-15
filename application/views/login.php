@@ -19,7 +19,7 @@
     <link href="<?php echo base_url(); ?>assets/css/custom.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/signin.css" rel="stylesheet">
   </head>
-  <body>
+  <body><!-- 
     <nav class="navbar navbar-fixed-top navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -33,33 +33,38 @@
             </div>    
         </div>
     </nav>
-
+ -->
     <!-- main containers -->
     <div class='container'>
 
-      <form class="form-signin" role="form" method="post" action="auth.php">
+      <form class="form-signin" role="form" method="post" action="Login">
         <h2 class="form-signin-heading">Please sign in</h2>
+        <?php 
+            echo validation_errors("<p id='danger' class='alert alert-danger text-danger'>","</p>");
+        ?>
         <?php
-                // if (isset($_SESSION['loginError'])) {
-                //     echo "<p id='danger' class='alert alert-danger text-danger'>";
-                //     echo $_SESSION['loginError'];
-                //     echo "</p>";
-                //     unset($_SESSION['loginError']);
-                // }
-            ?>
+            if (isset($error)) {
+                echo "<p id='danger' class='alert alert-danger text-danger'>";
+                echo $error;
+                echo "</p>";
+                // unset($_SESSION['error']);
+            }
+        ?>
         <input id="username" type="text" name="username" class="form-control"  placeholder="Username" required autofocus>
         <input id="password" type="password" name="password" class="form-control" placeholder="Password" required>
-        <label class="checkbox">
-          <input id="remember" type="checkbox" name="rememberme" value="remember-me"> Remember me
-        </label>
+        <div class="checkbox">
+            <label>
+                <input id="remember" type="checkbox" name="rememberme" value="remember-me"> Remember me
+            </label>
+        </div>
         <button type="submit" name="signin" class="btn btn-lg btn-primary btn-block" id="signin">Sign in</button>
       </form>
 
     </div>
 
     <!-- javascripts -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/login.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="js/login.js"></script> -->
   </body>
 </html>
