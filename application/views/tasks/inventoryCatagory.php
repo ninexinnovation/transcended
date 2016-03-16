@@ -2,34 +2,17 @@
 		
 	<div class="panel-body">
 			<div class="form-group">
-			    <label for="name">Item ID</label>
+			    <label for="name">Catagory ID</label>
 			    <input type="number" class="form-control" id="ClId" placeholder="Enter Clerk ID" disabled required>
   			</div>
 
 		  	<div class="form-group">
-			    <label for="name">Company Name</label>
+			    <label for="name">Catagory Name</label>
 			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
 		 	 </div>
    
-		   	<div class="form-group">
-			    <label for="name">Catagory ID </label>
-			   
-		    		<select class="form-control" id="FoType" required>
-						  <option value="">Choose Item Type</option>
-						  
-						
-					</select>
-		  	 </label>
-		  	 
-		  	</div>
-
 		  	<div class="form-group">
-			    <label for="name">Added Date</label>
-			    <input type="date" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
-		  	</div>
-
-		  	<div class="form-group">
-			    <label for="name">Selling Price</label>
+			    <label for="name">Stiching Price</label>
 			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
 		  	</div>
 
