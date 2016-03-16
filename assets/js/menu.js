@@ -131,6 +131,7 @@ function loadTask(div,title,text,func){
 	}).done(function(data){
 		div.append(data);
 		// alert(data);
+		updateForm(div.find("form"));
 		func();
 	});	
 }
@@ -170,3 +171,29 @@ function resetMenu(){
 	// console.log("reset");
 }
 
+/* NOTIFICATION ALERT HANDLER */
+var timeouttime=0;
+function appendAlert(message,alertType,timeout){
+    var alertTypes=["success","info","warning","danger"];
+    if(alertTypes.indexOf(alertType)!=-1){
+
+        var alertId=eval($("#alertNo").attr('data-number')+"+1");
+
+        $("#alertNo").attr('data-number',alertId);
+
+        var data="<div data-id='alert"+alertId+"' class='alert alert-"+alertType+" alert-dismissible in fade' role='alert'>";
+        data+="<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>";
+        data+=message+"</div>";
+
+        $("#page-notification").append(data);
+
+        timeouttime+=1000;
+        // console.log(timeouttime);
+
+        setTimeout(function(){
+            $("[data-id=alert"+alertId+"]").alert('close');
+            timeouttime-=1000;
+        },eval(timeouttime+"+"+timeout));
+
+    }
+}
