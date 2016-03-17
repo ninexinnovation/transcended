@@ -10,7 +10,7 @@ class MainController extends CI_Controller {
 		if($this->session->has_userdata('user_id')){
 			$this->load->view('main');
 		}else{
-			$this->load->view('login');
+			redirect("Login","Refresh");
 		}
 	}
 }

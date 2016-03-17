@@ -1,24 +1,21 @@
-<div class="panel panel-primary">
-		
-	<div class="panel-body">
-			<div class="form-group">
-			    <label for="name">Catagory ID</label>
-			    <input type="number" class="form-control" id="ClId" placeholder="Enter Clerk ID" disabled required>
-  			</div>
+<div class="container">
+    <form action="DataProcessing/saveInventoryCatagory" method="post" onsubmit="AddData(this);return false">
+      <div class="form-group">
+          <label for="name">Catagory ID</label>
+          <input type="number" class="form-control" data-update="DataProcessing/getLatestInventoryCategoryId" id="ClId" name="id" placeholder="Enter Catagory ID"  data-send="false" value="" disabled required>
+        </div>
 
-		  	<div class="form-group">
-			    <label for="name">Catagory Name</label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
-		 	 </div>
+        <div class="form-group">
+          <label for="name">Catagory Name</label>
+          <input type="text" class="form-control" id="ClName" name="catagoryName" placeholder="Enter Catagory Name" required autofocus>
+       </div>
    
-		  	<div class="form-group">
-			    <label for="name">Stiching Price</label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
-		  	</div>
+        <div class="form-group">
+          <label for="name">Stiching Price (Nrs.)</label>
+          <input type="text" class="form-control" id="ClName" name="stichingPrice" placeholder="Enter Stiching Price" required>
+        </div>
 
-		  	
-
-  			<button type="submit" class="btn btn-success">Submit</button>
-
-	</div>
+        <input type="submit" class="btn btn-success" value="Submit"></input>
+      </form>
+  </div>
 </div>
