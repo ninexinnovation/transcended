@@ -33,4 +33,14 @@ class DataProcessing extends CI_Controller {
 	public function getLatestInventoryCategoryId(){
 		echo $this->DataModel->getLatestInventoryCategoryId()+1;
 	}
+	public function getLatestInventoryId(){
+		echo $this->DataModel->getLatestInventoryId()+1;
+	}
+	public function getItemCatagories(){
+		$data=$this->DataModel->getItemCatagories();
+		echo "<option value=''>Choose Item Type</option>";
+		foreach ($data as $catagory) {
+			echo "<option value='".$catagory->catagory_id."'>".$catagory->catagory_name."</option>";
+		}
+	}
 }

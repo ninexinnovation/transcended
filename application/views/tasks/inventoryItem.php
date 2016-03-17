@@ -2,7 +2,7 @@
 	<form method="post" action="." onsubmit="AddData(this);return false">
 		<div class="form-group">
 		    <label for="itemId">Item ID</label>
-		    <input type="number" class="form-control" id="itemId" name="itemId" placeholder="Enter Item ID" disabled required>
+		    <input type="number" class="form-control" id="itemId" data-send="false" data-update="DataProcessing/getLatestInventoryId" name="itemId" placeholder="Enter Item ID" disabled required>
 		</div>
 
 	  	<div class="form-group">
@@ -12,8 +12,8 @@
 
 	   	<div class="form-group">
 		    <label for="catagory">Catagory</label>
-	    		<select class="form-control" id="catagory" required>
-					  <option value="d">Choose Item Type</option>
+	    		<select class="form-control" id="catagory" name="catagory" data-update="DataProcessing/getItemCatagories" required>
+					  	<option value="">Choose Item Type</option>
 				</select>
 	  	 	</label>
 	  	</div>

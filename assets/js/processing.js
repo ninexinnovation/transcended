@@ -2,10 +2,10 @@ function AddData(thisForm,func) {
 	// console.log($(thisDiv));
 	var dataname=[];
 	var datavalue=[];
-	$(thisForm).find("input").each(function(index,element){
+	$(thisForm).find("input, select").each(function(index,element){
 		// console.log(element);
 		if($(element).attr("data-send")!="false"){
-			switch($(element).attr("type").toLowerCase()){
+			switch($(element).attr("type")){
 				case "file":
 
 					break;
@@ -18,7 +18,7 @@ function AddData(thisForm,func) {
 					$(element).prop('disabled', true);
 					break;
 				default:
-					// console.log(element);
+					console.log(element);
 					dataname.push($(element).attr("name"));
 					datavalue.push($(element).val());
 					break;
@@ -42,7 +42,7 @@ function AddData(thisForm,func) {
 			for(i=0;i<msg.message.length;i++){
 				appendAlert(msg.message[i],msg.messageType,5000);
 			}
-			updateForm($(thisForm));
+			// updateForm($(thisForm));
 		}else{
 			for(i=0;i<msg.message.length;i++){
 				appendAlert(msg.message[i],"danger",5000);
@@ -53,11 +53,12 @@ function AddData(thisForm,func) {
 		$(element).prop('disabled', false);
 	});	
 	resetForm(thisForm);
+	updateForm($(thisForm));
 }
 function resetForm(form){
 	// var form=this;
-	$(form).find("input").each(function(index,element){
-		switch($(element).attr("type").toLowerCase()){
+	$(form).find("input,select").each(function(index,element){
+		switch($(element).attr("type")){
 			case "file":
 
 				break;
@@ -82,18 +83,21 @@ function resetForm(form){
 
 function updateForm(form){
 	//update input box
-	var update=[];
-	$(form).find("input").each(function(index,element){
+	$(form).find("input, select").each(function(index,element){
 		if($(element).attr("data-update")){
-			update.push($(this));
+			// console.log($(this));
+			var thisEl=$(this);
+			var url=$(this).attr("data-update");
+			$.get({
+				url:url
+			}).done(function(msg){
+				if(thisEl.prop("tagName").toLowerCase()=="input"){
+					thisEl.val(msg);
+				}else if(thisEl.prop("tagName").toLowerCase()=="select"){
+					thisEl.html(msg);
+				}
+
+			});
 		}
 	});
-	for(i=0;i<update.length;i++){
-		var el=$(update[i]);
-		$.get({
-			url:el.attr("data-update")
-		}).done(function(msg){
-			el.val(msg);
-		});
-	}
 }

@@ -22,6 +22,19 @@ class DataModel extends CI_Model{
 			return $data[0]->catagory_id;
 		}
 	}
+	function getLatestInventoryId(){
+		$this->db->select("item_code_no")->limit(1)->order_by("item_code_no","desc");
+		$data=$this->db->get("item_details")->result();
+		// var_dump($data);
+		if(count($data)!=0){
+			return $data[0]->item_code_no;
+		}
+	}
+	function getItemCatagories(){
+		$this->db->order_by("catagory_id","asc");
+		$data=$this->db->get("catagory_details")->result();
+		return $data;
+	}
 	function saveInventoryCatagory($id,$value){
 		$i=0;
 		$data=array();
