@@ -11,15 +11,15 @@
 					view file nust be in "tasks/" folder.
 	 -->
 	<a class="btn btn-warning menu-btn" data-btn-type="sub" data-view="billing">
-		<i class="fa fa-picture-o"></i>
+		<i class="fa fa-credit-card"></i>
 		<span>Billing</span>
 	</a>
 	<a class="btn btn-info menu-btn" data-btn-type="sub" data-view="inventory">
-		<i class="fa fa-picture-o"></i>
+		<i class="fa fa-clipboard"></i>
 		<span>Inventory</span>
 	</a>
 	<a class="btn btn-success menu-btn" data-btn-type="sub" data-view="customer">
-		<i class="fa fa-picture-o"></i>
+		<i class="fa fa-users"></i>
 		<span>Customer</span>
 	</a>
 
@@ -27,15 +27,15 @@
 	<span class="clearfix"></span>
 
 	<a class="btn btn-danger menu-btn" data-btn-type="task" data-view="production">
-		<i class="fa fa-picture-o"></i>
+		<i class="fa fa-list"></i>
 		<span>Production</span>
 	</a>
 	<a class="btn btn-warning menu-btn" data-btn-type="task" data-view="taskAssigned">
-		<i class="fa fa-picture-o"></i>
+		<i class="fa fa-tasks"></i>
 		<span>Task Assigned</span>
 	</a>
 	<a class="btn btn-info menu-btn" data-btn-type="sub" data-view="worker">
-		<i class="fa fa-picture-o"></i>
+		<i class="fa fa-user-plus"></i>
 		<span>Worker</span>
 	</a>
 	
@@ -43,14 +43,14 @@
 	<span class="clearfix"></span>
 	
 	<a class="btn btn-info menu-btn" data-btn-type="task" data-view="referral">
-		<i class="fa fa-picture-o"></i>
+		<i class="fa fa-tags"></i>
 		<span>Referrals</span>
 	</a>
 	<a class="btn btn-danger menu-btn" data-btn-type="sub" data-view="user">
 		<i class="fa fa-user"></i>
 		<span>User</span>
 	</a>
-	<a class="btn btn-default menu-btn" data-btn-type="sub" data-view="setting">
+	<a class="btn btn-default menu-btn" data-btn-type="task" data-view="setting">
 		<i class="fa fa-cog"></i>
 		<span>Settings</span>
 	</a>

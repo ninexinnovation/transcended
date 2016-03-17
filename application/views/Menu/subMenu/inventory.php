@@ -1,10 +1,10 @@
 <div class="menu sub" data-id="sub-inventory" data-parent="">
 	<a class="btn btn-warning menu-btn" data-btn-type="task" data-view="inventoryItem">
-		<i class="fa fa-picture-o"></i>
+		<i class="fa fa-database"></i>
 		<span>Inventory Item</span>
 	</a>
 	<a class="btn btn-success menu-btn" data-btn-type="task" data-view="inventoryCatagory">
-		<i class="fa fa-user"></i>
+		<i class="fa fa-folder"></i>
 		<span>Inventory Catagory</span>
 	</a>
 </div>

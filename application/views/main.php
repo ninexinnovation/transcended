@@ -45,7 +45,7 @@
     <!-- MENU CONTAINER -->
     <div class="menu-container">
       <!-- MENU CONTAINER TITLE -->
-      <div class="menu-title"><span class="menu-title-text"><a href="Logout">Username <i class="fa fa-caret-down"> </i></a></span></div>
+      <div class="menu-title"><span class="menu-title-text"><a href="Logout">Log Out <i class="fa fa-caret-down"> </i></a></span></div>
       <!-- MENU BACK BUTTON -->
       <div class="menu-back"><span class="glyphicon glyphicon-chevron-left"></span></div>
       <!-- MENU CONTENTS (Desplayed Menu) -->

@@ -38,7 +38,7 @@
     <div class='container'>
 
       <form class="form-signin" role="form" method="post" action="Login">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">TRANSCENDED</h2>
         <?php 
             echo validation_errors("<p id='danger' class='alert alert-danger text-danger'>","</p>");
         ?>
@@ -57,7 +57,7 @@
                 <input id="remember" type="checkbox" name="rememberme" value="remember-me"> Remember me
             </label>
         </div>
-        <button type="submit" name="signin" class="btn btn-lg btn-primary btn-block" id="signin">Sign in</button>
+        <button type="submit" name="signin" class="btn btn-lg btn-primary btn-block" id="signin">lOGIN</button>
       </form>
 
     </div>
