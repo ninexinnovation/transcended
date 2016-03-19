@@ -12,10 +12,7 @@
 			    <input type="text" class="form-control" id="wrName" placeholder="Enter Worker Name" name="workerName" required>
 		 	 </div>
    
-		   	<div class="form-group">
-			    <label for="wrAddr">Worker Address</label>
-			    <input type="text" class="form-control" id="wrAddr" placeholder="Enter Worker Address" name="workerAddress" required>
-		  	</div>
+		   
   			<button type="submit" class="btn btn-success">Submit</button>
 		</form>	
 	</div>
