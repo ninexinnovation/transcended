@@ -85,7 +85,33 @@ class DataProcessing extends CI_Controller {
 							]);
 		}
 	}
+	// add Worker contorller
 
+	public function addWorker()
+	{
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+
+		$this->form_validation->set_rules('value[1]',$name[1],array('required','alpha'));
+
+
+
+		if($this->form_validation->run()===False){
+			// $error_messages=$this->form_validation->error_array();
+			echo json_encode([
+								"success"=>"false",
+								"messageType"=>"danger",
+								"message"=>array_values($this->form_validation->error_array())
+							]);	
+		}else{
+			$this->DataModel->addWorker($name,$value);
+			echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["success"]
+							]);
+		}
+	}
 
 
 
@@ -109,5 +135,9 @@ class DataProcessing extends CI_Controller {
 
 	public function getLatestCustomerId(){
 		echo $this->DataModel->getLatestCustomerId()+1;
+	}
+
+	public function getLatestWorkerId(){
+		echo $this->DataModel->getLatestWorkerId()+1;
 	}
 }

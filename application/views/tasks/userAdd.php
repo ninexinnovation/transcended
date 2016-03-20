@@ -28,10 +28,7 @@
 			    <input type="text" class="form-control" id="UsPass" name="UsPass" placeholder="Enter Password" required>
 		  	</div>
 
-		  	<div class="form-group">
-			    <label for="UsCPass">Confirm Password</label>
-			    <input type="text" class="form-control" id="UsCPass" name="UsCPass" placeholder="Confrim your password" required>
-		  	</div>
+		  	
 
 		  	<!-- <div class="form-group">
 			    <label for="UsType">User Type </label>

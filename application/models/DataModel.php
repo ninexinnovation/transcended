@@ -53,6 +53,16 @@ class DataModel extends CI_Model{
 		}
 	}
 
+	function getLatestWorkerId(){
+		$this->db->select("worker_id")->limit(1)->order_by("worker_id","desc");
+		$data=$this->db->get("worker_details")->result();
+		// var_dump($data);
+		if(count($data)!=0){
+			return $data[0]->worker_id;
+		}
+	}
+
+
 
 
 
@@ -87,16 +97,14 @@ class DataModel extends CI_Model{
 		foreach ($id as $key) {
 			switch($key){
 				case "workerName":
-					$data["user_id"]=$value[$i];
+					$data["worker_name"]=$value[$i];
 					break;
-				case "stichingPrice":
-					$data["stiching_charge"]=$value[$i];
-					break;
+				
 			}
 			$i++;
 		}
 
-		$this->db->insert('catagory_details',$data);
+		$this->db->insert('worker_details',$data);
 		return true;
 	}
 
