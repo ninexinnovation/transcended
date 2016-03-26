@@ -1,47 +1,47 @@
+>
+	<div class="container">
 
-	<div class="panel-body">
+		 <form action="DataProcessing/addUser" method="post" onsubmit="AddData(this);return false">
+
 			<div class="form-group">
-			    <label for="name">User ID</label>
-			    <input type="number" class="form-control" id="ClId" placeholder="Enter Clerk ID" disabled required>
+			    <label for="UsId">User ID</label>
+			    <input type="number" class="form-control" id="UsId" name="UsId" placeholder="Enter User ID" data-update="DataProcessing/getLatestuserId" data-send="false" disabled required>
   			</div>
 
 		  	<div class="form-group">
-			    <label for="name">First Name</label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
+			    <label for="UsFName">First Name</label>
+			    <input type="text" class="form-control" id="UsFName" name="UsFName" placeholder="Enter User First Name" required>
 		 	 </div>
    
 		   	<div class="form-group">
-			    <label for="name">Last Name</label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
+			    <label for="UsLName">Last Name</label>
+			    <input type="text" class="form-control" id="UsLName" name="UsLName" placeholder="Enter User Last Name" required>
 		  	</div>
 
 		  	<div class="form-group">
-			    <label for="name">User Name</label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
+			    <label for="UsUName">User Name</label>
+			    <input type="text" class="form-control" id="UsUName" name="UsUName" placeholder="Enter UserName" required>
 		  	</div>
 
 		  	<div class="form-group">
-			    <label for="name">Password </label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
+			    <label for="UsPass">Password </label>
+			    <input type="text" class="form-control" id="UsPass" name="UsPass" placeholder="Enter Password" required>
 		  	</div>
 
-		  	<div class="form-group">
-			    <label for="name">Confirm Password</label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
-		  	</div>
+		  	
 
-		  	<div class="form-group">
-			    <label for="name">User Type </label>
+		  	<!-- <div class="form-group">
+			    <label for="UsType">User Type </label>
 			   
-		    		<select class="form-control" id="FoType" required>
+		    		<select class="form-control" id="UsType" name="UsType" required>
 						  <option value="">Choose User Type</option>
 						  
 						
 					</select>
 		  	 </label>
 		  	 
-		  	</div>
+		  	</div> -->
   			<button type="submit" class="btn btn-success">Submit</button>
 
-	</div>
+	</form>
 </div>

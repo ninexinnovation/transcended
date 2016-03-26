@@ -42,6 +42,9 @@ function AddData(thisForm,func) {
 			for(i=0;i<msg.message.length;i++){
 				appendAlert(msg.message[i],msg.messageType,5000);
 			}
+			
+			resetForm(thisForm);
+			updateForm($(thisForm));
 			// updateForm($(thisForm));
 		}else{
 			for(i=0;i<msg.message.length;i++){
@@ -52,8 +55,6 @@ function AddData(thisForm,func) {
 	$(thisForm).find("button[type='submit'],input[type='submit']").each(function(index,element){
 		$(element).prop('disabled', false);
 	});	
-	resetForm(thisForm);
-	updateForm($(thisForm));
 }
 function resetForm(form){
 	// var form=this;

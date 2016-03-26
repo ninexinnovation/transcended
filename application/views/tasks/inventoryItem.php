@@ -1,5 +1,6 @@
 <div class="container">
-	<form method="post" action="." onsubmit="AddData(this);return false">
+	<form method="post" action="DataProcessing/addItem" onsubmit="AddData(this);return false">
+
 		<div class="form-group">
 		    <label for="itemId">Item ID</label>
 		    <input type="number" class="form-control" id="itemId" data-send="false" data-update="DataProcessing/getLatestInventoryId" name="itemId" placeholder="Enter Item ID" disabled required>
@@ -7,7 +8,11 @@
 
 	  	<div class="form-group">
 		    <label for="companyName">Company Name</label>
-		    <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Enter COmpany Name" required>
+			    <select  class="form-control" id="companyName" name="companyName" placeholder="Enter COmpany Name" data-update="DataProcessing/getCompanyCatagories" required>
+		 				<option value="">Choose Company</option>
+		 				<option> 1</option>
+				</select>
+
 	 	</div>
 
 	   	<div class="form-group">

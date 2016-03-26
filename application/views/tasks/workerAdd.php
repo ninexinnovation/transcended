@@ -1,21 +1,18 @@
-<div class="panel panel-primary">
+
 		
-	<div class="panel-body">
+	<div class="container">
+		 <form action="DataProcessing/addWorker" method="post" onsubmit="AddData(this);return false">
 			<div class="form-group">
-			    <label for="name">Worker ID</label>
-			    <input type="number" class="form-control" id="ClId" placeholder="Enter Clerk ID" disabled required>
+			    <label for="wrId">Worker ID</label>
+			    <input type="number" class="form-control" id="wrId" name="wrId" placeholder="Enter Worker ID"  data-update="DataProcessing/getLatestWorkerId" data-send="false" disabled required>
   			</div>
 
 		  	<div class="form-group">
-			    <label for="name">Worker Name</label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
+			    <label for="workerName">Worker Name</label>
+			    <input type="text" class="form-control" id="workerName" placeholder="Enter Worker Name" name="workerName" required>
 		 	 </div>
    
-		   	<div class="form-group">
-			    <label for="name">Worker Address</label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
-		  	</div>
-  			<button type="submit" class="btn btn-success">Submit</button>
-
+		   
+        <input type="submit" class="btn btn-success" value="Submit"></input>
+		</form>	
 	</div>
-</div>

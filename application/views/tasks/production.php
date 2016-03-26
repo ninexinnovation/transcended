@@ -1,7 +1,6 @@
-<div class="sales" data-content="sales-newBill" >
-	<div class="panel panel-primary">
+
 		
-		<div class="panel-body">
+		<div class="container-fluid">
 			<form class="form-horizontal" id="issueBill" onsubmit="addNewBill();return false;">
 				<div class="row">
 					<div class="col-md-7">
@@ -99,5 +98,3 @@
 							    </table>
 						</div>
 			</div>
-	</div>
-</div>

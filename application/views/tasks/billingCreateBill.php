@@ -1,7 +1,7 @@
-<div class="sales" data-content="sales-newBill" >
-	<div class="panel panel-primary">
+
+
 		
-		<div class="panel-body">
+		<div class="container">
 			<form class="form-horizontal" id="issueBill" onsubmit="addNewBill();return false;">
 				<div class="row">
 					<div class="col-md-7">
@@ -130,5 +130,4 @@
                 <button type="Reset" name="Cancel" class="btn btn-default" onclick="clearBillItemData();updateBillNo();">Clear</button>
 			</form>
 		</div>
-	</div>
-</div>
+	
