@@ -113,6 +113,37 @@ class DataProcessing extends CI_Controller {
 		}
 	}
 
+	// this is for item  addition
+	public function addItem()
+	{
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+
+		$this->form_validation->set_rules('value[0]',$name[0],array('required','alpha'));
+		$this->form_validation->set_rules('value[0]',$name[1],array('required','alpha'));
+		$this->form_validation->set_rules('value[0]',$name[2],array('required','date'));
+		$this->form_validation->set_rules('value[0]',$name[3],array('required','numeric'));
+
+
+
+
+		if($this->form_validation->run()===False){
+			// $error_messages=$this->form_validation->error_array();
+			echo json_encode([
+								"success"=>"false",
+								"messageType"=>"danger",
+								"message"=>array_values($this->form_validation->error_array())
+							]);	
+		}else{
+			$this->DataModel->addItem($name,$value);
+			echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["success"]
+							]);
+		}
+	}
+
 
 
 
@@ -127,6 +158,13 @@ class DataProcessing extends CI_Controller {
 		echo "<option value=''>Choose Item Type</option>";
 		foreach ($data as $catagory) {
 			echo "<option value='".$catagory->catagory_id."'>".$catagory->catagory_name."</option>";
+		}
+	}
+	public function getCompanyCatagories(){
+		$data=$this->DataModel->getCompanyCatagories();
+		echo "<option value=''>Choose Company</option>";
+		foreach ($data as $companyName) {
+			echo "<option value='".$companyName->company_id."'>".$companyName->company_id."</option>";
 		}
 	}
 	public function getLatestUserId(){

@@ -166,5 +166,35 @@ class DataModel extends CI_Model{
 		$this->db->insert('customer_details',$data);
 		return true;
 	}
+
+
+	// this is for adding item in the invertory
+	function addItem($id,$value){
+		$i=0;
+		$data=array();
+		foreach ($id as $key) {
+			switch($key){
+				case "companyName":
+					$data["company_id"]=$value[$i];
+					break;
+				
+				case "catagory":
+					$data["address"]=$value[$i];
+					break;
+				case "addedDate":
+					$data["phone_no"]=$value[$i];
+					break;
+				case "sellingPrice":
+					$data["phone_no"]=$value[$i];
+					break;
+				
+
+			}
+			$i++;
+		}
+
+		$this->db->insert('customer_details',$data);
+		return true;
+	}
 }
 ?>
