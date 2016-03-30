@@ -6,8 +6,7 @@ class DataProcessing extends CI_Controller {
 		parent::__construct();
 		$this->load->model("DataModel");
 	}
-	public function saveInventoryCatagory()
-	{
+	public function saveInventoryCatagory(){
 		$name=$this->input->post("name");
 		$value=$this->input->post("value");
 

@@ -12,6 +12,58 @@ body{
 	padding-top: 80px;
 	overflow: auto;
 }
+.grid-container {
+	margin-top:10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+@media (min-width: 1200px){
+	.container {
+	    width: 900px;
+	}
+	.grid-container {
+	    width: 1000px;
+	}
+	.btn.grid-btn.col-lg-3{
+		width: 23%;
+		margin: 1%;
+	}
+}
+@media (min-width: 992px){
+	.container {
+	    width: 700px;
+	}
+	.grid-container {
+	    width: 800px;
+	}
+	.btn.grid-btn.col-md-4{
+		width: 31.33333333%;
+		margin: 1%;
+	}
+}
+@media (min-width: 769px){
+	.container {
+	    width: 500px;
+	}
+	.grid-container {
+	    width: 630px;
+	}
+	.btn.grid-btn{
+		width: 47%;
+		margin: 1%;
+	}
+
+}
+@media (max-width: 767px){
+	.btn.grid-btn{
+		width: 100%;
+		margin: 1%;
+	}
+
+}
 .task-bar{
 	display: block;
 	position: fixed;
@@ -28,13 +80,21 @@ body{
 	text-align: left;
 	z-index: 101;
 }
+#taskbar{
+	position: relative;
+	height: 50px;
+	width:auto;
+	overflow: hidden;
+	margin-right:160px;
+	text-overflow: clip;
+}
 /*TASK BAR ITEM*/
 .task-bar .task-bar-item{
 	display: inline-block;
 	position: relative;
 	margin-right: 2px;
 	min-width: 100px;
-	max-width: 150px;
+	width: 150px;
 	padding: 10px;
 	max-height: 50px;
 	line-height: 30px;
@@ -47,28 +107,32 @@ body{
 	cursor: default;
 	float: left;
 	text-align: center;
+	white-space: nowrap; 
 	overflow: hidden;
+	text-overflow: ellipsis;
 	text-transform:capitalize;
 	word-break: break-all;
 	/*padding-right: 5px;*/
 }
 .task-bar .task-bar-item:hover, .task-bar .task-bar-item.active:hover{
 	/*box-shadow: inset 0px 1px 1px 1px rgba(255,255,255,.1), inset 0px -60px 50px -10px rgba(255,255,255,.2);*/
-	box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);
-	-webkit-box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);
+	/*box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);
+	-webkit-box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);*/
 	background: rgba(0,172,237,1);
 }
 .task-bar .task-bar-item.active{
-	box-shadow: inset 0px 1px 1px 1px rgba(255,255,255,.1), inset 0px -60px 50px -10px rgba(255,255,255,.2);
-	-webkit-box-shadow: inset 0px 1px 1px 1px rgba(255,255,255,.1), inset 0px -60px 50px -10px rgba(255,255,255,.2);
+	/*box-shadow: inset 0px 1px 1px 1px rgba(255,255,255,.1), inset 0px -60px 50px -10px rgba(255,255,255,.2);
+	-webkit-box-shadow: inset 0px 1px 1px 1px rgba(255,255,255,.1), inset 0px -60px 50px -10px rgba(255,255,255,.2);*/
 	/*box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);*/
 	background: rgba(0,172,237,1)
 }		
 
 /*TASK BAR ITEM MENU*/
 .task-bar .task-bar-item.menu{
+	position: absolute;
 	display: block;
-	float: right;
+	/*float: right;*/
+	right: 0px;
 	box-shadow: none;
 	font-size: 30px;
 	border: none;
@@ -84,7 +148,22 @@ body{
 .task-bar .task-bar-item.menu.active{
 	background: rgba(230,65,60,1);	
 }
-
+.task-bar .task-bar-item#menu-btn{
+	position: absolute;
+	display: none;
+	/*float: right;*/
+	right: 150px;
+	box-shadow: none;
+	font-size: 30px;
+	border: none;
+	min-width: 35px;
+	width: 20px;
+    background: rgba(44,45,48,.5);
+}
+.task-bar .task-bar-item#menu-btn:hover{
+    color: rgba(241,241,241,1);
+	background:rgba(44,45,48,1);
+}
 /*MENU CONTAINER*/
 .menu-container{
 	display: none;
@@ -245,6 +324,35 @@ body{
 }
 
 	
+
+
+/*GRID LAYOUT*/
+
+
+.btn.grid-btn {
+	/*margin: 5px;*/
+	padding: 10px 0px;
+	/*min-width: 135px;*/
+	font-size: 40px;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	overflow: hidden;
+	position: relative;
+/*-webkit-transition: all 1s linear;*/
+
+   
+}
+.btn.grid-btn span {
+	display: block;
+	font-size: 13px;
+	font-weight: 600;
+	overflow-wrap: break-word;
+	white-space: nowrap; 
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 0 5px;
+}
 
 
 
