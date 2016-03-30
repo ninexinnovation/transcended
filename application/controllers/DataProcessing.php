@@ -63,7 +63,7 @@ class DataProcessing extends CI_Controller {
 		$name=$this->input->post("name");
 		$value=$this->input->post("value");
 
-		$this->form_validation->set_rules('value[0]',$name[0],array('required','alpha'));
+		$this->form_validation->set_rules('value[0]',$name[0],array('required'));
 	    $this->form_validation->set_rules('value[2]',$name[2],array('required','alpha_numeric','min_length[7]','max_length[10]'));
 	    $this->form_validation->set_rules('value[1]',$name[1],array('required','alpha'));
 

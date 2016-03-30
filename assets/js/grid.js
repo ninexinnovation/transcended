@@ -15,9 +15,9 @@ $(document).ready(function(){
 					
 				// }
 				if($(this).text().toLowerCase().indexOf(query.toLowerCase()) > -1){
-					$(this).closest("a").fadeIn(500);
+					$(this).closest("a").fadeIn(200);
 				}else{
-					$(this).closest("a").fadeOut(500);
+					$(this).closest("a").fadeOut(200);
 				}
 
 				// if($(element+":contains('"+query+"')")){
@@ -26,7 +26,7 @@ $(document).ready(function(){
 			});
 		}else{
 			$(row).find("a").each(function(index,element){
-				$(this).fadeIn(500);
+				$(this).fadeIn(200);
 			});
 		}
 	});
