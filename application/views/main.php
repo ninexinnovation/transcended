@@ -43,8 +43,9 @@
     <div class="task-bar">
       <!-- TASK BAR MENU -->
       <span class="task-bar-item menu" id="menu-item">menu</span>
+      <span class="task-bar-item btn" id="menu-btn">></span>
       <!-- TASK BAR ITEMS -->
-      <div class="task-bar-items"></div>
+      <div id="taskbar" class="task-bar-items"></div>
     </div>
     
     <!-- MENU CONTAINER -->
@@ -64,8 +65,13 @@
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
     <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="<?php echo base_url(); ?>assets/js/dataTables.bootstrap.js"></script> -->
+    <script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/overflow.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/menu.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/grid.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/processing.js"></script>
+
     <?php 
       // $array=["data"=>["value1"=>"value1data"]];
       // echo json_encode($array)

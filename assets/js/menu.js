@@ -1,5 +1,20 @@
 $(document).ready(function(){
-
+	loadPrevTask(function(data){
+		if(data!="null"){
+			var length=data.name.length;
+			var title_bar_items=$(".task-bar .task-bar-items");
+			for(i=length-1;i>=0;i--){
+				var name=data.name[i];
+				var title=data.title[i]
+				loadTask($("body"),name,title,function(n,t){
+					title_bar_items.prepend("<span class='task-bar-item' data-containerId="+n+">"+t+"</span>");
+					$("[data-containerId='"+n+"']").trigger("click");
+					
+				});
+				// alert(name);
+			}
+		}
+	});
 	// MENU 
 	$(".menu-container-back").on("click",function(){
 		toggleMenu();
@@ -15,6 +30,8 @@ $(document).ready(function(){
 			}else{
 				toggleMenu();
 			}
+		}else if($(this).attr("id")=="menu-btn"){
+			
 		}else{
 			$("#menu-item").removeClass("active");
 			$(".menu-container").hide(100);
@@ -54,10 +71,10 @@ $(document).ready(function(){
 		}else if(btnType=="task"){
 			var title_bar_items=$(".task-bar .task-bar-items");
 			if(title_bar_items.find("[data-containerId='"+title+"']").length==0){
-				loadTask($("body"),title,text,function(){
-					title_bar_items.prepend("<span class='task-bar-item' data-containerId="+title+">"+text+"</span>");
-					$("[data-containerId='"+title+"']").trigger("click");
-					
+				loadTask($("body"),title,text,function(t,txt){
+					title_bar_items.prepend("<span class='task-bar-item' data-containerId="+t+">"+txt+"</span>");
+					$("[data-containerId='"+t+"']").trigger("click");
+					addPrevTask(t,txt);
 				});
 			}else{
 				if(!$("[data-containerId='"+title+"']").hasClass("active")){
@@ -67,9 +84,35 @@ $(document).ready(function(){
 					toggleMenu();
 				}
 			}
+
 		}
 	});
+	// $(document).on("DOMSubtreeModified","#taskbar",function(){
+	// 	$("#taskbar").isOverflowHeight();
+	// });
 });
+function loadPrevTask(func){
+	$.ajax({
+		url:"TaskViews/getPrevTask",
+		dataType:"json"
+	}).done(function(data){
+		func(data);
+	});
+}
+function addPrevTask(name,title){
+	$.ajax({
+		url:"TaskViews/addTask/"+name+"?title="+title+"",
+	}).done(function(){
+		// func();
+	});
+}
+function deletePrevTask(name){
+	$.ajax({
+		url:"TaskViews/removeTask/"+name,
+	}).done(function(){
+		// func();
+	});
+}
 function toggleMenu(){
 	$(".menu-container").toggle(100,function(){
 		if($(this).is(":visible")){
@@ -105,6 +148,7 @@ function closeTask(thisItem){
 	var itemId=thisItem.attr("data-containerId");
 	thisItem.remove();
 	$("#"+itemId).remove();
+	deletePrevTask(itemId);
 	// console.log(thisItem);
 }
 
@@ -132,7 +176,7 @@ function loadTask(div,title,text,func){
 		div.append(data);
 		// alert(data);
 		updateForm(div.find("form"));
-		func();
+		func(title,text);
 	});	
 }
 

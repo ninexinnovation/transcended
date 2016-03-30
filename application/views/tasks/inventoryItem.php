@@ -6,14 +6,14 @@
 		    <input type="number" class="form-control" id="itemId" data-send="false" data-update="DataProcessing/getLatestInventoryId" name="itemId" placeholder="Enter Item ID" disabled required>
 		</div>
 
-	  	<div class="form-group">
+	  	<!-- <div class="form-group">
 		    <label for="companyName">Company Name</label>
 			    <select  class="form-control" id="companyName" name="companyName" placeholder="Enter COmpany Name" data-update="DataProcessing/getCompanyCatagories" required>
 		 				<option value="">Choose Company</option>
 		 				<option> 1</option>
 				</select>
 
-	 	</div>
+	 	</div> -->
 
 	   	<div class="form-group">
 		    <label for="catagory">Category</label>

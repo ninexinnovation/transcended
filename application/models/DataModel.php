@@ -196,5 +196,11 @@ class DataModel extends CI_Model{
 		$this->db->insert('customer_details',$data);
 		return true;
 	}
+
+	function getCustomers(){
+		$data=$this->db->get("customer_details")->result();
+		// var_dump($data);
+			return $data;
+	}
 }
 ?>
