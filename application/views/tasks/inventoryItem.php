@@ -16,8 +16,8 @@
 	 	</div>
 
 	   	<div class="form-group">
-		    <label for="catagory">Catagory</label>
-	    		<select class="form-control" id="catagory" name="catagory" data-update="DataProcessing/getItemCatagories" required>
+		    <label for="catagory">Category</label>
+	    		<select class="form-control" id="Category" name="Category" data-update="DataProcessing/getItemCatagories" required>
 					  	<option value="">Choose Item Type</option>
 				</select>
 	  	 	</label>
