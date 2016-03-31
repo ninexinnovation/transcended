@@ -202,5 +202,16 @@ class DataModel extends CI_Model{
 		// var_dump($data);
 			return $data;
 	}
+
+	function getWorkers(){
+		$data=$this->db->get("worker_details")->result();
+		// var_dump($data);
+			return $data;
+	}
+	function getUsers(){
+		$data=$this->db->get("user")->result();
+		// var_dump($data);
+			return $data;
+	}
 }
 ?>

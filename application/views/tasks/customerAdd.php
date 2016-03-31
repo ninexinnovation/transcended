@@ -9,16 +9,16 @@
 
 		  	<div class="form-group">
 			    <label for="CusName">Customer Name</label>
-			    <input type="text" class="form-control" id="CusName" name="CusName" placeholder="Enter Clerk Name" required>
+			    <input type="text" class="form-control" id="CusName" name="CusName" placeholder="Enter Customer Name" required>
 		 	 </div>
    
 		   	<div class="form-group">
 			    <label for="CusAddress">Customer Address</label>
-			    <input type="text" class="form-control" id="CusAddress" name="CusAddress" placeholder="Enter Clerk Name" required>
+			    <input type="text" class="form-control" id="CusAddress" name="CusAddress" placeholder="Enter Customer Name" required>
 		  	</div>
 		  	<div class="form-group">
 			    <label for="CusPhone">Customer Phone number</label>
-			    <input type="text" class="form-control" id="CusPhone" name="CusPhone" placeholder="Enter Clerk Name" required>
+			    <input type="text" class="form-control" id="CusPhone" name="CusPhone" placeholder="Enter Customer Name" required>
 		  	</div>
   			<button type="submit" class="btn btn-success">Submit</button>
   		</form>
