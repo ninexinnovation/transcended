@@ -1,6 +1,3 @@
-
-
-		
 		<div class="container">
 			<form class="form-horizontal" id="issueBill" onsubmit="addNewBill();return false;">
 				<div class="row">
