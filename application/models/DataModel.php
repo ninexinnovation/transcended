@@ -62,6 +62,15 @@ class DataModel extends CI_Model{
 		}
 	}
 
+	function getLatestCompanyId(){
+		$this->db->select("company_id")->limit(1)->order_by("company_id","desc");
+		$data=$this->db->get("company_details")->result();
+		// var_dump($data);
+		if(count($data)!=0){
+			return $data[0]->company_id;
+		}
+	}
+
 
 
 
@@ -197,6 +206,22 @@ class DataModel extends CI_Model{
 		return true;
 	}
 
+function addCompany($id,$value){
+		$i=0;
+		$data=array();
+		foreach ($id as $key) {
+			switch($key){
+				case "ComName":
+					$data["company_name"]=$value[$i];
+					break;				
+			}
+			$i++;
+		}
+
+		$this->db->insert('company_details',$data);
+		return true;
+	}
+
 	function getCustomers(){
 		$data=$this->db->get("customer_details")->result();
 		// var_dump($data);
@@ -210,6 +235,16 @@ class DataModel extends CI_Model{
 	}
 	function getUsers(){
 		$data=$this->db->get("user")->result();
+		// var_dump($data);
+			return $data;
+	}
+	function getInventoryItem(){
+		$data=$this->db->get("item_details")->result();
+		// var_dump($data);
+			return $data;
+	}
+	function getCompanies(){
+		$data=$this->db->get("company_details")->result();
 		// var_dump($data);
 			return $data;
 	}

@@ -4,7 +4,7 @@ $(document).ready(function(){
 		var row=$("#"+$(this).attr("data-search-id"));
 		if(query!=""){
 			
-			$(row).find("span").each(function(index,element){
+			$(row).find("a").each(function(index,element){
 				// var found=$(this).filter(function() { 
 				// 	return ($(this).text().toLowerCase().indexOf(query.toLowerCase()) > -1) 
 				// });
@@ -14,7 +14,7 @@ $(document).ready(function(){
 				// }else{
 					
 				// }
-				if($(this).text().toLowerCase().indexOf(query.toLowerCase()) > -1){
+				if($(this).find("span").text().toLowerCase().indexOf(query.toLowerCase()) > -1 || $(this).find("i").text().toLowerCase().indexOf(query.toLowerCase()) > -1){
 					$(this).closest("a").fadeIn(200);
 				}else{
 					$(this).closest("a").fadeOut(200);
@@ -24,6 +24,10 @@ $(document).ready(function(){
 				// 	alert(index);
 				// }
 			});
+
+
+
+
 		}else{
 			$(row).find("a").each(function(index,element){
 				$(this).fadeIn(200);

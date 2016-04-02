@@ -142,6 +142,32 @@ class DataProcessing extends CI_Controller {
 							]);
 		}
 	}
+public function addCompany()
+	{
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+
+		$this->form_validation->set_rules('value[0]',$name[0],array('required','alpha'));
+		
+
+
+
+		if($this->form_validation->run()===False){
+			// $error_messages=$this->form_validation->error_array();
+			echo json_encode([
+								"success"=>"false",
+								"messageType"=>"danger",
+								"message"=>array_values($this->form_validation->error_array())
+							]);	
+		}else{
+			$this->DataModel->addCompany($name,$value);
+			echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["success"]
+							]);
+		}
+	}
 
 
 
@@ -159,13 +185,23 @@ class DataProcessing extends CI_Controller {
 			echo "<option value='".$catagory->catagory_id."'>".$catagory->catagory_name."</option>";
 		}
 	}
-	public function getCompanyCatagories(){
-		$data=$this->DataModel->getCompanyCatagories();
-		echo "<option value=''>Choose Company</option>";
-		foreach ($data as $companyName) {
-			echo "<option value='".$companyName->company_id."'>".$companyName->company_id."</option>";
+
+	public function getCompanies(){
+		$data=$this->DataModel->getCompanies();
+		echo "<option value=''>Choose Item Type</option>";
+		echo "<option value='' data-value='add'>Add New</option>";
+		foreach ($data as $company) {
+			echo "<option value='".$company->company_id."'>".$company->company_name."</option>";
 		}
 	}
+
+	// public function getCompanyCatagories(){
+	// 	$data=$this->DataModel->getCompanyCatagories();
+	// 	echo "<option value=''>Choose Company</option>";
+	// 	foreach ($data as $companyName) {
+	// 		echo "<option value='".$companyName->company_id."'>".$companyName->company_id."</option>";
+	// 	}
+	// }
 	public function getLatestUserId(){
 		echo $this->DataModel->getLatestUserId()+1;
 	}
@@ -176,5 +212,8 @@ class DataProcessing extends CI_Controller {
 
 	public function getLatestWorkerId(){
 		echo $this->DataModel->getLatestWorkerId()+1;
+	}
+	public function getLatestCompanyId(){
+		echo $this->DataModel->getLatestCompanyId()+1;
 	}
 }

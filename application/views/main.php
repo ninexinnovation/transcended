@@ -93,5 +93,42 @@
         </div>
  -->
     </div>
+
+
+    <div class="modal fade" id="addCompanyInventory" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Modal title</h4>
+          </div>
+          <form action="DataProcessing/addCompany" method="post" onsubmit="AddData(this);return false">
+              <div class="modal-body">
+
+                            <div class="form-group">
+                              <label for="ComId">Company ID</label>
+                              <input type="number" class="form-control" id="ComId" name="ComId" placeholder="Enter Company ID" data-update="DataProcessing/getLatestCompanyId" data-send="false" disabled required>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="ComName">Company Name</label>
+                              <input type="text" class="form-control" id="ComName" name="ComName" placeholder="Enter Company Name" required>
+                           </div>
+                    
+              </div>
+
+              <div class="modal-footer">
+                      <button type="submit" class="btn btn-success">Submit</button>
+                      <button type="reset" class="btn btn-primary">Cancel </button>
+              </div>
+          </form>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+
+
   </body>
 </html>

@@ -1,3 +1,15 @@
+$(document).ready(function(){
+	$(document).on("change","select",function(){
+		if($(this).attr("data-model")!=null){
+			if($(this).find("option:selected").attr("data-value")=="add"){
+				var modelId=$(this).attr("data-model");
+				$(modelId).modal('show');
+				$(this).val("");
+			}	
+		}
+			
+	});
+});
 function AddData(thisForm,func) {
 	// console.log($(thisDiv));
 	var dataname=[];
