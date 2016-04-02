@@ -187,22 +187,25 @@ class DataModel extends CI_Model{
 					$data["company_id"]=$value[$i];
 					break;
 				
-				case "catagory":
-					$data["address"]=$value[$i];
+				case "category":
+					$data["catagory_id"]=$value[$i];
 					break;
 				case "addedDate":
-					$data["phone_no"]=$value[$i];
+					$data["added_date"]=strtotime($value[$i]);
 					break;
 				case "sellingPrice":
-					$data["phone_no"]=$value[$i];
+					$data["selling_price"]=$value[$i];
+					break;
+				case "currentQuantity":
+					$data["current_quantity"]=$value[$i];
 					break;
 				
 
 			}
 			$i++;
 		}
-
-		$this->db->insert('customer_details',$data);
+		// var_dump($data);
+		$this->db->insert('item_details',$data);
 		return true;
 	}
 

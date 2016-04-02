@@ -16,8 +16,8 @@
 	 	</div>
 
 	   	<div class="form-group">
-		    <label for="catagory">Category</label>
-	    		<select class="form-control" id="Category" name="Category" data-update="DataProcessing/getItemCatagories" required>
+		    <label for="category">Category</label>
+	    		<select class="form-control" id="category" name="category" data-update="DataProcessing/getItemCatagories" required>
 					  	<option value="">Choose Item Type</option>
 				</select>
 	  	 	</label>
@@ -33,7 +33,12 @@
 		    <input type="text" class="form-control" id="sellingPrice" name="sellingPrice" placeholder="Enter Selling Price" required>
 	  	</div>
 
+	  	<div class="form-group">
+		    <label for="currentQuantity">Total Quantity</label>
+		    <input type="text" class="form-control" id="currentQuantity" name="currentQuantity" placeholder="Enter Current Quantity" required>
+	  	</div>
+
 		<button type="submit" class="btn btn-success">Submit</button>
 	</form>
-	
+
 </div>

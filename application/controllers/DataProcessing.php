@@ -63,9 +63,9 @@ class DataProcessing extends CI_Controller {
 		$name=$this->input->post("name");
 		$value=$this->input->post("value");
 
-		$this->form_validation->set_rules('value[0]',$name[0],array('required'));
-	    $this->form_validation->set_rules('value[2]',$name[2],array('required','alpha_numeric','min_length[7]','max_length[10]'));
-	    $this->form_validation->set_rules('value[1]',$name[1],array('required','alpha'));
+		$this->form_validation->set_rules('value[0]',$name[0],array('required','alpha'));
+		$this->form_validation->set_rules('value[1]',$name[1],array('required','alpha'));
+	    $this->form_validation->set_rules('value[2]',$name[2],array('required','numeric','min_length[7]','max_length[10]'));
 
 
 		if($this->form_validation->run()===False){
@@ -118,10 +118,13 @@ class DataProcessing extends CI_Controller {
 		$name=$this->input->post("name");
 		$value=$this->input->post("value");
 
-		$this->form_validation->set_rules('value[0]',$name[0],array('required','alpha'));
-		$this->form_validation->set_rules('value[0]',$name[1],array('required','alpha'));
-		$this->form_validation->set_rules('value[0]',$name[2],array('required','date'));
-		$this->form_validation->set_rules('value[0]',$name[3],array('required','numeric'));
+		$this->form_validation->set_rules('value[0]',$name[0],array('required','numeric'));
+		$this->form_validation->set_rules('value[1]',$name[1],array('required','numeric'));
+		$this->form_validation->set_rules('value[2]',$name[2],array('required'));
+		$this->form_validation->set_rules('value[3]',$name[3],array('required','numeric'));
+		$this->form_validation->set_rules('value[4]',$name[4],array('required','numeric'));
+
+
 
 
 
@@ -172,12 +175,7 @@ public function addCompany()
 
 
 
-	public function getLatestInventoryCategoryId(){
-		echo $this->DataModel->getLatestInventoryCategoryId()+1;
-	}
-	public function getLatestInventoryId(){
-		echo $this->DataModel->getLatestInventoryId()+1;
-	}
+	
 	public function getItemCatagories(){
 		$data=$this->DataModel->getItemCatagories();
 		echo "<option value=''>Choose Item Type</option>";
@@ -215,5 +213,12 @@ public function addCompany()
 	}
 	public function getLatestCompanyId(){
 		echo $this->DataModel->getLatestCompanyId()+1;
+	}
+
+	public function getLatestInventoryCategoryId(){
+		echo $this->DataModel->getLatestInventoryCategoryId()+1;
+	}
+	public function getLatestInventoryId(){
+		echo $this->DataModel->getLatestInventoryId()+1;
 	}
 }
