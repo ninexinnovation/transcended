@@ -21,6 +21,7 @@ $(document).ready(function(){
 	});
 
 	$(document).on("click",".task-bar-item",function(){
+		var titleBarItem=$(this);
 		if($(this).attr("id")=="menu-item"){
 			// var menu=$(this);
 			if($(".menu-container .menu-contents").find(".menu.main")['length']==0){
@@ -37,7 +38,7 @@ $(document).ready(function(){
 			$(".menu-container").hide(100);
 			$(".menu-container-back").fadeOut(100);
 			resetMenu();
-			hideShowTask($(this)); // title bar task has been hide
+			hideShowTask(titleBarItem); // title bar task has been hide
 		}
 	});
 	
