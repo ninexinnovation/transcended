@@ -19,3 +19,9 @@
 .btn:focus, .btn:active{
 	outline: none;
 }
+.input-group-addon{
+	border-radius: 0px;
+	border: 3px solid #fff;
+	background: #f1f1f1;
+	box-shadow: none;
+}

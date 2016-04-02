@@ -66,6 +66,8 @@
     <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
     <!-- <script src="<?php echo base_url(); ?>assets/js/dataTables.bootstrap.js"></script> -->
+    <!--<script src="<?php echo base_url(); ?>assets/js/jquery.color-2.1.2.min.js"></script>-->
+    <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/overflow.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/menu.js"></script>

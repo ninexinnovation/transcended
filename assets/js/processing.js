@@ -66,7 +66,15 @@ function AddData(thisForm,func) {
 	});
 	$(thisForm).find("button[type='submit'],input[type='submit']").each(function(index,element){
 		$(element).prop('disabled', false);
-	});	
+	});
+	if($(thisForm).closest(".modal").length!=0){
+		var id=$(thisForm).closest(".modal").attr("id");
+		$(document).find("[data-model='#"+id+"']").each(function(index,element){
+			updateForm(element.closest("form"));
+		});
+		// console.log($("#"+id));
+		$("#"+id).modal('hide');
+	}
 }
 function resetForm(form){
 	// var form=this;

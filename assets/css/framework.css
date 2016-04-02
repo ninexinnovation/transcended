@@ -1,3 +1,7 @@
+*{
+	padding: 0;
+	margin: 0;
+}
 body{
 	/*background: url(../images/bg_default.jpg) no-repeat fixed;*/
 	background:#E4E3DE;

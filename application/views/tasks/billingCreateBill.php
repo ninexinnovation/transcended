@@ -1,4 +1,4 @@
-		<div class="container">
+		<div class="container-fluid">
 			<form class="form-horizontal" id="issueBill" onsubmit="addNewBill();return false;">
 				<div class="row">
 					<div class="col-md-7">
@@ -38,11 +38,11 @@
 						</div>
 
 						<script type="text/javascript">
-							// $('#date').datepicker({
-							// 	todayBtn: "linked",                                         
-							// 	autoclose: true,
-							// 	todayHighlight: true
-							// });
+							$('#date').datepicker({
+								todayBtn: "linked",                                         
+								autoclose: true,
+								todayHighlight: true
+							});
 						</script>
 
 						<div class="form-group">
@@ -93,11 +93,11 @@
                         </div>
 
 						<script type="text/javascript">
-							// $('#deliveryDate').datepicker({
-							// 	todayBtn: "linked",                                         
-							// 	autoclose: true,
-							// 	todayHighlight: true
-							// });
+							$('#deliveryDate').datepicker({
+								todayBtn: "linked",                                         
+								autoclose: true,
+								todayHighlight: true
+							});
 						</script>
 
         			</div>
@@ -127,4 +127,26 @@
                 <button type="Reset" name="Cancel" class="btn btn-default" onclick="clearBillItemData();updateBillNo();">Clear</button>
 			</form>
 		</div>
+
+		<script type="text/javascript">
+	billItem_table=$('#billItem-table').DataTable({
+		"paging":false,
+		"searching":false,
+		"columnDefs": [
+		    { "width": "170%","targets":[6,8] }
+		  ],
+		"columns":[
+			{"data":"details_cloth_id"},
+			{"data":"details_cloth_cost"},
+			{"data":"details_cloth_length"},
+			{"data":"details_cloth_category_id"},
+			{"data":"details_wage"},
+			{"data":"quantity"},
+            {"data":"sNo"},
+			{"data":"details"},
+			{"data":"amount"}
+		]
+    });
+    billItem_table.columns([0,1,2,3,4,5]).visible(false);
+    </script>
 	
