@@ -225,4 +225,7 @@ public function addCompany()
 	public function getLatestInventoryId(){
 		echo $this->DataModel->getLatestInventoryId()+1;
 	}
+	public function getLatestBillingId(){
+		echo $this->DataModel->getLatestBillingId()+1;
+	}
 }
