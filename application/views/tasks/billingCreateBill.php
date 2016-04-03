@@ -128,7 +128,7 @@
 			</form>
 		</div>
 
-		<script type="text/javascript">
+<script type="text/javascript">
 	billItem_table=$('#billItem-table').DataTable({
 		"paging":false,
 		"searching":false,
@@ -148,5 +148,20 @@
 		]
     });
     billItem_table.columns([0,1,2,3,4,5]).visible(false);
-    </script>
+
+    var addCustomer_table=$('#addCustomer-table').DataTable({
+        // "deferRender": true,
+        "ajax":"<?php echo base_url();?>DataProcessing/getAllCustomerJson",
+        "columns":[
+            {"data":"customer_id"},
+            {"data":"customer_name"},
+            {"data":"address"},
+            {"data":"phone_no"}
+        ]
+    });
+    addCustomer_table.columns([0]).visible(false);
+    $('#AddCustomerModal').on('shown.bs.modal', function () {
+        $('#addCustomer-table').DataTable().ajax.reload(null,false);
+    }); 
+</script>
 	

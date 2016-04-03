@@ -6,6 +6,7 @@
 <title>MK Poshak</title>
 <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>assets/css/dataTables.bootstrap.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/css/framework.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/css/form.css" rel="stylesheet">
 </head>
@@ -128,6 +129,37 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
+
+    <div class="modal fade" id="AddCustomerModal" tabindex="-1" role="dialog" aria-labelledby="AddCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="AddCustomerModalLabel">Add Customer</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="addCustomer-table">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Full Name</th>
+                                <th>Address</th>
+                                <th>Phone No.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btnAddCustomer">Select</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

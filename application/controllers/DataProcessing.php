@@ -192,6 +192,10 @@ public function addCompany()
 			echo "<option value='".$company->company_id."'>".$company->company_name."</option>";
 		}
 	}
+	public function getAllCustomerJson(){
+		$data=$this->DataModel->getCustomers();
+		echo json_encode(["data"=>$data]);
+	}
 
 	// public function getCompanyCatagories(){
 	// 	$data=$this->DataModel->getCompanyCatagories();
