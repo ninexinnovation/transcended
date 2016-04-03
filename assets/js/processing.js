@@ -9,6 +9,54 @@ $(document).ready(function(){
 		}
 			
 	});
+
+	//customer table
+	addCustomer_table=$('#addCustomer-table').DataTable({
+        // "deferRender": true,
+        "ajax":"DataProcessing/getAllCustomerJson",
+        "columns":[
+            {"data":"customer_id"},
+            {"data":"customer_name"},
+            {"data":"address"},
+            {"data":"phone_no"}
+        ]
+    });
+    addCustomer_table.columns([0]).visible(false);
+    $('#AddCustomerModal').on('shown.bs.modal', function () {
+        $('#addCustomer-table').DataTable().ajax.reload(null,false);
+    }); 
+    $('#addCustomer-table tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            addCustomer_table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    } );
+
+    $('#btnAddCustomer').on( 'click', function () {
+        var rowData=addCustomer_table.row(".selected").data();
+        if(rowData!=undefined){
+            $("#issueBill #customer_id").val(rowData.customer_id);
+            $("#issueBill #name").val(rowData.customer_name);
+            $("#issueBill #address").val(rowData.address);
+            $("#issueBill #phone").val(rowData.phone_no);
+            $('#AddCustomerModal').modal('hide')
+        }
+    });
+
+    $('#addCustomer-table tbody').on( 'dblclick', 'tr', function (e) {
+        var rowData = addCustomer_table.row(this).data();
+        if(rowData!=undefined){
+            $("#issueBill #customer_id").val(rowData.customer_id);
+            $("#issueBill #name").val(rowData.customer_name);
+            $("#issueBill #address").val(rowData.address);
+            $("#issueBill #phone").val(rowData.phone_no);
+            $('#AddCustomerModal').modal('hide')
+        }
+    } );
+
 });
 function AddData(thisForm,func) {
 	// console.log($(thisDiv));
