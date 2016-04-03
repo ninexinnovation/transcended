@@ -71,10 +71,14 @@ class DataModel extends CI_Model{
 		}
 	}
 
-
-
-
-
+	// function getLatestInventoryCatagoryId(){
+	// 	$this->db->select("catagory_id")->limit(1)->order_by("catagory_id","desc");
+	// 	$data=$this->db->get("catagory_details")->result();
+	// 	// var_dump($data);
+	// 	if(count($data)!=0){
+	// 		return $data[0]->catagory_id;
+	// 	}
+	// }
 
 
 
@@ -208,6 +212,29 @@ class DataModel extends CI_Model{
 		$this->db->insert('item_details',$data);
 		return true;
 	}
+	
+	function addItemCatagory($id,$value){
+		$i=0;
+		$data=array();
+		foreach ($id as $key) {
+			switch($key){
+				case "companyName":
+					$data["company_id"]=$value[$i];
+					break;
+				
+				case "category":
+					$data["catagory_id"]=$value[$i];
+					break;
+				
+				
+
+			}
+			$i++;
+		}
+		// var_dump($data);
+		$this->db->insert('item_details',$data);
+		return true;
+	}
 
 function addCompany($id,$value){
 		$i=0;
@@ -242,10 +269,27 @@ function addCompany($id,$value){
 			return $data;
 	}
 	function getInventoryItem(){
-		$data=$this->db->get("item_details")->result();
-		// var_dump($data);
+		// $data=$this->db->get("item_details")->result();
+		// // var_dump($data);
+
+
+		$this->db->select('*');
+		$this->db->from('item_details');
+		$this->db->join('company_details', 'company_details.company_id = item_details.company_id');
+		$this->db->join('catagory_details', 'catagory_details.catagory_id = item_details.catagory_id');
+		$data = $this->db->get()->result();
+
 			return $data;
 	}
+
+	function getInventoryItemCatagoryId(){
+		$data=$this->db->get("catagory_details")->result();
+		var_dump($data);
+
+
+			return $data;
+	}
+
 	function getCompanies(){
 		$data=$this->db->get("company_details")->result();
 		// var_dump($data);
