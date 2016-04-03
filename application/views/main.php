@@ -161,7 +161,79 @@
     </div>
 </div>
 
-
+<div class="modal fade" id="billItemAddModal" tabindex="-1" role="dialog" aria-labelledby="billItemAddModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="billItemAddModalLabel">Add Bill Item</h4>
+            </div>
+            <form class="form-horizontal" onsubmit="addBillItem();return false;">
+                <div class="modal-body">
+                    <input type="hidden" id="billClothIdAdd" name="billClothIdAdd" />
+                    <div class="form-group">
+                        <label for="shadeNo" class="col-md-3 control-label">Shade No.:</label>
+                        <div class="col-md-9">
+                            <select class="form-control" id="shadeNo" name="shadeNo">
+                              <optgroup>
+                                <option value="0">Other</option>
+                              </optgroup>
+                              <optgroup id="optGroupShadeNo">
+                              </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="clothDetails" class="col-md-3 control-label">Cloth Details :</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="clothDetails" name="clothDetails" placeholder="Cloth Details" readonly/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="clothCost" class="col-md-3 control-label">Cloth Cost :</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="clothCost" name="clothCost" placeholder="Cost per m" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="category" class="col-md-3 control-label">Category :</label>
+                        <div class="col-md-9">
+                            <select class="form-control" id="category" name="category">
+                              <optgroup>
+                                <option value="0">Other</option>
+                              </optgroup>
+                              <optgroup id="optGroupCategory">
+                              </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="length" class="col-md-3 control-label">Length :</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="length" name="length" placeholder="Length" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="wage" class="col-md-3 control-label">Wage :</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="wage" name="wage" placeholder="Wage" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity" class="col-md-3 control-label">Quantity :</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="quantity" name="quantity" value="1" placeholder="Quantity" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
   </body>
