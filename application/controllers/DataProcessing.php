@@ -192,6 +192,10 @@ public function addCompany()
 			echo "<option value='".$company->company_id."'>".$company->company_name."</option>";
 		}
 	}
+	public function getAllCustomerJson(){
+		$data=$this->DataModel->getCustomers();
+		echo json_encode(["data"=>$data]);
+	}
 
 	// public function getCompanyCatagories(){
 	// 	$data=$this->DataModel->getCompanyCatagories();
@@ -221,5 +225,11 @@ public function addCompany()
 	public function getLatestInventoryId(){
 		echo $this->DataModel->getLatestInventoryId()+1;
 	}
+<<<<<<< HEAD
 
+=======
+	public function getLatestBillingId(){
+		echo $this->DataModel->getLatestBillingId()+1;
+	}
+>>>>>>> 2a08f228e9c64e8a58da1c917df8141e3987379b
 }

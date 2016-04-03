@@ -70,6 +70,14 @@ class DataModel extends CI_Model{
 			return $data[0]->company_id;
 		}
 	}
+	function getLatestBillingId(){
+		$this->db->select("bill_no")->limit(1)->order_by("bill_no","desc");
+		$data=$this->db->get("bill_details")->result();
+		// var_dump($data);
+		if(count($data)!=0){
+			return $data[0]->bill_no;
+		}
+	}
 
 	// function getLatestInventoryCatagoryId(){
 	// 	$this->db->select("catagory_id")->limit(1)->order_by("catagory_id","desc");

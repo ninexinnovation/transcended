@@ -5,7 +5,7 @@
 						<div class="form-group">
 							<label for="billNo" class="col-md-3 control-label">Bill No. :</label>
 							<div class="col-md-3">
-								<input type="number" class="form-control" id="billNo" name="billNo" placeholder="Bill No" value="<?php //echo $bills->getLastBillNo()+1; ?>" />
+								<input type="number" class="form-control" id="billNo" name="billNo" data-update="DataProcessing/getLatestBillingId" placeholder="Bill No" />
 							</div>
 						</div>
                         <input type="hidden" class="form-control" id="customer_id" name="customer_id"/>
@@ -128,7 +128,7 @@
 			</form>
 		</div>
 
-		<script type="text/javascript">
+<script type="text/javascript">
 	billItem_table=$('#billItem-table').DataTable({
 		"paging":false,
 		"searching":false,
@@ -148,5 +148,6 @@
 		]
     });
     billItem_table.columns([0,1,2,3,4,5]).visible(false);
-    </script>
+
+</script>
 	
