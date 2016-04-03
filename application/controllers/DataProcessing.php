@@ -219,13 +219,17 @@ public function addCompany()
 		echo $this->DataModel->getLatestCompanyId()+1;
 	}
 
-	public function getLatestInventoryCategoryId(){
-		echo $this->DataModel->getLatestInventoryCategoryId()+1;
+	public function getInventoryItemCatagoryId(){
+		echo $this->DataModel->getInventoryItemCatagoryId()+1;
 	}
 	public function getLatestInventoryId(){
 		echo $this->DataModel->getLatestInventoryId()+1;
 	}
+<<<<<<< HEAD
+
+=======
 	public function getLatestBillingId(){
 		echo $this->DataModel->getLatestBillingId()+1;
 	}
+>>>>>>> 2a08f228e9c64e8a58da1c917df8141e3987379b
 }
