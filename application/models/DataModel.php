@@ -292,7 +292,7 @@ function addCompany($id,$value){
 
 	function getInventoryItemCatagoryId(){
 		$data=$this->db->get("catagory_details")->result();
-		var_dump($data);
+		// var_dump($data);
 
 
 			return $data;
