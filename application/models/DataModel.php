@@ -244,7 +244,7 @@ class DataModel extends CI_Model{
 		return true;
 	}
 
-function addCompany($id,$value){
+	function addCompany($id,$value){
 		$i=0;
 		$data=array();
 		foreach ($id as $key) {
@@ -260,8 +260,43 @@ function addCompany($id,$value){
 		return true;
 	}
 
+	function updateCustomer($id,$value){
+		$i=0;
+		$data=array();
+		foreach ($id as $key) {
+			switch($key){
+				case "customer_name":
+					$data["customer_name"]=$value[$i];
+					break;
+				
+				case "address":
+					$data["address"]=$value[$i];
+					break;
+				case "phone_no":
+					$data["phone_no"]=$value[$i];
+					break;
+				
+
+			}
+			$i++;
+		}
+		$this->db->update('customer_details',$data,array('customer_id'=>$value[0]));
+		return true;
+	}
+	function deleteCustomer($id,$value){
+		$this->db->delete('customer_details',array('customer_id'=>$value[0]));
+		return true;
+	}
+
+
+
 	function getCustomers(){
 		$data=$this->db->get("customer_details")->result();
+		// var_dump($data);
+			return $data;
+	}
+	function getCustomerById($id){
+		$data=$this->db->get_where("customer_details",array("customer_id"=>$id))->result();
 		// var_dump($data);
 			return $data;
 	}
@@ -292,7 +327,7 @@ function addCompany($id,$value){
 
 	function getInventoryItemCatagoryId(){
 		$data=$this->db->get("catagory_details")->result();
-		var_dump($data);
+		// var_dump($data);
 
 
 			return $data;

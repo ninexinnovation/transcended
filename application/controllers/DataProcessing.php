@@ -63,8 +63,8 @@ class DataProcessing extends CI_Controller {
 		$name=$this->input->post("name");
 		$value=$this->input->post("value");
 
-		$this->form_validation->set_rules('value[0]',$name[0],array('required','alpha'));
-		$this->form_validation->set_rules('value[1]',$name[1],array('required','alpha'));
+		$this->form_validation->set_rules('value[0]',$name[0],array('required'));
+		$this->form_validation->set_rules('value[1]',$name[1],array('required'));
 	    $this->form_validation->set_rules('value[2]',$name[2],array('required','numeric','min_length[7]','max_length[10]'));
 
 
@@ -175,6 +175,47 @@ public function addCompany()
 
 
 
+	public function updateDeleteCustomer()
+	{
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+
+		$this->form_validation->set_rules('value[1]',$name[1],array('required'));
+		$this->form_validation->set_rules('value[2]',$name[2],array('required'));
+	    $this->form_validation->set_rules('value[3]',$name[3],array('required','numeric','min_length[7]','max_length[10]'));
+
+
+		if($this->form_validation->run()===False){
+			// $error_messages=$this->form_validation->error_array();
+			echo json_encode([
+								"success"=>"false",
+								"messageType"=>"danger",
+								"message"=>array_values($this->form_validation->error_array())
+							]);	
+		}else{
+			if($value[4]=="updateCustomer"){
+				$this->DataModel->updateCustomer($name,$value);
+
+				echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully Updated"]
+							]);
+			}else if($value[4]=="deleteCustomer"){
+				$this->DataModel->deleteCustomer($name,$value);
+
+				echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully Deleted"]
+							]);
+			}
+		}
+	}
+
+
+
+
 	
 	public function getItemCatagories(){
 		$data=$this->DataModel->getItemCatagories();
@@ -194,6 +235,20 @@ public function addCompany()
 	}
 	public function getAllCustomerJson(){
 		$data=$this->DataModel->getCustomers();
+		echo json_encode(["data"=>$data]);
+	}
+	public function getCustomerByIdJson(){
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+		$id=0;
+		$i=0;
+		foreach ($name as $n) {
+			if($n="id"){
+				$id=$value[$i];
+			}
+			$i++;
+		}
+		$data=$this->DataModel->getCustomerById($id);
 		echo json_encode(["data"=>$data]);
 	}
 
@@ -225,11 +280,7 @@ public function addCompany()
 	public function getLatestInventoryId(){
 		echo $this->DataModel->getLatestInventoryId()+1;
 	}
-<<<<<<< HEAD
-
-=======
 	public function getLatestBillingId(){
 		echo $this->DataModel->getLatestBillingId()+1;
 	}
->>>>>>> 2a08f228e9c64e8a58da1c917df8141e3987379b
 }
