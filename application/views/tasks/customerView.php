@@ -11,8 +11,8 @@ $customer_data=$this->DataModel->getCustomers();
 	<div class="row" id="customer_data">
 	<?php
 		foreach ($customer_data as $customer) {
-			echo '<a class="col-md-4 col-lg-3 btn btn-default grid-btn" data-btn-type="task" data-view="billing">';
-			echo '<i class="">'.$customer->customer_id.'</i>';
+			echo '<a class="col-md-4 col-lg-3 btn btn-default grid-btn" data-btn-type="task-result" data-view="#customerViewModal">';
+			echo '<i data-send="true" data-name="id">'.$customer->customer_id.'</i>';
 			echo '<span>'.$customer->customer_name.'</span>';
 			echo '</a>';
 		}

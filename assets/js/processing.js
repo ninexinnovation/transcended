@@ -57,7 +57,65 @@ $(document).ready(function(){
         }
     } );
 
+    //task result modal desplay
+    $(document).on("click","[data-btn-type='task-result']",function(){
+    	var modalId=$(this).attr("data-view");
+    	$(modalId).modal("show");
+    	var dataName=[];
+    	var dataValue=[];
+    	$(this).find("[data-send='true']").each(function(index,element){
+    		dataName.push($(this).attr("data-name"));
+    		dataValue.push($(this).text());
+    	});
+    	// console.log(dataName);
+    	// console.log(dataValue);
+    	displayModalData($(modalId).find("form"),dataName,dataValue);
+    });
+
+
+    //button clicked state
+    $(document).on("click","button[type=submit]",function() {
+        $("button[type=submit]", $(this).parents("form")).removeAttr("clicked");
+        $(this).attr("clicked", "true");
+    });
 });
+
+function displayModalData(thisForm,dataName,dataValue){
+	// console.log(thisForm)
+	var url=$(thisForm).attr("data-get-action");
+	$.ajax({
+		url:url,
+		data:{name:dataName,value:dataValue},
+		method:"post",
+		dataType:"json"
+	}).done(function(msg){
+		if(msg!=""){
+			// alert(msg.data[0].customer_name);
+			$(thisForm).find("input, select").each(function(index,element){
+				switch($(element).attr("type")){
+					case "file":
+
+						break;
+					case "radio","checkbox":
+
+						break;
+					case "submit":
+					case "button":
+					case "reset":
+						$(element).prop('disabled', true);
+						break;
+					default:
+						var name=$(element).attr("name");
+						$(element).val(msg.data[0][name]);
+						break;
+				}
+			});
+		}else{
+			appendAlert("Unable to get data","danger",5000);
+		}
+	});
+}
+
 function AddData(thisForm,func) {
 	// console.log($(thisDiv));
 	var dataname=[];
@@ -124,6 +182,78 @@ function AddData(thisForm,func) {
 		$("#"+id).modal('hide');
 	}
 }
+
+function updateDeleteData(thisForm,func) {
+	// console.log($(thisDiv));
+	var dataName=[];
+	var dataValue=[];
+	var clickedButton;
+	$(thisForm).find("input, select, button").each(function(index,element){
+		// console.log(element);
+		if($(element).attr("data-send")!="false"){
+			switch($(element).attr("type")){
+				case "file":
+
+					break;
+				case "radio","checkbox":
+
+					break;
+				case "submit":
+				case "button":
+					if($(element).attr("clicked")!=null){
+						clickedButton=$(element).attr("name");
+					}
+					$(element).prop('disabled', true);
+					break;
+				default:
+					// console.log(element);
+					dataName.push($(element).attr("name"));
+					dataValue.push($(element).val());
+					break;
+			}
+		}
+	});
+	dataName.push("button");
+	dataValue.push(clickedButton);
+	// console.log(dataName);
+	// $(thisForm).find("button[type='submit'],button[type='button']").each(function(index,element){
+	// 	$(element).prop('disabled', true);
+	// });
+
+	var method=$(thisForm).attr("method");
+	var url=$(thisForm).attr("action");
+	$.ajax({
+		url:url,
+		data:{name:dataName,value:dataValue},
+		method:method,
+		dataType:"json"
+	}).done(function(msg){
+		if(msg.success=="true"){
+			for(i=0;i<msg.message.length;i++){
+				appendAlert(msg.message[i],msg.messageType,5000);
+			}
+			resetForm(thisForm);
+		}else{
+			for(i=0;i<msg.message.length;i++){
+				appendAlert(msg.message[i],"danger",5000);
+			}
+		}
+		$(thisForm).find("button[type='submit'],button[type='button'],input[type='submit']").each(function(index,element){
+			$(element).prop('disabled', false);
+		});
+	}).fail(function(jqXHR, textStatus ){
+		alert(jqXHR.statusText);
+		$(thisForm).find("button[type='submit'],button[type='button'],input[type='submit']").each(function(index,element){
+			$(element).prop('disabled', false);
+		});
+	});
+	
+	if($(thisForm).closest(".modal").length!=0){
+		var id=$(thisForm).closest(".modal").attr("id");
+		$("#"+id).modal('hide');
+	}
+}
+
 function resetForm(form){
 	// var form=this;
 	$(form).find("input,select").each(function(index,element){

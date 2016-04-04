@@ -130,7 +130,7 @@
     </div><!-- /.modal -->
 
 
-    <div class="modal fade" id="AddCustomerModal" tabindex="-1" role="dialog" aria-labelledby="AddCustomerModalLabel" aria-hidden="true">
+<div class="modal fade" id="AddCustomerModal" tabindex="-1" role="dialog" aria-labelledby="AddCustomerModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -235,6 +235,42 @@
     </div>
 </div>
 
+<div class="modal fade" id="customerViewModal" tabindex="-1" role="dialog" aria-labelledby="customerViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="customerViewModalLabel">View Customer</h4>
+            </div>
+            <form action="DataProcessing/updateDeleteCustomer" data-get-action="DataProcessing/getCustomerByIdJson" onsubmit="updateDeleteData(this);return false;" method="post">
+              <div class="modal-body">
+                  <div class="form-group">
+                    <label for="CusId">Customer ID</label>
+                    <input type="number" class="form-control" id="CusId" name="customer_id" placeholder="Enter Customer ID" disabled required>
+                  </div>
+                  <div class="form-group">
+                    <label for="CusName">Customer Name</label>
+                    <input type="text" class="form-control" id="CusName" name="customer_name" placeholder="Enter Customer Name" required>
+                  </div>
+             
+                  <div class="form-group">
+                    <label for="CusAddress">Customer Address</label>
+                    <input type="text" class="form-control" id="CusAddress" name="address" placeholder="Enter Customer Address" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="CusPhone">Customer Phone number</label>
+                    <input type="phone" class="form-control" id="CusPhone" name="phone_no" placeholder="Enter Customer Phone Number" required>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary" name="updateCustomer" style="float:right;">Save</button>
+                  <button type="submit" class="btn btn-danger" name="deleteCustomer">Delete</button>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
 
   </body>
 </html>
