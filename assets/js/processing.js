@@ -92,7 +92,8 @@ function displayModalData(thisForm,dataName,dataValue){
 		if(msg!=""){
 			// alert(msg.data[0].customer_name);
 			$(thisForm).find("input, select").each(function(index,element){
-				switch($(element).attr("type")){
+				var type=$(element).attr("type");
+				switch(type){
 					case "file":
 
 						break;
@@ -242,7 +243,7 @@ function updateDeleteData(thisForm,func) {
 			$(element).prop('disabled', false);
 		});
 	}).fail(function(jqXHR, textStatus ){
-		alert(jqXHR.statusText);
+		alert(jqXHR.statusText+"/"+textStatus);
 		$(thisForm).find("button[type='submit'],button[type='button'],input[type='submit']").each(function(index,element){
 			$(element).prop('disabled', false);
 		});

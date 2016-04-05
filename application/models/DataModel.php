@@ -92,7 +92,7 @@ class DataModel extends CI_Model{
 
 
 
-	function saveInventoryCatagory($id,$value){
+	function saveCatagory($id,$value){
 		$i=0;
 		$data=array();
 		foreach ($id as $key) {
@@ -289,6 +289,67 @@ class DataModel extends CI_Model{
 	}
 
 
+	function updateItem($id,$value){
+		$i=0;
+		$data=array();
+		foreach ($id as $key) {
+			switch($key){
+				case "company_id":
+					$data["company_id"]=$value[$i];
+					break;
+				
+				case "catagory_id":
+					$data["catagory_id"]=$value[$i];
+					break;
+				case "f_date":
+					$data["added_date"]=strtotime($value[$i]);
+					break;
+				case "selling_price":
+					$data["selling_price"]=$value[$i];
+					break;
+				case "current_quantity":
+					$data["current_quantity"]=$value[$i];
+					break;
+				
+
+			}
+			$i++;
+		}
+		$this->db->update('item_details',$data,array('item_code_no'=>$value[0]));
+		return true;
+	}
+	function deleteItem($id,$value){
+		$this->db->delete('item_details',array('item_code_no'=>$value[0]));
+		return true;
+	}
+
+function updateCatagory($id,$value){
+		$i=0;
+		$data=array();
+		foreach ($id as $key) {
+			switch($key){
+				case "catagoryName":
+					$data["catagory_name"]=$value[$i];
+					break;
+				case "stichingPrice":
+					$data["stiching_charge"]=$value[$i];
+					break;
+				
+
+			}
+			$i++;
+		}
+		$this->db->update('catagory_details',$data,array('catagory_id'=>$value[0]));
+		return true;
+	}
+	function deleteCatagory($id,$value){
+		$this->db->delete('catagory_details',array('catagory_id'=>$value[0]));
+		return true;
+	}
+
+
+
+
 
 	function getCustomers(){
 		$data=$this->db->get("customer_details")->result();
@@ -324,6 +385,21 @@ class DataModel extends CI_Model{
 
 			return $data;
 	}
+
+	function getItemById($id){
+		$data=$this->db->get_where("item_details",array("item_code_no"=>$id))->result_array();
+		$data[0]["f_date"]=date("Y-m-d",$data[0]['added_date']);
+		// var_dump($data);
+			return $data;
+	}
+	function getCatagoryById($id){
+		$data=$this->db->get_where("catagory_details",array("catagory_id"=>$id))->result();
+		// var_dump($data);
+			return $data;
+	}
+
+
+
 
 	function getInventoryItemCatagoryId(){
 		$data=$this->db->get("catagory_details")->result();

@@ -214,6 +214,87 @@ public function addCompany()
 	}
 
 
+	public function updateDeleteInventoryItem()
+	{
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+
+		$this->form_validation->set_rules('value[0]',$name[0],array('required','numeric'));
+		$this->form_validation->set_rules('value[1]',$name[1],array('required','numeric'));
+		$this->form_validation->set_rules('value[2]',$name[2],array('required','numeric'));
+		$this->form_validation->set_rules('value[3]',$name[3],array('required'));
+		$this->form_validation->set_rules('value[4]',$name[4],array('required','numeric'));
+		$this->form_validation->set_rules('value[5]',$name[4],array('required','numeric'));
+
+
+		if($this->form_validation->run()===False){
+			// $error_messages=$this->form_validation->error_array();
+			echo json_encode([
+								"success"=>"false",
+								"messageType"=>"danger",
+								"message"=>array_values($this->form_validation->error_array())
+							]);	
+		}else{
+			if($value[6]=="updateItem"){
+				$this->DataModel->updateItem($name,$value);
+
+				echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully Item Updated"]
+							]);
+			}else if($value[6]=="deleteItem"){
+				$this->DataModel->deleteItem($name,$value);
+
+				echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully Item Deleted"]
+							]);
+			}
+		}
+	}
+
+
+	public function updateDeleteCatagory()
+	{
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+
+		$this->form_validation->set_rules('value[0]',$name[0],array('required','alpha'));
+	    $this->form_validation->set_rules('value[1]',$name[1],array('required','numeric'));
+
+
+		if($this->form_validation->run()===False){
+			// $error_messages=$this->form_validation->error_array();
+			echo json_encode([
+								"success"=>"false",
+								"messageType"=>"danger",
+								"message"=>array_values($this->form_validation->error_array())
+							]);	
+		}else{
+			if($value[2]=="updateCatagory"){
+				$this->DataModel->updateItem($name,$value);
+
+				echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully Item Updated"]
+							]);
+			}else if($value[2]=="deleteItem"){
+				$this->DataModel->deleteCatagory($name,$value);
+
+				echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully Item Deleted"]
+							]);
+			}
+		}
+	}
+
+
+
 
 
 	
@@ -252,6 +333,43 @@ public function addCompany()
 		echo json_encode(["data"=>$data]);
 	}
 
+	public function getItemByIdJson(){
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+		$id=0;
+		$i=0;
+		foreach ($name as $n) {
+			if($n="id"){
+				$id=$value[$i];
+			}
+			$i++;
+		}
+		$data=$this->DataModel->getItemById($id);
+		echo json_encode(["data"=>$data]);
+	}
+
+
+	public function getCatagoryByIdJson(){
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+		$id=0;
+		$i=0;
+		foreach ($name as $n) {
+			if($n="id"){
+				$id=$value[$i];
+			}
+			$i++;
+		}
+		$data=$this->DataModel->getCatagoryById($id);
+		echo json_encode(["data"=>$data]);
+	}
+
+
+	// public function getInventoryItemCatagoryId(){
+	// 	echo $this->DataModel->getInventoryItemCatagoryId()+1;
+	// }
+
+
 	// public function getCompanyCatagories(){
 	// 	$data=$this->DataModel->getCompanyCatagories();
 	// 	echo "<option value=''>Choose Company</option>";
@@ -274,9 +392,6 @@ public function addCompany()
 		echo $this->DataModel->getLatestCompanyId()+1;
 	}
 
-	public function getInventoryItemCatagoryId(){
-		echo $this->DataModel->getInventoryItemCatagoryId()+1;
-	}
 	public function getLatestInventoryId(){
 		echo $this->DataModel->getLatestInventoryId()+1;
 	}

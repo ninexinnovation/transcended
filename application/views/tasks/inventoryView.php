@@ -1,6 +1,6 @@
 <?php
 
-$inventory_data=$this->DataModel->getInventoryItemCatagory();
+$inventory_data=$this->DataModel->getInventoryItem();
  ?>
 <div class="grid-container">
 	<div class="container">
@@ -11,8 +11,8 @@ $inventory_data=$this->DataModel->getInventoryItemCatagory();
 	<div class="row" id="inventory_data">
 	<?php
 		foreach ($inventory_data as $inventory) {
-			echo '<a class="col-md-4 col-lg-3 btn btn-default grid-btn" data-btn-type="task" data-view="billing">';
-			echo '<i class="">'.$inventory->item_code_no.'</i>';
+			echo '<a class="col-md-4 col-lg-3 btn btn-default grid-btn" data-btn-type="task-result" data-view="#inventoryViewModal">';
+			echo '<i data-send="true" data-name="id">'.$inventory->item_code_no.'</i>';
 			echo '<span>'.$inventory->company_name.'</span>';
 			echo '<span>'.$inventory->catagory_name.'</span>';
 		

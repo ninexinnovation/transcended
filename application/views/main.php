@@ -272,5 +272,101 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="inventoryViewModal" tabindex="-1" role="dialog" aria-labelledby="inventoryViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="inventoryViewModalLabel">View Inventory</h4>
+            </div>
+
+            <form action="DataProcessing/updateDeleteInventoryItem" data-get-action="DataProcessing/getItemByIdJson" onsubmit="updateDeleteData(this);return false;" method="post">
+              <div class="modal-body">
+                  <div class="form-group">
+        <label for="itemId">Item ID</label>
+        <input type="number" class="form-control" id="itemId" name="item_code_no" placeholder="Enter Item ID" disabled required>
+    </div>
+
+      <div class="form-group">
+        <label for="companyName">Company Name</label>
+          <select class="form-control" id="companyName" name="company_id" placeholder="Enter COmpany Name" data-update="DataProcessing/getCompanies" data-model="#addCompanyInventory" required>
+            <option value="">Choose Company</option>
+            <option> </option>
+        </select>
+
+    </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+          <select class="form-control" id="category" name="catagory_id" data-update="DataProcessing/getItemCatagories" required>
+              <option value="">Choose Item Type</option>
+        </select>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="addedDate">Added Date</label>
+        <input type="date" class="form-control" id="addedDate" name="f_date" placeholder="Enter Added Date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="sellingPrice">Selling Price</label>
+        <input type="text" class="form-control" id="sellingPrice" name="selling_price" placeholder="Enter Selling Price" required>
+      </div>
+
+      <div class="form-group">
+        <label for="currentQuantity">Total Quantity</label>
+        <input type="text" class="form-control" id="currentQuantity" name="current_quantity" placeholder="Enter Current Quantity" required>
+      </div>
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary" name="updateItem" style="float:right;">Save</button>
+                  <button type="submit" class="btn btn-danger" name="deleteItem">Delete</button>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="inventoryCatagoryViewModalLabel" tabindex="-1" role="dialog" aria-labelledby="inventoryCatagoryViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="inventoryCatagoryViewModalLabel">View Inventory</h4>
+                </div>
+
+            <form action="DataProcessing/updateDeleteCatagory" data-get-action="DataProcessing/getCatagoryByIdJson" onsubmit="updateDeleteData(this);return false;" method="post">
+              <div class="modal-body">
+                   <div class="form-group">
+                      <label for="name">Catagory ID</label>
+                      <input type="number" class="form-control" id="ClId" name="catagory_id" placeholder="Enter Catagory ID"  data-send="false" value="" disabled required>
+                  </div>
+
+                    <div class="form-group">
+                      <label for="name">Catagory Name</label>
+                      <input type="text" class="form-control" id="ClName" name="catagory_name" placeholder="Enter Catagory Name" required autofocus>
+                   </div>
+               
+                    <div class="form-group">
+                      <label for="name">Stiching Price (Nrs.)</label>
+                      <input type="text" class="form-control" id="ClName" name="stiching_charge" placeholder="Enter Stiching Price" required>
+                    </div>
+                </div>
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary" name="updateItem" style="float:right;">Save</button>
+                  <button type="submit" class="btn btn-danger" name="deleteItem">Delete</button>
+              </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
   </body>
 </html>
