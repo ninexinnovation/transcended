@@ -14,7 +14,7 @@ class DataModel extends CI_Model{
 	// 		);
 	// 	return $query;
 	// }
-	function getLatestInventoryCategoryId(){
+	function getLatestInventoryCatagoryId(){
 		$this->db->select("catagory_id")->limit(1)->order_by("catagory_id","desc");
 		$data=$this->db->get("catagory_details")->result();
 		// var_dump($data);

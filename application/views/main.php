@@ -343,7 +343,7 @@
               <div class="modal-body">
                    <div class="form-group">
                       <label for="name">Catagory ID</label>
-                      <input type="number" class="form-control" id="ClId" name="catagory_id" placeholder="Enter Catagory ID"  data-send="false" value="" disabled required>
+                      <input type="number" class="form-control" id="ClId" name="catagory_id" placeholder="Enter Catagory ID" value="" disabled required>
                   </div>
 
                     <div class="form-group">

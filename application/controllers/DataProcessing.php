@@ -261,8 +261,10 @@ public function addCompany()
 		$name=$this->input->post("name");
 		$value=$this->input->post("value");
 
-		$this->form_validation->set_rules('value[0]',$name[0],array('required','alpha'));
-	    $this->form_validation->set_rules('value[1]',$name[1],array('required','numeric'));
+		$this->form_validation->set_rules('value[0]',$name[0],array('required','numeric'));
+		$this->form_validation->set_rules('value[1]',$name[1],array('required'));
+	    $this->form_validation->set_rules('value[2]',$name[1],array('required','numeric'));
+
 
 
 		if($this->form_validation->run()===False){
@@ -273,7 +275,7 @@ public function addCompany()
 								"message"=>array_values($this->form_validation->error_array())
 							]);	
 		}else{
-			if($value[2]=="updateCatagory"){
+			if($value[3]=="updateCatagory"){
 				$this->DataModel->updateItem($name,$value);
 
 				echo json_encode([
@@ -281,7 +283,7 @@ public function addCompany()
 								"messageType"=>"success",
 								"message"=>["Successfully Item Updated"]
 							]);
-			}else if($value[2]=="deleteItem"){
+			}else if($value[3]=="deleteItem"){
 				$this->DataModel->deleteCatagory($name,$value);
 
 				echo json_encode([
@@ -365,10 +367,7 @@ public function addCompany()
 	}
 
 
-	// public function getInventoryItemCatagoryId(){
-	// 	echo $this->DataModel->getInventoryItemCatagoryId()+1;
-	// }
-
+	
 
 	// public function getCompanyCatagories(){
 	// 	$data=$this->DataModel->getCompanyCatagories();
@@ -391,7 +390,9 @@ public function addCompany()
 	public function getLatestCompanyId(){
 		echo $this->DataModel->getLatestCompanyId()+1;
 	}
-
+	public function getLatestInventoryCatagoryId(){
+		echo $this->DataModel->getLatestInventoryCatagoryId()+1;
+	}
 	public function getLatestInventoryId(){
 		echo $this->DataModel->getLatestInventoryId()+1;
 	}
