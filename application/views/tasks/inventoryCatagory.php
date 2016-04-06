@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="DataProcessing/saveCatagory" method="post" onsubmit="AddData(this);return false">
+    <form action="DataProcessing/saveInventoryCatagory" method="post" onsubmit="AddData(this);return false">
       <div class="form-group">
           <label for="name">Catagory ID</label>
           <input type="number" class="form-control" data-update="DataProcessing/getLatestInventoryCatagoryId" id="ClId" name="id" placeholder="Enter Catagory ID"  data-send="false" value="" disabled required>

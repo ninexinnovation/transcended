@@ -21,7 +21,7 @@ class DataProcessing extends CI_Controller {
 								"message"=>array_values($this->form_validation->error_array())
 							]);	
 		}else{
-			$this->DataModel->saveInventoryCatagory($name,$value);
+			$this->DataModel->saveCatagory($name,$value);
 			echo json_encode([
 								"success"=>"true",
 								"messageType"=>"success",
@@ -296,6 +296,47 @@ public function addCompany()
 	}
 
 
+public function updateDeleteWorker()
+	{
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+
+		$this->form_validation->set_rules('value[0]',$name[0],array('required','alpha'));
+
+
+
+
+		if($this->form_validation->run()===False){
+			// $error_messages=$this->form_validation->error_array();
+			echo json_encode([
+								"success"=>"false",
+								"messageType"=>"danger",
+								"message"=>array_values($this->form_validation->error_array())
+							]);	
+		}else{
+			if($value[2]=="updateWorker"){
+				$this->DataModel->updateWorker($name,$value);
+
+				echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully Worker Updated"]
+							]);
+			}else if($value[2]=="deleteWorker"){
+				$this->DataModel->deleteWorker($name,$value);
+
+				echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully Worker Deleted"]
+							]);
+			}
+		}
+	}
+
+
+
+
 
 
 
@@ -374,8 +415,21 @@ public function addCompany()
 		echo json_encode(["data"=>$data]);
 	}
 
+public function getWorkerByIdJson(){
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+		$id=0;
+		$i=0;
+		foreach ($name as $n) {
+			if($n="id"){
+				$id=$value[$i];
+			}
+			$i++;
+		}
+		$data=$this->DataModel->getWorkerById($id);
+		echo json_encode(["data"=>$data]);
+	}
 
-	
 
 	// public function getCompanyCatagories(){
 	// 	$data=$this->DataModel->getCompanyCatagories();

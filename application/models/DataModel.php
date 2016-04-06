@@ -343,7 +343,26 @@ function updateCatagory($id,$value){
 		return true;
 	}
 
+function updateWorker($id,$value){
+		$i=0;
+		$data=array();
+		foreach ($id as $key) {
+			switch($key){
+				case "workerName":
+					$data["worker_name"]=$value[$i];
+					break;
+				
 
+			}
+			$i++;
+		}
+		$this->db->update('worker_details',$data,array('Worker_id'=>$value[0]));
+		return true;
+	}
+	function deleteWorker($id,$value){
+		$this->db->delete('worker_details',array('Worker_id'=>$value[0]));
+		return true;
+	}
 
 
 	function getItemCatagories(){
@@ -400,6 +419,11 @@ function updateCatagory($id,$value){
 	}
 	function getCatagoryById($id){
 		$data=$this->db->get_where("catagory_details",array("catagory_id"=>$id))->result();
+		// var_dump($data);
+			return $data;
+	}
+	function getWorkerById($id){
+		$data=$this->db->get_where("worker_details",array("worker_id"=>$id))->result();
 		// var_dump($data);
 			return $data;
 	}
