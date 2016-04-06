@@ -402,5 +402,38 @@
     </div>
 </div>
 
+<div class="modal fade" id="workerViewModal" tabindex="-1" role="dialog" aria-labelledby="workerViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="workerViewModalLabel">View User</h4>
+                </div>
+
+            <form action="DataProcessing/updateDeleteWorker" data-get-action="DataProcessing/getWorkerByIdJson" onsubmit="updateDeleteData(this);return false;" method="post">
+              <div class="modal-body">
+                  <div class="form-group">
+                      <label for="wrId">Worker ID</label>
+                      <input type="number" class="form-control" id="wrId" name="worker_id" placeholder="Enter Worker ID" disabled required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="workerName">Worker Name</label>
+                    <input type="text" class="form-control" id="workerName" placeholder="Enter Worker Name" name="worker_name" required>
+                 </div>
+              </div>
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary" name="updateItem" style="float:right;">Save</button>
+                  <button type="submit" class="btn btn-danger" name="deleteItem">Delete</button>
+              </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
   </body>
 </html>
