@@ -91,6 +91,7 @@ function displayModalData(thisForm,dataName,dataValue){
 	}).done(function(msg){
 		if(msg!=""){
 			// alert(msg.data[0].customer_name);
+			updateForm(thisForm);
 			$(thisForm).find("input, select").each(function(index,element){
 				var type=$(element).attr("type");
 				switch(type){

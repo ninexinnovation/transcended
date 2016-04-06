@@ -276,14 +276,14 @@ public function addCompany()
 							]);	
 		}else{
 			if($value[3]=="updateCatagory"){
-				$this->DataModel->updateItem($name,$value);
+				$this->DataModel->updateCatagory($name,$value);
 
 				echo json_encode([
 								"success"=>"true",
 								"messageType"=>"success",
 								"message"=>["Successfully Item Updated"]
 							]);
-			}else if($value[3]=="deleteItem"){
+			}else if($value[3]=="deleteCatagory"){
 				$this->DataModel->deleteCatagory($name,$value);
 
 				echo json_encode([
@@ -305,6 +305,14 @@ public function addCompany()
 		echo "<option value=''>Choose Item Type</option>";
 		foreach ($data as $catagory) {
 			echo "<option value='".$catagory->catagory_id."'>".$catagory->catagory_name."</option>";
+		}
+	}
+	public function getItems(){
+		$data=$this->DataModel->getItems();
+		echo "<option value='0'>Other</option>";
+		
+		foreach ($data as $item) {
+			echo "<option value='".$item->item_code_no."'>".$item->item_code_no."</option>";
 		}
 	}
 

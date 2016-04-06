@@ -30,11 +30,7 @@ class DataModel extends CI_Model{
 			return $data[0]->item_code_no;
 		}
 	}
-	function getItemCatagories(){
-		$this->db->order_by("catagory_id","asc");
-		$data=$this->db->get("catagory_details")->result();
-		return $data;
-	}
+	
 	function getLatestUserId(){
 		$this->db->select("user_id")->limit(1)->order_by("user_id","desc");
 		$data=$this->db->get("user")->result();
@@ -328,10 +324,10 @@ function updateCatagory($id,$value){
 		$data=array();
 		foreach ($id as $key) {
 			switch($key){
-				case "catagoryName":
+				case "catagory_name":
 					$data["catagory_name"]=$value[$i];
 					break;
-				case "stichingPrice":
+				case "stiching_charge":
 					$data["stiching_charge"]=$value[$i];
 					break;
 				
@@ -350,7 +346,17 @@ function updateCatagory($id,$value){
 
 
 
-
+	function getItemCatagories(){
+		// $this->db->order_by("catagory_id","asc");
+		$data=$this->db->get("catagory_details")->result();
+		return $data;
+	}
+	function getItems(){
+		// $this->db->order_by("item_code_no","asc");
+		$data=$this->db->get("item_details")->result();
+		// var_dump($data);
+		return $data;
+	}
 	function getCustomers(){
 		$data=$this->db->get("customer_details")->result();
 		// var_dump($data);

@@ -174,7 +174,7 @@
                     <div class="form-group">
                         <label for="shadeNo" class="col-md-3 control-label">Shade No.:</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="shadeNo" name="shadeNo">
+                            <select class="form-control" id="shadeNo" name="shadeNo" data-update="DataProcessing/getItems">
                               <optgroup>
                                 <option value="0">Other</option>
                               </optgroup>
@@ -183,22 +183,22 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="clothDetails" class="col-md-3 control-label">Cloth Details :</label>
                         <div class="col-md-9">
                             <input type="text" class="form-control" id="clothDetails" name="clothDetails" placeholder="Cloth Details" readonly/>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="clothCost" class="col-md-3 control-label">Cloth Cost :</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="clothCost" name="clothCost" placeholder="Cost per m" />
+                            <input type="text" class="form-control" id="clothCost" name="clothCost" placeholder="Cost per m" disabled />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="category" class="col-md-3 control-label">Category :</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="category" name="category">
+                            <select class="form-control" id="category" name="category" data-update="DataProcessing/getItemCatagories">
                               <optgroup>
                                 <option value="0">Other</option>
                               </optgroup>
@@ -216,7 +216,7 @@
                     <div class="form-group">
                         <label for="wage" class="col-md-3 control-label">Wage :</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="wage" name="wage" placeholder="Wage" />
+                            <input type="text" class="form-control" id="wage" name="wage" placeholder="Wage" disabled />
                         </div>
                     </div>
                     <div class="form-group">
@@ -359,8 +359,8 @@
 
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-primary" name="updateItem" style="float:right;">Save</button>
-                  <button type="submit" class="btn btn-danger" name="deleteItem">Delete</button>
+                  <button type="submit" class="btn btn-primary" name="updateCatagory" style="float:right;">Save</button>
+                  <button type="submit" class="btn btn-danger" name="deleteCatagory">Delete</button>
               </div>
 
             </form>
