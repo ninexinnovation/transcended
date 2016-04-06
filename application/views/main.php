@@ -12,33 +12,6 @@
 </head>
   <body>
     <div class="container-main">
-<!--       <div class="container">
-        Dashboard contents goes here
-        <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputFile">File input</label>
-            <input type="file" id="exampleInputFile">
-            <p class="help-block">Example block-level help text here.</p>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Check me out
-            </label>
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-      </div>
- -->
-
-
       
     <!-- TASK BAR -->
     <div class="task-bar">
@@ -130,7 +103,36 @@
         </div>
     </div>
 </div>
-
+<div class="modal fade" id="AddReferrerModal" tabindex="-1" role="dialog" aria-labelledby="AddReferrerLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="AddReferrerModalLabel">Add Referrer</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="addReferrer-table">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Full Name</th>
+                                <th>Address</th>
+                                <th>Phone No.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btnAddReferrer">Select</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="billItemAddModal" tabindex="-1" role="dialog" aria-labelledby="billItemAddModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -140,7 +142,6 @@
             </div>
             <form class="form-horizontal" onsubmit="addBillItem();return false;">
                 <div class="modal-body">
-                    <input type="hidden" id="billClothIdAdd" name="billClothIdAdd" />
                     <div class="form-group">
                         <label for="shadeNo" class="col-md-3 control-label">Shade No.:</label>
                         <div class="col-md-9">
@@ -166,9 +167,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="category" class="col-md-3 control-label">Category :</label>
+                        <label for="catagory" class="col-md-3 control-label">Catagory :</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="category" name="category" data-update="DataProcessing/getItemCatagories">
+                            <select class="form-control" id="catagory" name="catagory" data-update="DataProcessing/getItemCatagories">
                               <optgroup>
                                 <option value="0">Other</option>
                               </optgroup>
@@ -178,15 +179,15 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="length" class="col-md-3 control-label">Length :</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="length" name="length" placeholder="Length" />
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label for="wage" class="col-md-3 control-label">Wage :</label>
                         <div class="col-md-9">
                             <input type="text" class="form-control" id="wage" name="wage" placeholder="Wage" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="length" class="col-md-3 control-label">Length :</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="length" name="length" placeholder="Length" />
                         </div>
                     </div>
                     <div class="form-group">

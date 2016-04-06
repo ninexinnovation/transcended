@@ -171,8 +171,37 @@ public function addCompany()
 							]);
 		}
 	}
-
-
+	public function addNewBill(){
+		$clothId=$this->input->post("clothId");
+		$clothLength=$this->input->post("clothLength");
+		$quantity=$this->input->post("quantity");
+		if(count($clothId)!=0){
+			$this->form_validation->set_rules('customerId','Customer',array('required'));
+			$this->form_validation->set_rules('date','Date',array('required'));
+			$this->form_validation->set_rules('deliveryDate','Delivery Date',array('required'));
+			if($this->form_validation->run()===False){
+				echo json_encode(['error'=>array_values($this->form_validation->error_array())]);	
+			}else{
+				$clothAvailable=true;
+				for($i=0;$i<count($clothId);$i++){
+					$item=$this->DataModel->getItemById($clothId[$i])[0];
+					if($item['current_quantity']<$clothLength[$i]*$quantity[$i]){
+						echo json_encode(['error'=>["Oops!! \n Shade No. ".$clothId[$i]." is not available."]]);
+						$clothAvailable=false;
+					}
+				}
+				if($clothAvailable){
+					if($this->DataModel->addNewBill()){
+						echo true;
+					}else{
+						echo json_encode(['error'=>["Oops!! \n This Bill Cannot be issued!!!"]]);
+					}
+				}
+			}
+		}else{
+			echo json_encode(['error'=>["Sorry you must add items."]]);
+		}
+	}
 
 
 	public function updateDeleteCustomer()
@@ -276,14 +305,14 @@ public function addCompany()
 							]);	
 		}else{
 			if($value[3]=="updateCatagory"){
-				$this->DataModel->updateCatagory($name,$value);
+				$this->DataModel->updateItem($name,$value);
 
 				echo json_encode([
 								"success"=>"true",
 								"messageType"=>"success",
 								"message"=>["Successfully Item Updated"]
 							]);
-			}else if($value[3]=="deleteCatagory"){
+			}else if($value[3]=="deleteItem"){
 				$this->DataModel->deleteCatagory($name,$value);
 
 				echo json_encode([
@@ -343,7 +372,7 @@ public function updateDeleteWorker()
 	
 	public function getItemCatagories(){
 		$data=$this->DataModel->getItemCatagories();
-		echo "<option value=''>Choose Item Type</option>";
+		echo "<option value=0>Choose Item Type</option>";
 		foreach ($data as $catagory) {
 			echo "<option value='".$catagory->catagory_id."'>".$catagory->catagory_name."</option>";
 		}
@@ -356,7 +385,6 @@ public function updateDeleteWorker()
 			echo "<option value='".$item->item_code_no."'>".$item->item_code_no."</option>";
 		}
 	}
-
 	public function getCompanies(){
 		$data=$this->DataModel->getCompanies();
 		echo "<option value=''>Choose Item Type</option>";
@@ -375,7 +403,7 @@ public function updateDeleteWorker()
 		$id=0;
 		$i=0;
 		foreach ($name as $n) {
-			if($n="id"){
+			if($n=="id"){
 				$id=$value[$i];
 			}
 			$i++;
@@ -390,7 +418,7 @@ public function updateDeleteWorker()
 		$id=0;
 		$i=0;
 		foreach ($name as $n) {
-			if($n="id"){
+			if($n=="id"){
 				$id=$value[$i];
 			}
 			$i++;
@@ -406,7 +434,7 @@ public function updateDeleteWorker()
 		$id=0;
 		$i=0;
 		foreach ($name as $n) {
-			if($n="id"){
+			if($n=="id"){
 				$id=$value[$i];
 			}
 			$i++;
@@ -421,7 +449,7 @@ public function getWorkerByIdJson(){
 		$id=0;
 		$i=0;
 		foreach ($name as $n) {
-			if($n="id"){
+			if($n=="id"){
 				$id=$value[$i];
 			}
 			$i++;

@@ -30,7 +30,11 @@ class DataModel extends CI_Model{
 			return $data[0]->item_code_no;
 		}
 	}
-	
+	function getItemCatagories(){
+		$this->db->order_by("catagory_id","asc");
+		$data=$this->db->get("catagory_details")->result();
+		return $data;
+	}
 	function getLatestUserId(){
 		$this->db->select("user_id")->limit(1)->order_by("user_id","desc");
 		$data=$this->db->get("user")->result();
@@ -319,15 +323,15 @@ class DataModel extends CI_Model{
 		return true;
 	}
 
-function updateCatagory($id,$value){
+	function updateCatagory($id,$value){
 		$i=0;
 		$data=array();
 		foreach ($id as $key) {
 			switch($key){
-				case "catagory_name":
+				case "catagoryName":
 					$data["catagory_name"]=$value[$i];
 					break;
-				case "stiching_charge":
+				case "stichingPrice":
 					$data["stiching_charge"]=$value[$i];
 					break;
 				
@@ -343,7 +347,7 @@ function updateCatagory($id,$value){
 		return true;
 	}
 
-function updateWorker($id,$value){
+	function updateWorker($id,$value){
 		$i=0;
 		$data=array();
 		foreach ($id as $key) {
@@ -364,18 +368,73 @@ function updateWorker($id,$value){
 		return true;
 	}
 
+	function addNewBill(){
+		$clothId=$this->input->post("clothId");
+		$clothLength=$this->input->post("clothLength");
+		$catagoryId=$this->input->post("catagoryId");
+		$quantity=$this->input->post("quantity");
 
-	function getItemCatagories(){
-		// $this->db->order_by("catagory_id","asc");
-		$data=$this->db->get("catagory_details")->result();
-		return $data;
+		$customerId=$this->input->post("customerId");
+		$date=strtotime($this->input->post("date"));
+		$paid=$this->input->post("paid");
+		$deliveryDate=$this->input->post("deliveryDate");
+		$remarks=$this->input->post("remarks");
+		$referrerId=$this->input->post("referrer_id");
+		$discount=$this->input->post("discount");
+
+		$data=array();
+		$data["customer_id"]=$customerId;
+		$data["delivery_date"]=$deliveryDate;
+		$data["current_date"]=$date;
+		$data["reffer_id"]=$referrerId;
+		$data["discount"]=$discount;
+		$data["advance"]=$paid;
+		$data["measurement_id"]=0;
+		$data["user_id"]=$this->session->userdata("user_id");
+
+		if($this->db->insert('bill_details',$data)){
+			$billNo=$this->db->insert_id();
+			$itemData=array();
+			for($i=0;$i<count($clothId);$i++){
+				$itemData[]=array(
+						'item_code_no'=>$clothId[$i],
+						'item_catagory_id'=>$catagoryId[$i],
+						'length'=>$clothLength[$i],
+						'quantity'=>$quantity[$i],
+						'bill_no'=>$billNo
+					);
+			}
+			if($this->db->insert_batch("bill_item_details",$itemData)){
+				foreach ($itemData as $itemDetails) {
+					// insert data in item_deduction table
+					$deductData=array(
+						'item_code_no'=>$itemDetails['item_code_no'],
+						'deducted_quantity'=>$itemDetails['length']*$itemDetails['quantity'],
+						'deducted_date'=>time(),
+						'bill_no'=>$billNo
+					);
+					$this->db->insert("item_deduction",$deductData);
+					//update item details table
+					$this->db->where('item_code_no',$itemDetails['item_code_no']);
+					$this->db->set('current_quantity','current_quantity-'.$deductData['deducted_quantity'],FALSE);
+					$this->db->update('item_details');
+				}
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
 	}
+
 	function getItems(){
 		// $this->db->order_by("item_code_no","asc");
 		$data=$this->db->get("item_details")->result();
 		// var_dump($data);
 		return $data;
 	}
+
 	function getCustomers(){
 		$data=$this->db->get("customer_details")->result();
 		// var_dump($data);

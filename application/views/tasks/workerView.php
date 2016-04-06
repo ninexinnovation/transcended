@@ -17,5 +17,6 @@ $worker_data=$this->DataModel->getWorkers();
 			echo '</a>';
 		}
 	?>
+	<!-- this is for worker view -->
 	</div>
 </div>

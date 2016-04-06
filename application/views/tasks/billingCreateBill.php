@@ -66,7 +66,7 @@
                                 <th>Details cloth cost</th>
                                 <th>Details cloth length</th>
                                 <th>Details cloth category id</th>
-                                <th>Details wage</th>
+                                <th>Steching cost</th>
                                 <th>Quantity</th>
                                 <th>S.No</th>
                                 <th>Details</th>
@@ -85,12 +85,17 @@
 								<input type="text" id="deliveryDate" class="form-control" placeholder="Delivery Date"> 
 							</div>
 						</div>
-                        <div class="form-group">      
-                            <label for="remarks" class="col-md-5 control-label">Remarks :</label>
-                            <div class="col-md-5">
-                                <textarea id="remarks" class="form-control" placeholder="Remarks"></textarea>
-                            </div>
-                        </div>
+                        
+                        <input type="hidden" class="form-control" id="referrer_id" name="refferer_id"/>
+                        <div class="form-group">
+							<label for="referrer" class="col-md-5 control-label">Refferer :</label>
+							<div class="col-md-5">
+                                <div class="input-group">
+								    <input type="text" class="form-control" id="referrer" name="referrer" placeholder="Referrer Name" />
+                                    <div class="input-group-addon" style="cursor:pointer" data-toggle="modal" data-target="#AddReferrerModal"><span class="fa fa-plus"></span></div>
+                                </div>
+							</div>
+						</div>
 
 						<script type="text/javascript">
 							$('#deliveryDate').datepicker({
@@ -109,6 +114,12 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="discount" class="col-md-5 control-label">Discount :</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="discount" name="discount" value="0" placeholder="Discount" />
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="paid" class="col-md-5 control-label">Paid :</label>
 							<div class="col-md-6">
 								<input type="text" class="form-control" id="paid" name="paid" value="0" placeholder="Paid" />
@@ -124,7 +135,7 @@
         		</div>
                 
                 <button type="submit" name="save" style="width:150px" class="btn btn-primary">Save</button>
-                <button type="Reset" name="Cancel" class="btn btn-default" onclick="clearBillItemData();updateBillNo();">Clear</button>
+                <button type="Reset" name="Cancel" class="btn btn-default" onclick="clearBillItemData();">Clear</button>
 			</form>
 		</div>
 
@@ -139,7 +150,7 @@
 			{"data":"details_cloth_id"},
 			{"data":"details_cloth_cost"},
 			{"data":"details_cloth_length"},
-			{"data":"details_cloth_category_id"},
+			{"data":"details_cloth_catagory_id"},
 			{"data":"details_wage"},
 			{"data":"quantity"},
             {"data":"sNo"},
@@ -148,6 +159,11 @@
 		]
     });
     billItem_table.columns([0,1,2,3,4,5]).visible(false);
+    billItem_table.on( 'order.dt search.dt', function () {
+    billItem_table.column(6, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+        cell.innerHTML = i+1;
+    } );
+} ).draw();
 
 </script>
 	
