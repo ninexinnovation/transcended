@@ -11,8 +11,8 @@ $worker_data=$this->DataModel->getWorkers();
 	<div class="row" id="worker_data">
 	<?php
 		foreach ($worker_data as $worker) {
-			echo '<a class="col-md-4 col-lg-3 btn btn-default grid-btn" data-btn-type="task" data-view="billing">';
-			echo '<i class="">'.$worker->worker_id.'</i>';
+			echo '<a class="col-md-4 col-lg-3 btn btn-default grid-btn" data-btn-type="task-result" data-view="#workerViewModal">';
+			echo '<i data-send="true" data-name="id">'.$worker->worker_id.'</i>';
 			echo '<span>'.$worker->worker_name.'</span>';
 			echo '</a>';
 		}
