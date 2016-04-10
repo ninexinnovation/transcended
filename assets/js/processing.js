@@ -588,6 +588,8 @@ function clearBillData(){
     $("#issueBill input#total").val("");
     $("#issueBill input#deliveryDate").val("");
     $("#issueBill textarea#remarks").val("");
+    $("#issueBill input#referrer_id").val("");
+    $("#issueBill input#referrer").val("");
     clearBillItemData();
 }
 function addNewBill(){
