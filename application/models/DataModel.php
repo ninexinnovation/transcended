@@ -503,5 +503,266 @@ class DataModel extends CI_Model{
 		// var_dump($data);
 			return $data;
 	}
+
+	function getNoOfCoatsPerMonth(){
+		$data=$this->db->get("item_details");
+		$result=[];
+		$result['jan']=0;
+		$result['feb']=0;
+		$result['mar']=0;
+		$result['apr']=0;
+		$result['may']=0;
+		$result['jun']=0;
+		$result['jul']=0;
+		$result['aug']=0;
+		$result['sep']=0;
+		$result['oct']=0;
+		$result['nov']=0;
+		$result['dec']=0;
+
+		if($data->num_rows()!=0){
+			foreach ($data->result() as $item) {
+				if($item->catagory_id==3){
+					switch(date('Y/m',$item->added_date)){
+						case date('Y').'/01':
+							$result['jan']=$result['jan']+1;
+						break;
+						case date('Y').'/02':
+							$result['feb']=$result['feb']+1;
+						break;
+						case date('Y').'/03':
+							$result['mar']=$result['mar']+1;
+						break;
+						case date('Y').'/04':
+							$result['apr']=$result['apr']+1;
+						break;
+						case date('Y').'/05':
+							$result['may']=$result['may']+1;
+						break;
+						case date('Y').'/06':
+							$result['jun']=$result['jun']+1;
+						break;
+						case date('Y').'/07':
+							$result['jul']=$result['jul']+1;
+						break;
+						case date('Y').'/08':
+							$result['aug']=$result['aug']+1;
+						break;
+						case date('Y').'/09':
+							$result['sep']=$result['sep']+1;
+						break;
+						case date('Y').'/10':
+							$result['oct']=$result['oct']+1;
+						break;
+						case date('Y').'/11':
+							$result['nov']=$result['nov']+1;
+						break;
+						case date('Y').'/12':
+							$result['dec']=$result['dec']+1;
+						break;
+					}
+				}
+			}
+			// var_dump($result);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	function getNoOfShirtsPerMonth(){
+		$data=$this->db->get("item_details");
+		$result=[];
+		$result['jan']=0;
+		$result['feb']=0;
+		$result['mar']=0;
+		$result['apr']=0;
+		$result['may']=0;
+		$result['jun']=0;
+		$result['jul']=0;
+		$result['aug']=0;
+		$result['sep']=0;
+		$result['oct']=0;
+		$result['nov']=0;
+		$result['dec']=0;
+
+		if($data->num_rows()!=0){
+			foreach ($data->result() as $item) {
+				if($item->catagory_id==2){
+					switch(date('Y/m',$item->added_date)){
+						case date('Y').'/01':
+							$result['jan']=$result['jan']+1;
+						break;
+						case date('Y').'/02':
+							$result['feb']=$result['feb']+1;
+						break;
+						case date('Y').'/03':
+							$result['mar']=$result['mar']+1;
+						break;
+						case date('Y').'/04':
+							$result['apr']=$result['apr']+1;
+						break;
+						case date('Y').'/05':
+							$result['may']=$result['may']+1;
+						break;
+						case date('Y').'/06':
+							$result['jun']=$result['jun']+1;
+						break;
+						case date('Y').'/07':
+							$result['jul']=$result['jul']+1;
+						break;
+						case date('Y').'/08':
+							$result['aug']=$result['aug']+1;
+						break;
+						case date('Y').'/09':
+							$result['sep']=$result['sep']+1;
+						break;
+						case date('Y').'/10':
+							$result['oct']=$result['oct']+1;
+						break;
+						case date('Y').'/11':
+							$result['nov']=$result['nov']+1;
+						break;
+						case date('Y').'/12':
+							$result['dec']=$result['dec']+1;
+						break;
+					}
+				}
+			}
+			// var_dump($result);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	function getNoOfPantsPerMonth(){
+		$data=$this->db->get("item_details");
+		$result=[];
+		$result['jan']=0;
+		$result['feb']=0;
+		$result['mar']=0;
+		$result['apr']=0;
+		$result['may']=0;
+		$result['jun']=0;
+		$result['jul']=0;
+		$result['aug']=0;
+		$result['sep']=0;
+		$result['oct']=0;
+		$result['nov']=0;
+		$result['dec']=0;
+
+		if($data->num_rows()!=0){
+			foreach ($data->result() as $item) {
+				if($item->catagory_id==1){
+					switch(date('Y/m',$item->added_date)){
+						case date('Y').'/01':
+							$result['jan']=$result['jan']+1;
+						break;
+						case date('Y').'/02':
+							$result['feb']=$result['feb']+1;
+						break;
+						case date('Y').'/03':
+							$result['mar']=$result['mar']+1;
+						break;
+						case date('Y').'/04':
+							$result['apr']=$result['apr']+1;
+						break;
+						case date('Y').'/05':
+							$result['may']=$result['may']+1;
+						break;
+						case date('Y').'/06':
+							$result['jun']=$result['jun']+1;
+						break;
+						case date('Y').'/07':
+							$result['jul']=$result['jul']+1;
+						break;
+						case date('Y').'/08':
+							$result['aug']=$result['aug']+1;
+						break;
+						case date('Y').'/09':
+							$result['sep']=$result['sep']+1;
+						break;
+						case date('Y').'/10':
+							$result['oct']=$result['oct']+1;
+						break;
+						case date('Y').'/11':
+							$result['nov']=$result['nov']+1;
+						break;
+						case date('Y').'/12':
+							$result['dec']=$result['dec']+1;
+						break;
+					}
+				}
+			}
+			// var_dump($result);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	function getNoOfOthersPerMonth(){
+		$data=$this->db->get("item_details");
+		$result=[];
+		$result['jan']=0;
+		$result['feb']=0;
+		$result['mar']=0;
+		$result['apr']=0;
+		$result['may']=0;
+		$result['jun']=0;
+		$result['jul']=0;
+		$result['aug']=0;
+		$result['sep']=0;
+		$result['oct']=0;
+		$result['nov']=0;
+		$result['dec']=0;
+
+		if($data->num_rows()!=0){
+			foreach ($data->result() as $item) {
+				if($item->catagory_id!=1 && $item->catagory_id!=2 && $item->catagory_id!=3){
+					switch(date('Y/m',$item->added_date)){
+						case date('Y').'/01':
+							$result['jan']=$result['jan']+1;
+						break;
+						case date('Y').'/02':
+							$result['feb']=$result['feb']+1;
+						break;
+						case date('Y').'/03':
+							$result['mar']=$result['mar']+1;
+						break;
+						case date('Y').'/04':
+							$result['apr']=$result['apr']+1;
+						break;
+						case date('Y').'/05':
+							$result['may']=$result['may']+1;
+						break;
+						case date('Y').'/06':
+							$result['jun']=$result['jun']+1;
+						break;
+						case date('Y').'/07':
+							$result['jul']=$result['jul']+1;
+						break;
+						case date('Y').'/08':
+							$result['aug']=$result['aug']+1;
+						break;
+						case date('Y').'/09':
+							$result['sep']=$result['sep']+1;
+						break;
+						case date('Y').'/10':
+							$result['oct']=$result['oct']+1;
+						break;
+						case date('Y').'/11':
+							$result['nov']=$result['nov']+1;
+						break;
+						case date('Y').'/12':
+							$result['dec']=$result['dec']+1;
+						break;
+					}
+				}
+			}
+			// var_dump($result);
+			return $result;
+		}else{
+			return false;
+		}
+	}
 }
 ?>

@@ -4,7 +4,7 @@
 }
 body{
 	/*background: url(../images/bg_default.jpg) no-repeat fixed;*/
-	background:#E4E3DE;
+	background:#F0F2F5;
 	margin: 0px;
 	padding: 0px;
 }
@@ -481,4 +481,69 @@ body{
   font-weight: 600;
   overflow-wrap: break-word;
   /*word-wrap: break-word;*/
+}
+
+
+
+
+
+
+
+
+
+.portlet {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+.portlet {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    border: 5px solid #e5e5e5;
+    clear: both;
+    margin-bottom: 25px;
+    margin-top: 0;
+    padding: 0;
+}
+
+.portlet {
+    clear: both;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    padding: 0px;
+}
+
+
+.portlet.box > .portlet-header {
+    margin-bottom: 0;
+    padding: 8px 15px;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+.portlet > .portlet-header {
+    margin-bottom: 15px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.portlet > .portlet-header .caption {
+    float: left;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 0;
+}
+.portlet > .portlet-header:after {
+    content: "";
+    display: table;
+    line-height: 0;
+    clear: both;
+}
+.portlet .portlet-body {
+    background: #FFFFFF;
+    padding: 15px;
+    clear: both;
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
 }

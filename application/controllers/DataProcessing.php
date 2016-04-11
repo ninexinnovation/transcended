@@ -489,4 +489,10 @@ public function getWorkerByIdJson(){
 	public function getLatestBillingId(){
 		echo $this->DataModel->getLatestBillingId()+1;
 	}
+	public function getMonthlyDetailsForChartJson(){
+		echo json_encode(['coat'=>$this->DataModel->getNoOfCoatsPerMonth(),
+							'pant'=>$this->DataModel->getNoOfPantsPerMonth(),
+							'shirt'=>$this->DataModel->getNoOfShirtsPerMonth(),
+							'others'=>$this->DataModel->getNoOfOthersPerMonth()]);
+	}
 }

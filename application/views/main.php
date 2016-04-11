@@ -12,7 +12,17 @@
 </head>
   <body>
     <div class="container-main">
-      
+      <div class="col-lg-6">
+        <div class="portlet box">
+            <div class="portlet-header">
+                <div class="caption">Line Chart</div>
+            </div>
+            <div class="portlet-body">
+                <div id="line-chart" style="width: 100%; height:300px"></div>
+            </div>
+        </div>
+      </div>
+
     <!-- TASK BAR -->
     <div class="task-bar">
       <!-- TASK BAR MENU -->
@@ -43,10 +53,23 @@
     <!--<script src="<?php echo base_url(); ?>assets/js/jquery.color-2.1.2.min.js"></script>-->
     <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.categories.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.pie.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.tooltip.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.fillbetween.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.stack.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.spline.js"></script>
+    
     <script src="<?php echo base_url(); ?>assets/js/overflow.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/menu.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/grid.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/processing.js"></script>
+
+
+
 
     <?php 
       // $array=["data"=>["value1"=>"value1data"]];

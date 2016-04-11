@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	loadMonthlyChart();
 	$(document).on("change","select",function(){
 		if($(this).attr("data-model")!=null){
 			if($(this).find("option:selected").attr("data-value")=="add"){
@@ -642,4 +643,66 @@ function addNewBill(){
     }
 }
 
+function loadMonthlyChart(){
+	$.ajax({
+        dataType:"json",
+        url:"DataProcessing/getMonthlyDetailsForChartJson"
+    }).done(function(msg){
+    	var d1_1 = [["Jan", msg.coat.jan],["Feb", msg.coat.feb],["Mar", msg.coat.mar],["Apr", msg.coat.apr],["May", msg.coat.may],["Jun", msg.coat.jun],["Jul", msg.coat.jul],["Aug", msg.coat.aug],["Sep", msg.coat.sep],["Oct", msg.coat.oct],["Nov", msg.coat.nov],["Dec", msg.coat.dec]];
+	    var d1_2 = [["Jan", msg.shirt.jan],["Feb", msg.shirt.feb],["Mar", msg.shirt.mar],["Apr", msg.shirt.apr],["May", msg.shirt.may],["Jun", msg.shirt.jun],["Jul", msg.shirt.jul],["Aug", msg.shirt.aug],["Sep", msg.shirt.sep],["Oct", msg.shirt.oct],["Nov", msg.shirt.nov],["Dec", msg.shirt.dec]];
+	    var d1_3 = [["Jan", msg.pant.jan],["Feb", msg.pant.feb],["Mar", msg.pant.mar],["Apr", msg.pant.apr],["May", msg.pant.may],["Jun", msg.pant.jun],["Jul", msg.pant.jul],["Aug", msg.pant.aug],["Sep", msg.pant.sep],["Oct", msg.pant.oct],["Nov", msg.pant.nov],["Dec", msg.pant.dec]];
+	    var d1_4 = [["Jan", msg.others.jan],["Feb", msg.others.feb],["Mar", msg.others.mar],["Apr", msg.others.apr],["May", msg.others.may],["Jun", msg.others.jun],["Jul", msg.others.jul],["Aug", msg.others.aug],["Sep", msg.others.sep],["Oct", msg.others.oct],["Nov", msg.others.nov],["Dec", msg.others.dec]];
+
+	    $.plot("#line-chart", [{
+	        data: d1_1,
+	        label: "Coat",
+	        color: "#ffce54"
+	    },{
+	        data: d1_2,
+	        label: "Shirt",
+	        color: "#3DB9D3"
+	    },{
+	        data: d1_3,
+	        label: "Pant",
+	        color: "#df4782"
+	    },{
+	        data: d1_4,
+	        label: "Others",
+	        color: "#004782"
+	    }], {
+	        series: {
+	            lines: {
+	                show: !0,
+	                fill: .01
+	            },
+	            points: {
+	                show: !0,
+	                radius: 4
+	            }
+	        },
+	        grid: {
+	            borderColor: "#fafafa",
+	            borderWidth: 1,
+	            hoverable: !0
+	        },
+	        tooltip: !0,
+	        tooltipOpts: {
+	            content: "%x : %y",
+	            defaultTheme: true
+	        },
+	        xaxis: {
+	            tickColor: "#fafafa",
+	            mode: "categories"
+	        },
+	        yaxis: {
+	            tickColor: "#fafafa"
+	        },
+	        shadowSize: 4
+	    });
+    }).fail(function( jqXHR, textStatus ) {
+      alert( "Request failed: " + textStatus );
+    });
+
+	
+}
 
