@@ -471,44 +471,102 @@
                 <li role="presentation" class="active"><a href="#upper" aria-controls="upper" role="tab" data-toggle="tab">Upper</a></li>
                 <li role="presentation"><a href="#lower" aria-controls="lower" role="tab" data-toggle="tab">Lower</a></li>
               </ul>
+              
               <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active" id="upper">
-                  <div class="form-group">
-                    <label for="ulength">Length</label>
-                    <input type="number" class="form-control" id="ulength" name="ulength" placeholder="Enter Upper Length" disabled required>
-                  </div>
+                  <form onSubmit="return false;"> 
+                    <div class="form-group">
+                      <label for="ulength">Length</label>
+                      <input type="number" class="form-control" id="ulength" name="ulength" placeholder="Enter Upper Length" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="uWaist">Waist</label>
+                      <input type="number" class="form-control" id="uWaist" name="uWaist" placeholder="Enter Upper Waist" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="uChest">Chest</label>
+                      <input type="number" class="form-control" id="uChest" name="uChest" placeholder="Enter Upper Chest" required>
+                    </div>
+                     <div class="form-group">
+                      <label for="uHip">Hip</label>
+                      <input type="number" class="form-control" id="uHip" name="uHip" placeholder="Enter Upper Hip" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="uShoulder">Shoulder</label>
+                      <input type="number" class="form-control" id="ushoulder" name="ushoulder" placeholder="Enter Upper Shoulder" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="uSleeve">Sleeve</label>
+                      <input type="number" class="form-control" id="uSleeve" name="uSleeve" placeholder="Enter Upper Sleeve" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="uHBack">H.Back</label>
+                      <input type="number" class="form-control" id="uHBack" name="uHBack" placeholder="Enter Upper H.Back" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="uNeck">Neck</label>
+                      <input type="number" class="form-control" id="uNeck" name="uNeck" placeholder="Enter Upper Neck" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="ushoulder">K.f</label>
+                      <input type="number" class="form-control" id="ushoulder" name="ushoulder" placeholder="Enter Upper K.f" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="uSO">S.O</label>
+                      <input type="number" class="form-control" id="uSO" name="uSO" placeholder="Enter Upper S.O" required>
+                    </div>
+                    <hr/>
+                    <button type="reset" class="btn btn-default">Clear</button>
+                  </form>
                 </div>
-                <div role="tabpanel" class="tab-pane fade" id="lower">Tab 2</div>
+
+
+
+
+                
+                <div role="tabpanel" class="tab-pane fade" id="lower">
+                  <form onSubmit="return false;">
+                    <div class="form-group">
+                      <label for="llength">Length</label>
+                      <input type="number" class="form-control" id="llength" name="llength" placeholder="Enter Lower Length" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="lWaist">Waist</label>
+                      <input type="number" class="form-control" id="lWaist" name="lWaist" placeholder="Enter Lower Waist" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="lthai">Thai</label>
+                      <input type="number" class="form-control" id="lthai" name="lthai" placeholder="Enter Lower Thai" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="lhip">Hip</label>
+                      <input type="number" class="form-control" id="lhip" name="lhip" placeholder="Enter Lower Hip" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="lknee">Knee</label>
+                      <input type="number" class="form-control" id="lknee" name="lknee" placeholder="Enter Lower Knee" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="lbottom">Bottom</label>
+                      <input type="number" class="form-control" id="lbottom" name="lbottom" placeholder="Enter Lower Bottom" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="lsheet">Sheet</label>
+                      <input type="number" class="form-control" id="lsheet" name="lsheet" placeholder="Enter Lower Sheet" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="linSeam">InSeam</label>
+                      <input type="number" class="form-control" id="linSeam" name="linSeam" placeholder="Enter Lower InSeam" required>
+                    </div>
+                    <hr/>
+                    <button type="reset" class="btn btn-default">Clear</button>
+                  </form>
+                </div>      
               </div>
-
-
-              <div class="form-group">
-                  <label for="wrId">Waist</label>
-                  <input type="number" class="form-control" id="wrId" name="worker_id" placeholder="Enter Worker ID" disabled required>
-              </div>
-
-              <div class="form-group">
-                <label for="workerName">Hip</label>
-                <input type="text" class="form-control" id="workerName" placeholder="Enter Worker Name" name="worker_name" required>
-             </div>
-          </div>
-          <div class="form-group">
-                  <label for="wrId">Thai</label>
-                  <input type="number" class="form-control" id="wrId" name="worker_id" placeholder="Enter Worker ID" disabled required>
-              </div>
-
-              <div class="form-group">
-                <label for="workerName">Knee</label>
-                <input type="text" class="form-control" id="workerName" placeholder="Enter Worker Name" name="worker_name" required>
-             </div>
-          </div>
-
+<!-- 
           <div class="modal-footer">
-              <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary" name="updateItem">OK</button>
-          </div>
-
-            </form>
+              <button type="submit" class="btn btn-primary" data-dismiss="modal">OK</button>
+          </div> -->
         </div>
     </div>
 </div>
