@@ -28,6 +28,9 @@
 						<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#billItemAddModal">
                             Add Item
                         </button>
+                        <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#measurementModal">
+                            Add Measurement
+                        </button>
 					</div>
 					<div class="col-md-5">
 						<div class="form-group">      
@@ -59,7 +62,7 @@
 
 				
 				<div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover" id="billItem-table">
+                    <table class="table table-bordered table-hover" id="billItem-table">
                         <thead>
                             <tr>
                                 <th>Details cloth id</th>

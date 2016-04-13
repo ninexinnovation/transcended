@@ -458,6 +458,61 @@
     </div>
 </div>
 
+<div class="modal fade" id="measurementModal" tabindex="-1" role="dialog" aria-labelledby="measurementModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="measurementModalLabel">Add Measurement</h4>
+          </div>
+
+          <div class="modal-body">
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#upper" aria-controls="upper" role="tab" data-toggle="tab">Upper</a></li>
+                <li role="presentation"><a href="#lower" aria-controls="lower" role="tab" data-toggle="tab">Lower</a></li>
+              </ul>
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="upper">
+                  <div class="form-group">
+                    <label for="ulength">Length</label>
+                    <input type="number" class="form-control" id="ulength" name="ulength" placeholder="Enter Upper Length" disabled required>
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="lower">Tab 2</div>
+              </div>
+
+
+              <div class="form-group">
+                  <label for="wrId">Waist</label>
+                  <input type="number" class="form-control" id="wrId" name="worker_id" placeholder="Enter Worker ID" disabled required>
+              </div>
+
+              <div class="form-group">
+                <label for="workerName">Hip</label>
+                <input type="text" class="form-control" id="workerName" placeholder="Enter Worker Name" name="worker_name" required>
+             </div>
+          </div>
+          <div class="form-group">
+                  <label for="wrId">Thai</label>
+                  <input type="number" class="form-control" id="wrId" name="worker_id" placeholder="Enter Worker ID" disabled required>
+              </div>
+
+              <div class="form-group">
+                <label for="workerName">Knee</label>
+                <input type="text" class="form-control" id="workerName" placeholder="Enter Worker Name" name="worker_name" required>
+             </div>
+          </div>
+
+          <div class="modal-footer">
+              <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary" name="updateItem">OK</button>
+          </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
 
   </body>
 </html>
