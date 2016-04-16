@@ -50,8 +50,8 @@
 		<i class="fa fa-user"></i>
 		<span>User</span>
 	</a>
-	<a class="btn btn-default menu-btn" data-btn-type="task" data-view="setting">
-		<i class="fa fa-cog"></i>
-		<span>Settings</span>
+	<a class="btn btn-default menu-btn" data-btn-type="sub" data-view="reportGeneration">
+		<i class="fa fa-clone"></i>
+		<span>Report Generation</span>
 	</a>
 </div>

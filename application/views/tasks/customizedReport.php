@@ -39,6 +39,13 @@
 							</div>
 						
 						</div>
+						<div class="form-group">      
+							<label for="product" class="col-md-5 control-label">Item/Product :</label>
+							<div class="col-md-5">
+								<input type="text" id="product" class="form-control" value="" placeholder="Product"> 
+							</div>
+						
+						</div>
 
 					</div>
 					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#billItemAddModal">
@@ -60,36 +67,27 @@
 							    <table class="table table-striped">
 							        <thead>
 							        <tr>
-							        	<th>Order Date</th> 
+							        	
 							            <th>S.N</th>
+							            <th>Order Date</th> 
 							            <th>Bill Number</th>
-							            <th>no. of Coat</th>
-							            <th> No. of arrived Coat</th>
-							            <th>no. of Pants</th>
-							            <th>no. of arrived Pants</th>
-							            <th>no. of Shirts</th>
-							            <th>no. of arrived Shirts</th>
+							            <th>Product</th>
 							            <th>Customer Name </th>
 							            <th>Phone Number</th>
-							            <th>Remarks</th>
+							            
 							            
 
 
 							        </tr>
 
 							       <tr>
-										<th>2016/03/14</th>
-							            <th>001</th>
+							       		<th>001</th>
+										<th>2016/03/14</th>							            
 							            <th>4123</th>
-							            <th>2</th>
-							            <th>1</th>
-							            <th>1</th>
-							            <th>2</th>
-							            <th>0</th>
-							            <th>0</th>
+							            <th>Pant</th>
 							            <th>Rumesh Udash</th> 
 							            <th> 9849274099 </th>
-							            <th> None </th>
+							            
 
 								   </tr>
 							                
