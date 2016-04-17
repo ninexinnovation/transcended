@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `bill_details`
 --
 
-CREATE TABLE `bill_details` (
+CREATE TABLE IF NOT EXISTS `bill_details` (
   `bill_no` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `delivery_date` int(11) NOT NULL,

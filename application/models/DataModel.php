@@ -382,6 +382,13 @@ class DataModel extends CI_Model{
 		$referrerId=$this->input->post("referrer_id");
 		$discount=$this->input->post("discount");
 
+		$upperMeasurementName=$this->input->post("measurementUpName");
+		$upperMeasurementValue=$this->input->post("measurementUpValue");
+
+		$lowerMeasurementName=$this->input->post("measurementLowName");
+		$lowerMeasurementValue=$this->input->post("measurementLowValue");
+
+
 		$data=array();
 		$data["customer_id"]=$customerId;
 		$data["delivery_date"]=$deliveryDate;
@@ -389,7 +396,6 @@ class DataModel extends CI_Model{
 		$data["reffer_id"]=$referrerId;
 		$data["discount"]=$discount;
 		$data["advance"]=$paid;
-		$data["measurement_id"]=0;
 		$data["user_id"]=$this->session->userdata("user_id");
 
 		if($this->db->insert('bill_details',$data)){
@@ -418,6 +424,93 @@ class DataModel extends CI_Model{
 					$this->db->where('item_code_no',$itemDetails['item_code_no']);
 					$this->db->set('current_quantity','current_quantity-'.$deductData['deducted_quantity'],FALSE);
 					$this->db->update('item_details');
+				}
+				$i=0;
+				$upperdata=array();
+				if($upperMeasurementName!=null){
+					foreach ($upperMeasurementName as $key) {
+						switch($key){
+							case "ulength":
+								$upperdata["length"]=$upperMeasurementValue[$i];
+								break;
+							case "uChest":
+								$upperdata["chest"]=$upperMeasurementValue[$i];
+								break;
+							case "uWaist":
+								$upperdata["waist"]=$upperMeasurementValue[$i];
+								break;
+							case "uHip":
+								$upperdata["hip"]=$upperMeasurementValue[$i];
+								break;
+							case "ushoulder":
+								$upperdata["shoulder"]=$upperMeasurementValue[$i];
+								break;
+							case "uSleeve":
+								$upperdata["sleeve"]=$upperMeasurementValue[$i];
+								break;
+							case "uHBack":
+								$upperdata["hback"]=$upperMeasurementValue[$i];
+								break;
+							case "uNeck":
+								$upperdata["neck"]=$upperMeasurementValue[$i];
+								break;
+							case "ukf":
+								$upperdata["kf"]=$upperMeasurementValue[$i];
+								break;
+							case "uSO":
+								$upperdata["so"]=$upperMeasurementValue[$i];
+								break;
+						}
+						$i++;
+					}
+					$this->db->insert("measurement_details",$upperdata);
+					$measurement_details_id=$this->db->insert_id();
+					$this->db->insert("measurement",array(
+							'bill_no'=>$billNo,
+							'measurement_type_id'=>1,
+							'measurement_detail_id'=>$measurement_details_id));
+				}
+
+
+
+				$i=0;
+				$lowerdata=array();
+				if($lowerMeasurementName!=null){
+					foreach ($lowerMeasurementName as $key) {
+						switch($key){
+							case "llength":
+								$lowerdata["length"]=$lowerMeasurementValue[$i];
+								break;
+							case "lWaist":
+								$lowerdata["waist"]=$lowerMeasurementValue[$i];
+								break;
+							case "lthai":
+								$lowerdata["thai"]=$lowerMeasurementValue[$i];
+								break;
+							case "lhip":
+								$lowerdata["hip"]=$lowerMeasurementValue[$i];
+								break;
+							case "lknee":
+								$lowerdata["knee"]=$lowerMeasurementValue[$i];
+								break;
+							case "lbottom":
+								$lowerdata["bottom"]=$lowerMeasurementValue[$i];
+								break;
+							case "lsheet":
+								$lowerdata["sheet"]=$lowerMeasurementValue[$i];
+								break;
+							case "linSeam":
+								$lowerdata["inseam"]=$lowerMeasurementValue[$i];
+								break;
+						}
+						$i++;
+					}
+					$this->db->insert("measurement_details",$upperdata);
+					$measurement_details_id=$this->db->insert_id();
+					$this->db->insert("measurement",array(
+							'bill_no'=>$billNo,
+							'measurement_type_id'=>2,
+							'measurement_detail_id'=>$measurement_details_id));
 				}
 				return true;
 			}else{

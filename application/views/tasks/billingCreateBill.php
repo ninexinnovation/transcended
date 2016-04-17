@@ -138,7 +138,7 @@
         		</div>
                 
                 <button type="submit" name="save" style="width:150px" class="btn btn-primary">Save</button>
-                <button type="Reset" name="Cancel" class="btn btn-default" onclick="clearBillItemData();">Clear</button>
+                <button type="reset" name="Cancel" class="btn btn-default" onclick="clearBillItemData();">Clear</button>
 			</form>
 		</div>
 

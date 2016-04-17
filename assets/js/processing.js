@@ -190,6 +190,20 @@ $(document).ready(function(){
         $("button[type=submit]", $(this).parents("form")).removeAttr("clicked");
         $(this).attr("clicked", "true");
     });
+
+
+
+
+
+
+    $('#measurementModal input').on("change",function(){
+    	$(this).closest('form').find('input[name="add"]').val("true");
+    });
+
+    //to clear hidden input
+    $(document).on("click","input[type='reset'],button[type='reset']",function(){
+    	$(this).closest('form').find("input[type='hidden']").val("");
+    });
 });
 
 
@@ -616,14 +630,52 @@ function addNewBill(){
     });
     var paid=$("#issueBill input#paid").val();
     var deliveryDate=$("#issueBill input#deliveryDate").val();
-    if(anyItem){
+
+    var measurementUpName=[];
+    var measurementUpValue=[];
+   	var anyMeasurement=false;
+   	$("#measurementModal #upper").find('input').each(function(){
+   		if($(this).closest('form').find('input[name="add"]').val()=="true"){
+	   		if($(this).val()!=''){
+	   			measurementUpName.push($(this).attr('name'));
+	   			measurementUpValue.push($(this).val());
+	   			anyMeasurement=true;
+	   		}else if($(this).prop('required') && $(this).val()==''){
+	   			measurementUpName=[];
+	   			measurementUpValue=[];
+	   			anyMeasurement=false;
+	   		}
+	   	}
+   	});
+
+   	var measurementLowName=[];
+    var measurementLowValue=[];
+
+
+
+   	$("#measurementModal #lower").find('input').each(function(){
+   		if($(this).closest('form').find('input[name="add"]').val()=="true"){
+	   		if($(this).val()!=''){
+	   			measurementLowName.push($(this).attr('name'));
+	   			measurementLowValue.push($(this).val());
+	   			anyMeasurement=true;
+	   		}else if($(this).prop('required') && $(this).val()==''){
+	   			measurementLowName=[];
+	   			measurementLowValue=[];
+	   			anyMeasurement=false;
+	   		}
+   		}
+   	});
+
+    if(anyItem && anyMeasurement){
         $.ajax({
             dataType:"json",
             method:"POST",
             url:"DataProcessing/addNewBill",
             data:{billNo:billNo,customerId:customerId,date:date,clothId:clothId,clothLength:clothLength,
                 catagoryId:catagoryId,quantity:quantity,paid:paid,deliveryDate:deliveryDate,referrer_id:referrerId,
-            	discount:discount}
+            	discount:discount,measurementUpName:measurementUpName,measurementUpValue:measurementUpValue,
+            	measurementLowName:measurementLowName,measurementLowValue:measurementLowValue}
         }).done(function(msg){
             if(msg!=true){
                 console.log(msg);
@@ -638,8 +690,10 @@ function addNewBill(){
         }).fail(function( jqXHR, textStatus ) {
           alert( "Request failed: " + textStatus );
         });
-    }else{
-        appendAlert("Sorry no Item added!!","danger",5000)
+    }else if(!anyItem){
+        appendAlert("Sorry no Item added!!","danger",5000);
+    }else if(!anyMeasurement){
+    	appendAlert("Please add all required Measurement data","danger",5000);
     }
 }
 

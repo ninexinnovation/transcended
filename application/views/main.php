@@ -475,6 +475,7 @@
               <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active" id="upper">
                   <form onSubmit="return false;"> 
+                    <input type="hidden" name="add"/>
                     <div class="form-group">
                       <label for="ulength">Length</label>
                       <input type="number" class="form-control" id="ulength" name="ulength" placeholder="Enter Upper Length" required>
@@ -508,15 +509,16 @@
                       <input type="number" class="form-control" id="uNeck" name="uNeck" placeholder="Enter Upper Neck" required>
                     </div>
                     <div class="form-group">
-                      <label for="ushoulder">K.f</label>
-                      <input type="number" class="form-control" id="ushoulder" name="ushoulder" placeholder="Enter Upper K.f" required>
+                      <label for="ukf">K.f</label>
+                      <input type="number" class="form-control" id="ukf" name="ukf" placeholder="Enter Upper K.f" required>
                     </div>
                     <div class="form-group">
                       <label for="uSO">S.O</label>
-                      <input type="number" class="form-control" id="uSO" name="uSO" placeholder="Enter Upper S.O" required>
+                      <input type="number" class="form-control" id="uSO" name="uSO" placeholder="Enter Upper S.O">
                     </div>
                     <hr/>
                     <button type="reset" class="btn btn-default">Clear</button>
+                    <button class="btn btn-primary" data-dismiss="modal">OK</button>
                   </form>
                 </div>
 
@@ -526,6 +528,7 @@
                 
                 <div role="tabpanel" class="tab-pane fade" id="lower">
                   <form onSubmit="return false;">
+                    <input type="hidden" name="add"/>
                     <div class="form-group">
                       <label for="llength">Length</label>
                       <input type="number" class="form-control" id="llength" name="llength" placeholder="Enter Lower Length" required>
@@ -556,10 +559,11 @@
                     </div>
                     <div class="form-group">
                       <label for="linSeam">InSeam</label>
-                      <input type="number" class="form-control" id="linSeam" name="linSeam" placeholder="Enter Lower InSeam" required>
+                      <input type="number" class="form-control" id="linSeam" name="linSeam" placeholder="Enter Lower InSeam">
                     </div>
                     <hr/>
                     <button type="reset" class="btn btn-default">Clear</button>
+                    <button class="btn btn-primary" data-dismiss="modal">OK</button>
                   </form>
                 </div>      
               </div>
@@ -646,7 +650,7 @@
 
                   
                   <div class="table-responsive">
-                              <table class="table table-bordered table-hover" id="billItem-table">
+                              <table class="table table-bordered table-hover" id="billItemView-table">
                                   <thead>
                                       <tr>
                                           <th>Details cloth id</th>
