@@ -68,7 +68,7 @@
 							            <th> 9849274099 </th>
 							            <th> None </th>
 							            <td>
-                                            <a <!-- href='doctorDetails/editDoctor?id=".$doctor->doctor_id. -->"' class='btn btn-primary'>View</a>
+                                            <a href='' data-toggle="modal" data-target="#billViewModal" class='btn btn-primary'>View</a>
                                             
                                         </td>
 

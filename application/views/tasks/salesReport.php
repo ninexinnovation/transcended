@@ -7,7 +7,7 @@
 						<div class="form-group">
 							<label for="billNo" class="col-md-3 control-label">Start Date :</label>
 							<div class="col-md-3">
-								<input type="number" class="form-control" id="billNo" name="billNo" placeholder="From" value="<?php //echo $bills->getLastBillNo()+1; ?>" />
+								<input type="date" class="form-control" id="billNo" name="billNo" placeholder="From" value="<?php //echo $bills->getLastBillNo()+1; ?>" />
 							</div>
 						</div>
                         <input type="hidden" class="form-control" id="customer_id" name="customer_id"/>
@@ -15,7 +15,7 @@
 							<label for="name" class="col-md-3 control-label">End Date :</label>
 							<div class="col-md-6">
                                 <div class="input-group">
-								    <input type="text" class="form-control" id="name" name="name" placeholder="Till date" />
+								    <input type="date" class="form-control" id="name" name="name" placeholder="Till date" />
                                 </div>
 							</div>
 						</div>
