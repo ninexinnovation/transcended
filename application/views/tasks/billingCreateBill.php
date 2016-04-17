@@ -163,10 +163,10 @@
     });
     billItem_table.columns([0,1,2,3,4,5]).visible(false);
     billItem_table.on( 'order.dt search.dt', function () {
-    billItem_table.column(6, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-        cell.innerHTML = i+1;
-    } );
-} ).draw();
+	    billItem_table.column(6, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+	        cell.innerHTML = i+1;
+	    } );
+	} ).draw();
 
 </script>
 	

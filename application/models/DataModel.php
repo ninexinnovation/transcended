@@ -377,7 +377,7 @@ class DataModel extends CI_Model{
 		$customerId=$this->input->post("customerId");
 		$date=strtotime($this->input->post("date"));
 		$paid=$this->input->post("paid");
-		$deliveryDate=$this->input->post("deliveryDate");
+		$deliveryDate=strtotime($this->input->post("deliveryDate"));
 		$remarks=$this->input->post("remarks");
 		$referrerId=$this->input->post("referrer_id");
 		$discount=$this->input->post("discount");
@@ -595,6 +595,28 @@ class DataModel extends CI_Model{
 		$data=$this->db->get("company_details")->result();
 		// var_dump($data);
 			return $data;
+	}
+
+	function getCustomizedReport(){
+		$this->db->select("*");
+		$this->db->from("bill_details AS b");
+		$this->db->join("bill_item_details AS bItem",'b.bill_no=bItem.bill_no','INNER');
+		$this->db->join("catagory_details AS cat",'cat.catagory_id=bItem.item_catagory_id','INNER');
+		$this->db->join("customer_details AS cust",'cust.customer_id=b.customer_id','INNER');
+		$data=$this->db->get()->result();
+		// var_dump($data);
+		$returnData=array();
+		foreach ($data as $custom) {
+			$result=array();
+			$result['sn']=0;
+			$result['delivery_date']=date('Y-m-d',$custom->delivery_date);
+			$result['bill_no']=$custom->bill_no;
+			$result['product_name']=$custom->catagory_name;
+			$result['customer_name']=$custom->customer_name;
+			$result['phone_no']=$custom->phone_no;
+			$returnData[]=$result;
+		}
+		return $returnData;
 	}
 
 	function getNoOfCoatsPerMonth(){

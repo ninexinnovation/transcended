@@ -624,12 +624,12 @@
                       <div class="form-group">      
                         <label for="date" class="col-md-5 control-label">Date :</label>
                         <div class="col-md-5">
-                          <input type="text" id="date" class="form-control" value="<?php echo date("m/d/Y") ?>" placeholder="Current Date"> 
+                          <input type="text" id="dateView" class="form-control" value="<?php echo date("m/d/Y") ?>" placeholder="Current Date"> 
                         </div>
                       </div>
 
                       <script type="text/javascript">
-                        $('#date').datepicker({
+                        $('#dateView').datepicker({
                           todayBtn: "linked",                                         
                           autoclose: true,
                           todayHighlight: true
@@ -673,7 +673,7 @@
                           <div class="form-group">      
                         <label for="deliveryDate" class="col-md-5 control-label">Delivery Date :</label>
                         <div class="col-md-5">
-                          <input type="text" id="deliveryDate" class="form-control" placeholder="Delivery Date"> 
+                          <input type="text" id="deliveryDateView" class="form-control" placeholder="Delivery Date"> 
                         </div>
                       </div>
                                   
@@ -689,7 +689,7 @@
                       </div>
 
                       <script type="text/javascript">
-                        $('#deliveryDate').datepicker({
+                        $('#deliveryDateView').datepicker({
                           todayBtn: "linked",                                         
                           autoclose: true,
                           todayHighlight: true

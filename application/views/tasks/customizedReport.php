@@ -1,98 +1,95 @@
-
-		
 		<div class="container-fluid">
-			<form class="form-horizontal" id="issueBill" onsubmit="addNewBill();return false;">
-				<div class="row">
-					<div class="col-md-7">
-						<div class="form-group">
-							<label for="billNo" class="col-md-3 control-label">Bill No. :</label>
-							<div class="col-md-3">
-								<input type="number" class="form-control" id="billNo" name="billNo" placeholder="Bill No" value="<?php //echo $bills->getLastBillNo()+1; ?>" />
-							</div>
-						</div>
-                        <input type="hidden" class="form-control" id="customer_id" name="customer_id"/>
-						<div class="form-group">
-							<label for="name" class="col-md-3 control-label">Name :</label>
-							<div class="col-md-6">
-                                <div class="input-group">
-								    <input type="text" class="form-control" id="name" name="name" placeholder="Customer Name" />
-                                </div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="name" class="col-md-3 control-label">Phone Number :</label>
-							<div class="col-md-6">
-                                <div class="input-group">
-								    <input type="text" class="form-control" id="name" name="name" placeholder="Customer Phone Number" />
-                                </div>
-							</div>
-						</div>
-					<!-- </div>
-				</div> -->
-				
+			<form class="form-inline text-center" id="issueBill" onsubmit="addNewBill();return false;" style="margin-top:20px;margin-bottom: 20px">
+					<label style="font-size: 20px;vertical-align: middle;">Search : </label>
+					<div class="form-group">
+							<input type="number" class="form-control" id="customBillNo" name="billNo" placeholder="Bill No" value="<?php //echo $bills->getLastBillNo()+1; ?>" />
 					</div>
-					<div class="col-md-5">
-						<div class="form-group">      
-							<label for="date" class="col-md-5 control-label">Date :</label>
-							<div class="col-md-5">
-								<input type="text" id="date" class="form-control" value="<?php echo date("m/d/Y") ?>" placeholder="Current Date"> 
-							</div>
-						
-						</div>
-						<div class="form-group">      
-							<label for="product" class="col-md-5 control-label">Item/Product :</label>
-							<div class="col-md-5">
-								<input type="text" id="product" class="form-control" value="" placeholder="Product"> 
-							</div>
-						
-						</div>
-
+					<div class="form-group">
+						<input type="text" id="customproduct" class="form-control" value="" placeholder="Product"> 
 					</div>
-					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#billItemAddModal">
-                            Search Item
-                        </button>
-				</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="customname" name="name" placeholder="Customer Name" />
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="customphone" name="name" placeholder="Customer Phone Number" />
+					</div>
+					<div class="form-group">
+						<input type="text" id="customdate" class="form-control" value="<?php echo date("m/d/Y") ?>" placeholder="Current Date">
+					</div>
+            </form>
 
-<br/>
-<br/>
-<hr/>
-
-
-
-
-
-
-
-						<div class="table-responsive">
-							    <table class="table table-striped">
-							        <thead>
-							        <tr>
-							        	
-							            <th>S.N</th>
-							            <th>Order Date</th> 
-							            <th>Bill Number</th>
-							            <th>Product</th>
-							            <th>Customer Name </th>
-							            <th>Phone Number</th>
-							            
-							            
-
-
-							        </tr>
-
-							       <tr>
-							       		<th>001</th>
-										<th>2016/03/14</th>							            
-							            <th>4123</th>
-							            <th>Pant</th>
-							            <th>Rumesh Udash</th> 
-							            <th> 9849274099 </th>
-							            
-
-								   </tr>
-							                
-							        </thead>
-
-							    </table>
-						</div>
+			<div class="table-responsive">
+			    <table class="table table-bordered table-hover" id="customizedReportTable">
+			        <thead>
+				        <tr>
+				            <th>S.N</th>
+				            <th>Delivery Date</th> 
+				            <th>Bill Number</th>
+				            <th>Product</th>
+				            <th>Customer Name </th>
+				            <th>Phone Number</th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				       
+			        </tbody>
+			    </table>
 			</div>
+		</div>
+
+<script type="text/javascript">
+	//customized report
+    customizedReportTable=$('#customizedReportTable').DataTable({
+        // "deferRender": true,
+        "ajax":"DataProcessing/getAllCustomizedReportJson",
+        "columns":[
+        	{"data":"sn"},
+            {"data":"delivery_date"},
+            {"data":"bill_no"},
+            {"data":"product_name"},
+            {"data":"customer_name"},
+            {"data":"phone_no"}
+        ]
+    });
+    customizedReportTable.on( 'order.dt search.dt', function () {
+	    customizedReportTable.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+	        cell.innerHTML = i+1;
+	    } );
+	} ).draw();
+
+	$('#customBillNo').on( 'keyup change', function () {
+        if ( customizedReportTable.column(2).search() !== this.value ) {
+            customizedReportTable.column(2).search( this.value )
+                .draw();
+        }
+    } );
+
+    $('#customproduct').on( 'keyup change', function () {
+        if ( customizedReportTable.column(3).search() !== this.value ) {
+            customizedReportTable.column(3).search( this.value )
+                .draw();
+        }
+    } );
+
+    $('#customname').on( 'keyup change', function () {
+        if ( customizedReportTable.column(4).search() !== this.value ) {
+            customizedReportTable.column(4).search( this.value )
+                .draw();
+        }
+    } );
+
+    $('#customphone').on( 'keyup change', function () {
+        if ( customizedReportTable.column(5).search() !== this.value ) {
+            customizedReportTable.column(5).search( this.value )
+                .draw();
+        }
+    } );
+
+    $('#customdate').on( 'keyup change', function () {
+        if ( customizedReportTable.column(1).search() !== this.value ) {
+            customizedReportTable.column(1).search( this.value )
+                .draw();
+        }
+    } );
+
+</script>

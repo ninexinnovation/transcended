@@ -204,6 +204,8 @@ $(document).ready(function(){
     $(document).on("click","input[type='reset'],button[type='reset']",function(){
     	$(this).closest('form').find("input[type='hidden']").val("");
     });
+
+
 });
 
 
