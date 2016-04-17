@@ -667,6 +667,8 @@ function addNewBill(){
    		}
    	});
 
+   	console.log(measurementLowValue);
+   	console.log(measurementUpValue);
     if(anyItem && anyMeasurement){
         $.ajax({
             dataType:"json",

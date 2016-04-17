@@ -505,7 +505,7 @@ class DataModel extends CI_Model{
 						}
 						$i++;
 					}
-					$this->db->insert("measurement_details",$upperdata);
+					$this->db->insert("measurement_details",$lowerdata);
 					$measurement_details_id=$this->db->insert_id();
 					$this->db->insert("measurement",array(
 							'bill_no'=>$billNo,
