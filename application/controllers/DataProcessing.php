@@ -401,6 +401,10 @@ public function updateDeleteWorker()
 		$data=$this->DataModel->getCustomizedReport();
 		echo json_encode(["data"=>$data]);
 	}
+	public function getAllViewBillJson(){
+		$data=$this->DataModel->getAllViewBill();
+		echo json_encode(["data"=>$data]);
+	}
 	public function getCustomerByIdJson(){
 		$name=$this->input->post("name");
 		$value=$this->input->post("value");

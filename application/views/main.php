@@ -579,48 +579,40 @@
 
 
 <div class="modal fade" id="billViewModal" tabindex="-1" role="dialog" aria-labelledby="billViewModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="billViewModalLabel">View Bill</h4>
                 </div>
 
-            <!-- <form action="DataProcessing/updateDeleteWorker" data-get-action="DataProcessing/getWorkerByIdJson" onsubmit="updateDeleteData(this);return false;" method="post"> -->
+            <form action="#" class="form-horizontal" onsubmit="return false;" method="post">
               <div class="modal-body">
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label for="billNo" class="col-md-3 control-label">Bill No. :</label>
                         <div class="col-md-3">
                           <input type="number" class="form-control" id="billNo" name="billNo" data-update="DataProcessing/getLatestBillingId" placeholder="Bill No" />
                         </div>
                       </div>
-                                  <input type="hidden" class="form-control" id="customer_id" name="customer_id"/>
+                      <input type="hidden" class="form-control" id="customer_id" name="customer_id"/>
                       <div class="form-group">
                         <label for="name" class="col-md-3 control-label">Name :</label>
                         <div class="col-md-6">
-                                          <div class="input-group">
-                              <input type="text" class="form-control" id="name" name="name" placeholder="Customer Name" />
-                                              <div class="input-group-addon" style="cursor:pointer" data-toggle="modal" data-target="#AddCustomerModal"><span class="fa fa-plus"></span></div>
-                                          </div>
+                          <div class="input-group">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Customer Name" />
+                          </div>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="address" class="col-md-3 control-label">Address :</label>
                         <div class="col-md-6">
-                          <textarea class="form-control" id="address" name="address" placeholder="Address" />
-                          </textarea>
+                          <textarea class="form-control" id="address" name="address" placeholder="Address"></textarea>
                         </div>
                       </div>
-                      <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#billItemAddModal">
-                                      Add Item
-                                  </button>
-                                  <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#measurementModal">
-                                      Add Measurement
-                                  </button>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                       <div class="form-group">      
                         <label for="date" class="col-md-5 control-label">Date :</label>
                         <div class="col-md-5">
@@ -642,6 +634,7 @@
                           <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" />
                         </div>
                       </div>
+
                       
                     </div>
                   </div>
@@ -653,12 +646,6 @@
                               <table class="table table-bordered table-hover" id="billItemView-table">
                                   <thead>
                                       <tr>
-                                          <th>Details cloth id</th>
-                                          <th>Details cloth cost</th>
-                                          <th>Details cloth length</th>
-                                          <th>Details cloth category id</th>
-                                          <th>Steching cost</th>
-                                          <th>Quantity</th>
                                           <th>S.No</th>
                                           <th>Details</th>
                                           <th>Amount</th>
@@ -669,74 +656,66 @@
                               </table>
                       </div>
                       <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                           <div class="form-group">      
-                        <label for="deliveryDate" class="col-md-5 control-label">Delivery Date :</label>
-                        <div class="col-md-5">
-                          <input type="text" id="deliveryDateView" class="form-control" placeholder="Delivery Date"> 
-                        </div>
-                      </div>
-                                  
-                                  <input type="hidden" class="form-control" id="referrer_id" name="refferer_id"/>
-                                  <div class="form-group">
-                        <label for="referrer" class="col-md-5 control-label">Refferer :</label>
-                        <div class="col-md-5">
-                                          <div class="input-group">
-                              <input type="text" class="form-control" id="referrer" name="referrer" placeholder="Referrer Name" />
-                                              <div class="input-group-addon" style="cursor:pointer" data-toggle="modal" data-target="#AddReferrerModal"><span class="fa fa-plus"></span></div>
-                                          </div>
-                        </div>
-                      </div>
-
-                      <script type="text/javascript">
-                        $('#deliveryDateView').datepicker({
-                          todayBtn: "linked",                                         
-                          autoclose: true,
-                          todayHighlight: true
-                        });
-                      </script>
-
-                        </div>
-                        <div class="col-md-7">
+                            <label for="deliveryDate" class="col-md-5 control-label">Delivery Date :</label>
+                            <div class="col-md-5">
+                              <input type="text" id="deliveryDateView" class="form-control" placeholder="Delivery Date"> 
+                            </div>
+                          </div>
                           <div class="form-group">
-                        <label for="subTotal" class="col-md-5 control-label">Sub-Total :</label>
+                            <label for="referrer" class="col-md-5 control-label">Refferer :</label>
+                            <div class="col-md-5">
+                              <div class="input-group">
+                                  <input type="text" class="form-control" id="referrer" name="referrer" placeholder="Referrer Name" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <script type="text/javascript">
+                            $('#deliveryDateView').datepicker({
+                              todayBtn: "linked",                                         
+                              autoclose: true,
+                              todayHighlight: true
+                            });
+                          </script>
+                        </div>
                         <div class="col-md-6">
-                          <input type="text" class="form-control" id="subTotal" name="subTotal" placeholder="Sub-Total" readonly />
+                          <div class="form-group">
+                            <label for="subTotal" class="col-md-5 control-label">Sub-Total :</label>
+                            <div class="col-md-6">
+                              <input type="text" class="form-control" id="subTotal" name="subTotal" placeholder="Sub-Total" readonly />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="discount" class="col-md-5 control-label">Discount :</label>
+                            <div class="col-md-6">
+                              <input type="text" class="form-control" id="discount" name="discount" value="0" placeholder="Discount" />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="paid" class="col-md-5 control-label">Paid :</label>
+                            <div class="col-md-6">
+                              <input type="text" class="form-control" id="paid" name="paid" value="0" placeholder="Paid" />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="total" class="col-md-5 control-label">Total :</label>
+                            <div class="col-md-6">
+                              <input type="text" class="form-control" id="total" name="total" placeholder="Total" readonly />
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label for="discount" class="col-md-5 control-label">Discount :</label>
-                        <div class="col-md-6">
-                          <input type="text" class="form-control" id="discount" name="discount" value="0" placeholder="Discount" />
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="paid" class="col-md-5 control-label">Paid :</label>
-                        <div class="col-md-6">
-                          <input type="text" class="form-control" id="paid" name="paid" value="0" placeholder="Paid" />
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="total" class="col-md-5 control-label">Total :</label>
-                        <div class="col-md-6">
-                          <input type="text" class="form-control" id="total" name="total" placeholder="Total" readonly />
-                        </div>
-                      </div>
-                        </div>
-                      </div>
-                          
-                          <button type="submit" name="save" style="width:150px" class="btn btn-primary">Save</button>
-                          <button type="Reset" name="Cancel" class="btn btn-default" onclick="clearBillItemData();">Clear</button>
-                
               </div>
 
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-primary" name="updateItem" style="float:right;">Save</button>
-                  <button type="submit" class="btn btn-danger" name="deleteItem">Delete</button>
+                  <button type="button" class="btn btn-primary" name="dispatch" style="float:right;">Dispatch</button>
+                  <button type="button" class="btn btn-danger" name="deleteItem">Delete</button>
               </div>
 
-            <!-- </form> -->
+            </form>
         </div>
     </div>
 </div>

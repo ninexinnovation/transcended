@@ -618,6 +618,25 @@ class DataModel extends CI_Model{
 		}
 		return $returnData;
 	}
+	function getAllViewBill(){
+		$this->db->select("*");
+		$this->db->from("bill_details AS b");
+		$this->db->join("customer_details AS cust",'cust.customer_id=b.customer_id','INNER');
+		$data=$this->db->get()->result();
+		// var_dump($data);
+		$returnData=array();
+		foreach ($data as $custom) {
+			$result=array();
+			$result['sn']=0;
+			$result['order_date']=date('Y-m-d',$custom->current_date);
+			$result['bill_no']=$custom->bill_no;
+			$result['customer_name']=$custom->customer_name;
+			$result['phone_no']=$custom->phone_no;
+			$result['action']=0;
+			$returnData[]=$result;
+		}
+		return $returnData;
+	}
 
 	function getNoOfCoatsPerMonth(){
 		$data=$this->db->get("item_details");
