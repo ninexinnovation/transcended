@@ -189,20 +189,24 @@ public function addCompany()
 			if($this->form_validation->run()===False){
 				echo json_encode(['error'=>array_values($this->form_validation->error_array())]);	
 			}else{
-				$clothAvailable=true;
-				for($i=0;$i<count($clothId);$i++){
-					$item=$this->DataModel->getItemById($clothId[$i])[0];
-					if($item['current_quantity']<$clothLength[$i]*$quantity[$i]){
-						echo json_encode(['error'=>["Oops!! \n Shade No. ".$clothId[$i]." is not available."]]);
-						$clothAvailable=false;
+				if(strtotime($this->input->post("date"))<=strtotime($this->input->post("deliveryDate"))){
+					$clothAvailable=true;
+					for($i=0;$i<count($clothId);$i++){
+						$item=$this->DataModel->getItemById($clothId[$i])[0];
+						if($item['current_quantity']<$clothLength[$i]*$quantity[$i]){
+							echo json_encode(['error'=>["Oops!! \n Shade No. ".$clothId[$i]." is not available."]]);
+							$clothAvailable=false;
+						}
 					}
-				}
-				if($clothAvailable){
-					if($this->DataModel->addNewBill()){
-						echo true;
-					}else{
-						echo json_encode(['error'=>["Oops!! \n This Bill Cannot be issued!!!"]]);
+					if($clothAvailable){
+						if($this->DataModel->addNewBill()){
+							echo true;
+						}else{
+							echo json_encode(['error'=>["Oops!! \n This Bill Cannot be issued!!!"]]);
+						}
 					}
+				}else{
+					echo json_encode(['error'=>["Deliver date must be after bill Issue date."]]);
 				}
 			}
 		}else{
