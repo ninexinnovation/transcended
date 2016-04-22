@@ -5,7 +5,7 @@ class DataProcessing extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("DataModel");
-		$this->form_validation->set_message('alpha_dash_space', 'The %s field can only contain alpha-numeric characters or spaces.');
+		$this->form_validation->set_message('alpha_dash_space', 'The %s field can only contain alpha characters or spaces.');
 	}
 	function alpha_dash_space($str)
 	{
