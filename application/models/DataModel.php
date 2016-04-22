@@ -618,6 +618,27 @@ class DataModel extends CI_Model{
 		}
 		return $returnData;
 	}
+	function getSalesReport($i){
+		$this->db->select("*");
+		$this->db->from("bill_details AS b");
+		$this->db->join("bill_item_details AS bItem",'b.bill_no=bItem.bill_no','INNER');
+		$this->db->join("catagory_details AS cat",'cat.catagory_id=bItem.item_catagory_id','INNER');
+		$this->db->join("customer_details AS cust",'cust.customer_id=b.customer_id','INNER');
+		$data=$this->db->get()->result();
+		// var_dump($data);
+		$returnData=array();
+		foreach ($data as $custom) {
+			$result=array();
+			$result['sn']=0;
+			$result['delivery_date']=date('Y-m-d',$custom->delivery_date);
+			$result['bill_no']=$custom->bill_no;
+			$result['product_name']=$custom->catagory_name;
+			$result['customer_name']=$custom->customer_name;
+			$result['phone_no']=$custom->phone_no;
+			$returnData[]=$result;
+		}
+		return $returnData;
+	}
 	function getAllViewBill(){
 		$this->db->select("*");
 		$this->db->from("bill_details AS b");

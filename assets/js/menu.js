@@ -1,15 +1,20 @@
+var taskLoadedCount=0;
+var taskLoadLength=0;
 $(document).ready(function(){
+	
 	loadPrevTask(function(data){
-		if(data!="null"){
+		console.log(data);
+		if(data!="null" && data!='[]' && data!=null){
 			var length=data.name.length;
+			taskLoadLength=length;
 			var title_bar_items=$(".task-bar .task-bar-items");
-			for(i=length-1;i>=0;i--){
+			for(i=0;i<length;i++){
 				var name=data.name[i];
 				var title=data.title[i]
+				title_bar_items.prepend("<span class='task-bar-item' data-containerId="+name+">"+title+"</span>");
+				
 				loadTask($("body"),name,title,function(n,t){
-					title_bar_items.prepend("<span class='task-bar-item' data-containerId="+n+">"+t+"</span>");
-					$("[data-containerId='"+n+"']").trigger("click");
-					
+					taskLoadedCount++;
 				});
 				// alert(name);
 			}
@@ -101,10 +106,12 @@ function loadPrevTask(func){
 	});
 }
 function addPrevTask(name,title){
+	loading(true);
 	$.ajax({
 		url:"TaskViews/addTask/"+name+"?title="+title+"",
 	}).done(function(){
 		// func();
+		loading(false);
 	});
 }
 function deletePrevTask(name){
@@ -134,11 +141,14 @@ function hideShowTask(thisItem){
 		thisItem.addClass("active");
 		if(currentActive.attr("data-containerId")==undefined){
 			container.fadeIn(150);
+			console.log(thisItem.attr('data-containerid'));
+			console.log(container.find('.title').text());
 		}else{
 			prevcontainer.fadeOut(150,function(){
 				container.fadeIn(150);	
 			});
 		}
+		addPrevTask(thisItem.attr('data-containerid'),container.find('.title').text());
 	}else{
 		prevcontainer.fadeOut(150);
 	}
@@ -154,20 +164,24 @@ function closeTask(thisItem){
 }
 
 function loadMenu(div,func){
+	loading(true);
 	$.ajax({
 		url:"TaskViews/menu"
 	}).done(function(data){
 		div.html(data)
 		func();
+		loading(false);
 	});
 }
 
 function loadSubMenu(div, title, func){
+	loading(true);
 	$.ajax({
 		url:"TaskViews/submenu/"+title
 	}).done(function(data){
 		div.append(data);
 		func();
+		loading(false);
 	});
 }
 function loadTask(div,title,text,func){
@@ -178,6 +192,12 @@ function loadTask(div,title,text,func){
 		// alert(data);
 		updateForm(div.find("form"));
 		func(title,text);
+		if(taskLoadLength!=0 && taskLoadLength==taskLoadedCount){
+			$("#taskbar > .task-bar-item").eq(0).trigger("click");
+			// $("[data-containerId='"+$(".menu-item").eq(1)+"']").trigger("click");
+			taskLoadLength=0;
+			taskLoadedCount=0;
+		}
 	});	
 }
 

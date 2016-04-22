@@ -11,6 +11,7 @@
 <link href="<?php echo base_url(); ?>assets/css/form.css" rel="stylesheet">
 </head>
   <body>
+  <div id='loading'><img src="<?php echo base_url(); ?>assets/images/catLoading.gif"/></div>
     <div class="container-main">
       <div class="col-lg-6">
         <div class="portlet box">

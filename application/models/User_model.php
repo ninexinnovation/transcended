@@ -16,6 +16,8 @@ class User_model extends CI_Model{
 	}
 	public function logout(){
 		$this->session->unset_userdata('user_id');
+		$this->session->unset_userdata('prevTask');
+		$this->session->unset_userdata('prevTaskTitle');
 	}
 	public function register(){
 		

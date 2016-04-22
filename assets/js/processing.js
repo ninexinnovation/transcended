@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	loadMonthlyChart();
+	loading(false);
 	$(document).on("change","select",function(){
 		if($(this).attr("data-model")!=null){
 			if($(this).find("option:selected").attr("data-value")=="add"){
@@ -207,8 +208,17 @@ $(document).ready(function(){
 
 
 });
-
-
+var newStatus=false;
+function loading(status){
+	newStatus=status;
+	setTimeout(function(){
+		if(newStatus){
+			$('#loading').show();
+		}else{
+			$('#loading').hide();
+		}
+	}, 200);
+}
 
 
 
@@ -220,6 +230,7 @@ $(document).ready(function(){
 
 function displayModalData(thisForm,dataName,dataValue){
 	// console.log(thisForm)
+	loading(true);
 	var url=$(thisForm).attr("data-get-action");
 	$.ajax({
 		url:url,
@@ -229,7 +240,7 @@ function displayModalData(thisForm,dataName,dataValue){
 	}).done(function(msg){
 		if(msg!=""){
 			// alert(msg.data[0].customer_name);
-			updateForm(thisForm);
+			// updateForm(thisForm);
 			$(thisForm).find("input, select").each(function(index,element){
 				var type=$(element).attr("type");
 				switch(type){
@@ -253,11 +264,13 @@ function displayModalData(thisForm,dataName,dataValue){
 		}else{
 			appendAlert("Unable to get data","danger",5000);
 		}
+		loading(false);
 	});
 }
 
 function AddData(thisForm,func) {
 	// console.log($(thisDiv));
+	loading(true);
 	var dataname=[];
 	var datavalue=[];
 	$(thisForm).find("input, select").each(function(index,element){
@@ -309,6 +322,7 @@ function AddData(thisForm,func) {
 				appendAlert(msg.message[i],"danger",5000);
 			}
 		}
+		loading(false);
 	});
 	$(thisForm).find("button[type='submit'],input[type='submit']").each(function(index,element){
 		$(element).prop('disabled', false);
@@ -324,6 +338,7 @@ function AddData(thisForm,func) {
 }
 
 function updateDeleteData(thisForm,func) {
+	loading(true);
 	// console.log($(thisDiv));
 	var dataName=[];
 	var dataValue=[];
@@ -381,11 +396,13 @@ function updateDeleteData(thisForm,func) {
 		$(thisForm).find("button[type='submit'],button[type='button'],input[type='submit']").each(function(index,element){
 			$(element).prop('disabled', false);
 		});
+		loading(false);
 	}).fail(function(jqXHR, textStatus ){
 		alert(jqXHR.statusText+"/"+textStatus);
 		$(thisForm).find("button[type='submit'],button[type='button'],input[type='submit']").each(function(index,element){
 			$(element).prop('disabled', false);
 		});
+		loading(false);
 	});
 	
 	if($(thisForm).closest(".modal").length!=0){
@@ -435,7 +452,6 @@ function updateForm(form){
 				}else if(thisEl.prop("tagName").toLowerCase()=="select"){
 					thisEl.html(msg);
 				}
-
 			});
 		}
 	});
@@ -671,6 +687,7 @@ function addNewBill(){
 
    	console.log(measurementLowValue);
    	console.log(measurementUpValue);
+   	loading(true);
     if(anyItem && anyMeasurement){
         $.ajax({
             dataType:"json",
@@ -691,8 +708,10 @@ function addNewBill(){
                 clearBillData();
                 updateForm($("#issueBill"));
             }
+            loading(false);
         }).fail(function( jqXHR, textStatus ) {
           alert( "Request failed: " + textStatus );
+          loading(false);
         });
     }else if(!anyItem){
         appendAlert("Sorry no Item added!!","danger",5000);

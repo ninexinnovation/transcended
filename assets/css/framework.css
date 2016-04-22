@@ -256,7 +256,7 @@ body{
 	height: 100%;
 	width: 100%;
 	padding-bottom: 80px;
-	background:#E4E3DE;
+	background:#F0F2F5;
 }
 /*.task-container{
 	display: none;
@@ -325,6 +325,15 @@ body{
     #page-notification{
         /*padding-top: 10px;*/
     }
+}
+
+#loading{
+	position:fixed;
+	background-color: rgba(0,0,0,.3);
+	width: 100vw;
+	height: 100vh;
+	text-align: center;
+	z-index: 2000;
 }
 
 	

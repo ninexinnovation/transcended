@@ -34,10 +34,30 @@ class TaskViews extends CI_Controller {
 	public function addTask($name){
 		$taskArray=$this->session->prevTask;
 		$taskTitleArray=$this->session->prevTaskTitle;
+		if($taskArray!=null){
+			if(in_array($name, $taskArray)){
+				$key=array_search($name, $taskArray);
+				echo $key;
+				unset($taskArray[$key]);
+				unset($taskTitleArray[$key]);
+			}
+		}
 		$taskArray[]=$name;
 		$taskTitleArray[]=$this->input->get("title");
+		var_dump($taskArray);
+		$taskArray=$this->manageArray($taskArray);
+		var_dump($taskArray);
+		$taskTitleArray=$this->manageArray($taskTitleArray);
 		$this->session->set_userdata("prevTask",$taskArray);
 		$this->session->set_userdata("prevTaskTitle",$taskTitleArray);
+		
+	}
+	private function manageArray($array){
+		$newArray=array();
+		foreach ($array as $data) {
+			$newArray[]=$data;
+		}
+		return $newArray;
 	}
 	public function removeTask($name){
 		if($this->session->prevTask!=null){
@@ -49,5 +69,9 @@ class TaskViews extends CI_Controller {
 			$this->session->set_userdata("prevTask",$prevTaskArray);
 			$this->session->set_userdata("prevTaskTitle",$prevTaskTitleArray);
 		}
+	}
+	public function removeAllTask(){
+		unset($_SESSION['prevTask']);
+		unset($_SESSION['prevTaskTitle']);
 	}
 }
