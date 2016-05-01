@@ -462,7 +462,7 @@ public function updateDeleteWorker()
 		echo json_encode(["data"=>$data]);
 	}
 
-public function getWorkerByIdJson(){
+	public function getWorkerByIdJson(){
 		$name=$this->input->post("name");
 		$value=$this->input->post("value");
 		$id=0;
@@ -474,6 +474,31 @@ public function getWorkerByIdJson(){
 			$i++;
 		}
 		$data=$this->DataModel->getWorkerById($id);
+		echo json_encode(["data"=>$data]);
+	}
+	public function getTransactionByCatagoryJson(){
+		$catagory=$this->input->post("catagory");
+		$value=$this->input->post("value");
+		$month=$this->input->post("month");
+		switch (strtolower($catagory)) {
+			case 'yearly':
+				// echo "yearly";
+				$data=$this->DataModel->getTransactionYearly($value);
+				break;
+			case 'monthly':
+				// echo "monthly";
+				$data=$this->DataModel->getTransactionMonthly($value,$month);
+				break;
+			case 'weekly':
+				// echo "monthly";
+				$data=$this->DataModel->getTransactionWeekly($value,$month);
+				break;
+			default:
+				$data=[];
+				echo "unknown";
+				break;
+		}
+		// $data=$this->DataModel->getWorkerById($id);
 		echo json_encode(["data"=>$data]);
 	}
 

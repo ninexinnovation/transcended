@@ -9,6 +9,7 @@
 <link href="<?php echo base_url(); ?>assets/css/dataTables.bootstrap.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/css/framework.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/css/form.css" rel="stylesheet">
+<link  type="text/css" href="<?php echo base_url(); ?>assets/amcharts/plugins/export/export.css" rel="stylesheet">
 </head>
   <body>
   <div id='loading'><img src="<?php echo base_url(); ?>assets/images/catLoading.gif"/></div>
@@ -22,6 +23,8 @@
                 <div id="line-chart" style="width: 100%; height:300px"></div>
             </div>
         </div>
+        <!-- <button onclick="window.location = 'command://' + encodeURIComponent('somecommand') + '&' + encodeURIComponent('param1') + '&' + encodeURIComponent('param2')">Click</button> -->
+        <!-- <button onclick="hello()">Click</button> -->
       </div>
 
     <!-- TASK BAR -->
@@ -55,19 +58,16 @@
     <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.js"></script>
 
-    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.categories.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.pie.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.tooltip.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.resize.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.fillbetween.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.stack.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/charts/jquery.flot.spline.js"></script>
+    <script src="<?php echo base_url(); ?>assets/amcharts/amcharts.js"></script>
+    <script src="<?php echo base_url(); ?>assets/amcharts/serial.js"></script>
+    <script src="<?php echo base_url(); ?>assets/amcharts/themes/light.js"></script>
+
     
     <script src="<?php echo base_url(); ?>assets/js/overflow.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/menu.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/grid.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/processing.js"></script>
+    <script src="<?php echo base_url(); ?>assets/amcharts/plugins/export/export.js"></script>
 
 
 

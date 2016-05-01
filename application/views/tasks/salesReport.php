@@ -1,7 +1,7 @@
 
 		
 <div class="container-fluid">
-	<table width="100%">
+	<table class="table table-responsive">
         <tbody>
         <tr valign="top">            
             <td width="30%">

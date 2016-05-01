@@ -918,6 +918,367 @@ class DataModel extends CI_Model{
 		}else{
 			return false;
 		}
+
+	}
+	function getTransactionYearly($year){
+		$this->db->select("*");
+		$this->db->from("bill_details AS b");
+		$this->db->join("bill_item_details AS bi","b.bill_no=bi.bill_no","INNER");
+
+		$data=$this->db->get();
+		$result=[];
+		$type['pant']=0;
+		$type['shirt']=0;
+		$type['coat']=0;
+		$type['other']=0;
+		
+		$result['jan']=$type;
+		$result['feb']=$type;
+		$result['mar']=$type;
+		$result['apr']=$type;
+		$result['may']=$type;
+		$result['jun']=$type;
+		$result['jul']=$type;
+		$result['aug']=$type;
+		$result['sep']=$type;
+		$result['oct']=$type;
+		$result['nov']=$type;
+		$result['dec']=$type;
+
+		if($data->num_rows()!=0){
+			foreach ($data->result() as $item) {
+				switch(date('Y/m',$item->current_date)){
+					case $year.'/01':
+						if($item->item_catagory_id==1){
+							$result['jan']["pant"]=$result['jan']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['jan']["shirt"]=$result['jan']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['jan']["coat"]=$result['jan']["coat"]+$item->quantity;
+						}else{
+							$result['jan']["other"]=$result['jan']["other"]+$item->quantity;
+						}
+					break;
+					case $year.'/02':
+						if($item->item_catagory_id==1){
+							$result['feb']["pant"]=$result['feb']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['feb']["shirt"]=$result['feb']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['feb']["coat"]=$result['feb']["coat"]+$item->quantity;
+						}else{
+							$result['feb']["other"]=$result['feb']["other"]+$item->quantity;
+						}
+					break;
+					case $year.'/03':
+						if($item->item_catagory_id==1){
+							$result['mar']["pant"]=$result['mar']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['mar']["shirt"]=$result['mar']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['mar']["coat"]=$result['mar']["coat"]+$item->quantity;
+						}else{
+							$result['mar']["other"]=$result['mar']["other"]+$item->quantity;
+						}
+					break;
+					case $year.'/04':
+						if($item->item_catagory_id==1){
+							$result['apr']["pant"]=$result['apr']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['apr']["shirt"]=$result['apr']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['apr']["coat"]=$result['apr']["coat"]+$item->quantity;
+						}else{
+							$result['apr']["other"]=$result['apr']["other"]+$item->quantity;
+						}
+					break;
+					case $year.'/05':
+						if($item->item_catagory_id==1){
+							$result['may']["pant"]=$result['may']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['may']["shirt"]=$result['may']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['may']["coat"]=$result['may']["coat"]+$item->quantity;
+						}else{
+							$result['may']["other"]=$result['may']["other"]+$item->quantity;
+						}
+					break;
+					case $year.'/06':
+						if($item->item_catagory_id==1){
+							$result['jun']["pant"]=$result['jun']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['jun']["shirt"]=$result['jun']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['jun']["coat"]=$result['jun']["coat"]+$item->quantity;
+						}else{
+							$result['jun']["other"]=$result['jun']["other"]+$item->quantity;
+						}
+					break;
+					case $year.'/07':
+						if($item->item_catagory_id==1){
+							$result['jul']["pant"]=$result['jul']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['jul']["shirt"]=$result['jul']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['jul']["coat"]=$result['jul']["coat"]+$item->quantity;
+						}else{
+							$result['jul']["other"]=$result['jul']["other"]+$item->quantity;
+						}
+					break;
+					case $year.'/08':
+						if($item->item_catagory_id==1){
+							$result['aug']["pant"]=$result['aug']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['aug']["shirt"]=$result['aug']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['aug']["coat"]=$result['aug']["coat"]+$item->quantity;
+						}else{
+							$result['aug']["other"]=$result['aug']["other"]+$item->quantity;
+						}
+					break;
+					case $year.'/09':
+						if($item->item_catagory_id==1){
+							$result['sep']["pant"]=$result['sep']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['sep']["shirt"]=$result['sep']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['sep']["coat"]=$result['sep']["coat"]+$item->quantity;
+						}else{
+							$result['sep']["other"]=$result['sep']["other"]+$item->quantity;
+						}
+					break;
+					case $year.'/10':
+						if($item->item_catagory_id==1){
+							$result['oct']["pant"]=$result['oct']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['oct']["shirt"]=$result['oct']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['oct']["coat"]=$result['oct']["coat"]+$item->quantity;
+						}else{
+							$result['oct']["other"]=$result['oct']["other"]+$item->quantity;
+						}
+					break;
+					case $year.'/11':
+						if($item->item_catagory_id==1){
+							$result['nov']["pant"]=$result['nov']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['nov']["shirt"]=$result['nov']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['nov']["coat"]=$result['nov']["coat"]+$item->quantity;
+						}else{
+							$result['nov']["other"]=$result['nov']["other"]+$item->quantity;
+						}
+					break;
+					case $year.'/12':
+						if($item->item_catagory_id==1){
+							$result['dec']["pant"]=$result['dec']["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result['dec']["shirt"]=$result['dec']["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result['dec']["coat"]=$result['dec']["coat"]+$item->quantity;
+						}else{
+							$result['dec']["other"]=$result['dec']["other"]+$item->quantity;
+						}
+					break;
+				}
+			}
+			// var_dump($result);
+			return $result;
+		}else{
+			return false;
+		}
+		
+	}
+	function getTransactionMonthly($year,$month){
+		$this->db->select("*");
+		$this->db->from("bill_details AS b");
+		$this->db->join("bill_item_details AS bi","b.bill_no=bi.bill_no","INNER");
+
+		$data=$this->db->get();
+		$result=[];
+		$type['pant']=0;
+		$type['shirt']=0;
+		$type['coat']=0;
+		$type['other']=0;
+		
+		for($i=0;$i<31;$i++){
+			$result[$i]=$type;
+		}
+		// $result['jan']=$type;
+		// $result['feb']=$type;
+		// $result['mar']=$type;
+		// $result['apr']=$type;
+		// $result['may']=$type;
+		// $result['jun']=$type;
+		// $result['jul']=$type;
+		// $result['aug']=$type;
+		// $result['sep']=$type;
+		// $result['oct']=$type;
+		// $result['nov']=$type;
+		// $result['dec']=$type;
+
+		if($data->num_rows()!=0){
+			foreach ($data->result() as $item) {
+				$date=date('Y/m/d',$item->current_date);
+				for($i=0;$i<31;$i++){
+					// echo "asdfsfd";
+					// echo $year.'/0'.$month.'/0'.($i+1);
+					if($date==$year.'/0'.$month.'/0'.($i+1) || $date==$year.'/0'.$month.'/'.($i+1) || 
+						$date==$year.'/'.$month.'/0'.($i+1) || $date==$year.'/'.$month.'/'.($i+1)){
+
+						if($item->item_catagory_id==1){
+							$result[$i]["pant"]=$result[$i]["pant"]+$item->quantity;
+						}else if($item->item_catagory_id==2){
+							$result[$i]["shirt"]=$result[$i]["shirt"]+$item->quantity;
+						}else if($item->item_catagory_id==3){
+							$result[$i]["coat"]=$result[$i]["coat"]+$item->quantity;
+						}else{
+							$result[$i]["other"]=$result[$i]["other"]+$item->quantity;
+						}
+					}
+				}
+				// switch(date('Y/m/d',$item->current_date)){
+				// 	case $year.'/0'.$month.'':
+				// 	case $year.'/'.$month:
+				// 		if($item->item_catagory_id==1){
+				// 			$result['jan']["pant"]=$result['jan']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['jan']["shirt"]=$result['jan']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['jan']["coat"]=$result['jan']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['jan']["other"]=$result['jan']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// 	case $year.'/02':
+				// 		if($item->item_catagory_id==1){
+				// 			$result['feb']["pant"]=$result['feb']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['feb']["shirt"]=$result['feb']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['feb']["coat"]=$result['feb']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['feb']["other"]=$result['feb']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// 	case $year.'/03':
+				// 		if($item->item_catagory_id==1){
+				// 			$result['mar']["pant"]=$result['mar']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['mar']["shirt"]=$result['mar']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['mar']["coat"]=$result['mar']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['mar']["other"]=$result['mar']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// 	case $year.'/04':
+				// 		if($item->item_catagory_id==1){
+				// 			$result['apr']["pant"]=$result['apr']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['apr']["shirt"]=$result['apr']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['apr']["coat"]=$result['apr']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['apr']["other"]=$result['apr']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// 	case $year.'/05':
+				// 		if($item->item_catagory_id==1){
+				// 			$result['may']["pant"]=$result['may']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['may']["shirt"]=$result['may']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['may']["coat"]=$result['may']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['may']["other"]=$result['may']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// 	case $year.'/06':
+				// 		if($item->item_catagory_id==1){
+				// 			$result['jun']["pant"]=$result['jun']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['jun']["shirt"]=$result['jun']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['jun']["coat"]=$result['jun']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['jun']["other"]=$result['jun']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// 	case $year.'/07':
+				// 		if($item->item_catagory_id==1){
+				// 			$result['jul']["pant"]=$result['jul']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['jul']["shirt"]=$result['jul']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['jul']["coat"]=$result['jul']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['jul']["other"]=$result['jul']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// 	case $year.'/08':
+				// 		if($item->item_catagory_id==1){
+				// 			$result['aug']["pant"]=$result['aug']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['aug']["shirt"]=$result['aug']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['aug']["coat"]=$result['aug']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['aug']["other"]=$result['aug']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// 	case $year.'/09':
+				// 		if($item->item_catagory_id==1){
+				// 			$result['sep']["pant"]=$result['sep']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['sep']["shirt"]=$result['sep']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['sep']["coat"]=$result['sep']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['sep']["other"]=$result['sep']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// 	case $year.'/10':
+				// 		if($item->item_catagory_id==1){
+				// 			$result['oct']["pant"]=$result['oct']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['oct']["shirt"]=$result['oct']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['oct']["coat"]=$result['oct']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['oct']["other"]=$result['oct']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// 	case $year.'/11':
+				// 		if($item->item_catagory_id==1){
+				// 			$result['nov']["pant"]=$result['nov']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['nov']["shirt"]=$result['nov']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['nov']["coat"]=$result['nov']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['nov']["other"]=$result['nov']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// 	case $year.'/12':
+				// 		if($item->item_catagory_id==1){
+				// 			$result['dec']["pant"]=$result['dec']["pant"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==2){
+				// 			$result['dec']["shirt"]=$result['dec']["shirt"]+$item->quantity;
+				// 		}else if($item->item_catagory_id==3){
+				// 			$result['dec']["coat"]=$result['dec']["coat"]+$item->quantity;
+				// 		}else{
+				// 			$result['dec']["other"]=$result['dec']["other"]+$item->quantity;
+				// 		}
+				// 	break;
+				// }
+			}
+			// var_dump($result);
+			return $result;
+		}else{
+			return false;
+		}
+		
 	}
 }
 ?>
