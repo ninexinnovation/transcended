@@ -39,7 +39,21 @@
     <!-- MENU CONTAINER -->
     <div class="menu-container">
       <!-- MENU CONTAINER TITLE -->
-      <div class="menu-title"><span class="menu-title-text"><a href="Logout">Log Out <i class="fa fa-caret-down"> </i></a></span></div>
+      <div class="menu-title">
+        <span class="menu-title-text">
+        <!-- <a href="Logout">Log Out <i class="fa fa-caret-down"> </i></a> -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-link btn-md dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Settings <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a href="#">Action</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="Logout">Logout</a></li>
+          </ul>
+        </div>
+        </span>
+      </div>
       <!-- MENU BACK BUTTON -->
       <div class="menu-back"><span class="glyphicon glyphicon-chevron-left"></span></div>
       <!-- MENU CONTENTS (Desplayed Menu) -->

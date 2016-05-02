@@ -46,6 +46,10 @@
 		<i class="fa fa-tags"></i>
 		<span>Referrals</span>
 	</a>
+	<?php 
+		// var_dump($this->DataModel->getUserById($this->session->userdata("user_id")));
+		if($this->DataModel->getUserById($this->session->userdata("user_id"))[0]->user_type_id==1){
+	?>
 	<a class="btn btn-danger menu-btn" data-btn-type="sub" data-view="user">
 		<i class="fa fa-user"></i>
 		<span>User</span>
@@ -54,4 +58,7 @@
 		<i class="fa fa-clone"></i>
 		<span>Report Generation</span>
 	</a>
+	<?php 
+		}
+	?>
 </div>
