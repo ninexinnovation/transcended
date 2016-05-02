@@ -344,7 +344,7 @@ class DataModel extends CI_Model{
 					break;
 				case "pwd":
 					if ($value[$i]!="") {
-						$data["password"]=sha1($value[$i]);
+						$data["password"]=sha1$value[$i];
 					}
 					break;
 				
