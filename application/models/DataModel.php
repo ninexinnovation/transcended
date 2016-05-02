@@ -148,9 +148,9 @@ class DataModel extends CI_Model{
 				case "UsPass":
 					$data["password"]=sha1($value[$i]);
 					break;
-				// case "UsType":
-				// 	$data["user_type_id"]=$value[$i];
-				// 	break;
+				case "UsType":
+					$data["user_type_id"]=2;
+					break;
 
 			}
 			$i++;
