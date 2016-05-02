@@ -47,7 +47,7 @@
             Settings <span class="caret"></span>
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="#">Action</a></li>
+            <li><a id="changePassword" data-id="<?php echo $this->session->userdata('user_id') ?>">Change Password</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="Logout">Logout</a></li>
           </ul>

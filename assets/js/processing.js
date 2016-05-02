@@ -183,6 +183,19 @@ $(document).ready(function(){
     	// console.log(dataValue);
     	displayModalData($(modalId).find("form"),dataName,dataValue);
     });
+    $(document).on("click","#changePassword",function(){
+    	var modalId="#userViewModal";
+    	$(modalId).modal("show");
+    	var dataName=[];
+    	var dataValue=[];
+    	// $(this).find("[data-send='true']").each(function(index,element){
+    		dataName.push("id");
+    		dataValue.push($(this).attr("data-id"));
+    	// });
+    	// console.log(dataName);
+    	// console.log(dataValue);
+    	displayModalData($(modalId).find("form"),dataName,dataValue);
+    });
 
 
     //button clicked state
