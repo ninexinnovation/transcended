@@ -596,13 +596,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="customerViewModalLabel">View User</h4>
+                <h4 class="modal-title" id="userViewModalLabel">View User</h4>
             </div>
-            <form action="DataProcessing/updateDeleteCustomer" data-get-action="DataProcessing/getUserByIdJson" onsubmit="updateDeleteData(this);return false;" method="post">
+            <form action="DataProcessing/updateDeleteUser" data-get-action="DataProcessing/getUserByIdJson" onsubmit="updateDeleteData(this);return false;" method="post">
               <div class="modal-body">
                   <div class="form-group">
                     <label for="user_id">User ID</label>
-                    <input type="number" class="form-control" id="user_id" name="user_id" placeholder="Enter User ID" data-update="DataProcessing/getLatestuserId" data-send="false" disabled required>
+                    <input type="number" class="form-control" id="user_id" name="user_id" placeholder="Enter User ID" disabled required>
                   </div>
 
                   <div class="form-group">
@@ -622,13 +622,13 @@
 
                   <div class="form-group">
                     <label for="pwd">Password </label>
-                    <input type="text" class="form-control" id="pwd" name="pwd" placeholder="Enter Password" required>
+                    <input type="text" class="form-control" id="pwd" name="pwd" placeholder="Enter Password" >
                   </div>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-primary" name="updateCustomer" style="float:right;">Save</button>
-                  <button type="submit" class="btn btn-danger" name="deleteCustomer">Delete</button>
+                  <button type="submit" class="btn btn-primary" name="updateUser" style="float:right;">Save</button>
+                  <button type="submit" class="btn btn-danger" name="deleteUser">Delete</button>
               </div>
             </form>
         </div>

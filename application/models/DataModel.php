@@ -323,6 +323,43 @@ class DataModel extends CI_Model{
 		return true;
 	}
 
+	// update and delete user model 
+	function updateUser($id,$value){
+		$i=0;
+		$data=array();
+		foreach ($id as $key) {
+			switch($key){
+				case "user_id":
+					$data["user_id"]=$value[$i];
+					break;
+				
+				case "f_name":
+					$data["f_name"]=$value[$i];
+					break;
+				case "l_name ":
+					$data["l_name"]=$value[$i];
+					break;
+				case "user_name":
+					$data["user_name"]=$value[$i];
+					break;
+				case "pwd":
+					if ($value[$i]!="") {
+						$data["password"]=sha1($value[$i]);
+					}
+					break;
+				
+
+			}
+			$i++;
+		}
+		$this->db->update('user',$data,array('user_id'=>$value[0]));
+		return true;
+	}
+	function deleteUser($id,$value){
+		$this->db->delete('user',array('user_id'=>$value[0]));
+		return true;
+	}
+// Update and delete catagory model
 	function updateCatagory($id,$value){
 		$i=0;
 		$data=array();

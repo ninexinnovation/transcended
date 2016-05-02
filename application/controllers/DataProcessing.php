@@ -374,6 +374,48 @@ public function updateDeleteWorker()
 		}
 	}
 
+public function updateDeleteUser()
+	{
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+
+		$this->form_validation->set_rules('value[1]',$name[1],array('required','alpha'));
+	    $this->form_validation->set_rules('value[2]',$name[2],array('required','alpha'));
+	    $this->form_validation->set_rules('value[3]',$name[3],array('required','alpha_numeric','min_length[6]','max_length[30]'));
+	    $this->form_validation->set_rules('value[4]',$name[4],array('alpha_numeric','min_length[6]','max_length[30]'));
+
+
+
+
+
+		if($this->form_validation->run()===False){
+			// $error_messages=$this->form_validation->error_array();
+			echo json_encode([
+								"success"=>"false",
+								"messageType"=>"danger",
+								"message"=>array_values($this->form_validation->error_array())
+							]);	
+		}else{
+			if($value[5]=="updateUser"){
+				$this->DataModel->updateUser($name,$value);
+
+				echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully User Updated"]
+							]);
+			}else if($value[5]=="deleteUser"){
+				$this->DataModel->deleteUser($name,$value);
+
+				echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully User Deleted"]
+							]);
+			}
+		}
+	}
+
 
 
 
