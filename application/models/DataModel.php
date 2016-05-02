@@ -538,6 +538,11 @@ class DataModel extends CI_Model{
 		// var_dump($data);
 			return $data;
 	}
+	function getUserById($id){
+		$data=$this->db->get_where("user",array("user_id"=>$id))->result();
+		// var_dump($data);
+			return $data;
+	}
 
 	function getWorkers(){
 		$data=$this->db->get("worker_details")->result();

@@ -431,6 +431,21 @@ public function updateDeleteWorker()
 		echo json_encode(["data"=>$data]);
 	}
 
+	public function getUserByIdJson(){
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+		$id=0;
+		$i=0;
+		foreach ($name as $n) {
+			if($n=="id"){
+				$id=$value[$i];
+			}
+			$i++;
+		}
+		$data=$this->DataModel->getUserById($id);
+		echo json_encode(["data"=>$data]);
+	}
+
 	public function getItemByIdJson(){
 		$name=$this->input->post("name");
 		$value=$this->input->post("value");

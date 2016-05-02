@@ -577,6 +577,49 @@
     </div>
 </div>
 
+<div class="modal fade" id="userViewModal" tabindex="-1" role="dialog" aria-labelledby="userViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="customerViewModalLabel">View User</h4>
+            </div>
+            <form action="DataProcessing/updateDeleteCustomer" data-get-action="DataProcessing/getUserByIdJson" onsubmit="updateDeleteData(this);return false;" method="post">
+              <div class="modal-body">
+                  <div class="form-group">
+                    <label for="user_id">User ID</label>
+                    <input type="number" class="form-control" id="user_id" name="user_id" placeholder="Enter User ID" data-update="DataProcessing/getLatestuserId" data-send="false" disabled required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="f_name">First Name</label>
+                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="Enter User First Name" required>
+                 </div>
+             
+                  <div class="form-group">
+                    <label for="l_name">Last Name</label>
+                    <input type="text" class="form-control" id="l_name" name="l_name" placeholder="Enter User Last Name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="user_name">User Name</label>
+                    <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Enter UserName" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pwd">Password </label>
+                    <input type="text" class="form-control" id="pwd" name="pwd" placeholder="Enter Password" required>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary" name="updateCustomer" style="float:right;">Save</button>
+                  <button type="submit" class="btn btn-danger" name="deleteCustomer">Delete</button>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <div class="modal fade" id="billViewModal" tabindex="-1" role="dialog" aria-labelledby="billViewModalLabel" aria-hidden="true">
