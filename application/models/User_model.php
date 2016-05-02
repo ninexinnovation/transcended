@@ -9,7 +9,7 @@ class User_model extends CI_Model{
 		$query=$this->db->get_where('user',
 				array(
 					'user_name'=>$this->input->post('username'),
-					'password'=>md5($this->input->post('password'))
+					'password'=>sha1($this->input->post('password'))
 				)
 			);
 		return $query;
