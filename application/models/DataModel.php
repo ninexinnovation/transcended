@@ -396,10 +396,10 @@ class DataModel extends CI_Model{
 		$data=array();
 		foreach ($id as $key) {
 			switch($key){
-				case "catagoryName":
+				case "catagory_name":
 					$data["catagory_name"]=$value[$i];
 					break;
-				case "stichingPrice":
+				case "stiching_charge":
 					$data["stiching_charge"]=$value[$i];
 					break;
 				
@@ -752,6 +752,23 @@ class DataModel extends CI_Model{
 			$result['product_name']=$custom->catagory_name;
 			$result['customer_name']=$custom->customer_name;
 			$result['phone_no']=$custom->phone_no;
+			$returnData[]=$result;
+		}
+		return $returnData;
+	}
+	function getDashboardStock(){
+		$this->db->select("*");
+		$this->db->from("item_details AS i");
+		$this->db->join("catagory_details AS cat",'cat.catagory_id=i.catagory_id','INNER');
+		$this->db->order_by("i.current_quantity","desc");
+		$data=$this->db->get()->result();
+		// var_dump($data);
+		$returnData=array();
+		foreach ($data as $custom) {
+			$result=array();
+			$result['shadeNo']=$custom->item_code_no;
+			$result['catagory']=$custom->catagory_name;
+			$result['quantity']=$custom->current_quantity;
 			$returnData[]=$result;
 		}
 		return $returnData;

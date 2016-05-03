@@ -1,4 +1,13 @@
 $(document).ready(function(){
+          	var dashStock=$('#dashStock').DataTable({
+          		"searching":false,
+				"ajax":"DataProcessing/getDashboardStockJson",
+				"columns":[
+				{"data":"shadeNo"},
+				{"data":"catagory"},
+				{"data":"quantity"},
+				]
+          	});
 	loading(false);
 	$(document).on("change","select",function(){
 		if($(this).attr("data-model")!=null){

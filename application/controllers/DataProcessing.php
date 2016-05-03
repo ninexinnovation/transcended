@@ -316,14 +316,14 @@ public function addCompany()
 							]);	
 		}else{
 			if($value[3]=="updateCatagory"){
-				$this->DataModel->updateItem($name,$value);
+				$this->DataModel->updateCatagory($name,$value);
 
 				echo json_encode([
 								"success"=>"true",
 								"messageType"=>"success",
 								"message"=>["Successfully Item Updated"]
 							]);
-			}else if($value[3]=="deleteItem"){
+			}else if($value[3]=="deleteCatagory"){
 				$this->DataModel->deleteCatagory($name,$value);
 
 				echo json_encode([
@@ -452,6 +452,10 @@ public function updateDeleteUser()
 	}
 	public function getAllCustomizedReportJson(){
 		$data=$this->DataModel->getCustomizedReport();
+		echo json_encode(["data"=>$data]);
+	}
+	public function getDashboardStockJson(){
+		$data=$this->DataModel->getDashboardStock();
 		echo json_encode(["data"=>$data]);
 	}
 	public function getAllViewBillJson(){

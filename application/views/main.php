@@ -14,7 +14,7 @@
   <body>
   <div id='loading'><img src="<?php echo base_url(); ?>assets/images/catLoading.gif"/></div>
     <div class="container-main">
-      <div class="col-lg-6">
+      <!-- <div class="col-lg-6">
         <div class="portlet box">
             <div class="portlet-header">
                 <div class="caption">Line Chart</div>
@@ -22,16 +22,49 @@
             <div class="portlet-body">
                 <div id="line-chart" style="width: 100%; height:300px"></div>
             </div>
-        </div>
+        </div> -->
         <!-- <button onclick="window.location = 'command://' + encodeURIComponent('somecommand') + '&' + encodeURIComponent('param1') + '&' + encodeURIComponent('param2')">Click</button> -->
         <!-- <button onclick="hello()">Click</button> -->
+      <!-- </div> -->
+<!--       <div class="col-lg-6">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover" id="viewBills">
+              <thead>
+                <tr>
+                    <th>S.N</th>
+                    <th>Bill Number</th>
+                    <th>Shirt</th>
+                    <th>Pant</th>
+                    <th>Coat</th>
+                    <th>Other</th>
+                </tr>
+            </thead>
+            <tbody>   
+            </tbody>
+          </table>
+        </div> -->
+        <div class="col-lg-6">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="dashStock">
+                <thead>
+                  <tr>
+                      <th>Shade No.</th>
+                      <th>Catagory</th>
+                      <th>Quantity</th>
+                  </tr>
+              </thead>
+              <tbody>   
+              </tbody>
+            </table>
+          </div>
+        
       </div>
 
     <!-- TASK BAR -->
     <div class="task-bar">
       <!-- TASK BAR MENU -->
       <span class="task-bar-item menu" id="menu-item">menu</span>
-      <span class="task-bar-item btn" id="menu-btn">></span>
+      <span class="task-bar-item btn" id="menu-btn"></span>
       <!-- TASK BAR ITEMS -->
       <div id="taskbar" class="task-bar-items"></div>
     </div>
