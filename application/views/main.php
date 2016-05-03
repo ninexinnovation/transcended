@@ -651,22 +651,21 @@
                       <div class="form-group">
                         <label for="billNo" class="col-md-3 control-label">Bill No. :</label>
                         <div class="col-md-3">
-                          <input type="number" class="form-control" id="billNo" name="billNo" data-update="DataProcessing/getLatestBillingId" placeholder="Bill No" />
+                          <input type="number" class="form-control" id="billNo" name="billNo" placeholder="Bill No" readonly/>
                         </div>
                       </div>
-                      <input type="hidden" class="form-control" id="customer_id" name="customer_id"/>
                       <div class="form-group">
                         <label for="name" class="col-md-3 control-label">Name :</label>
                         <div class="col-md-6">
                           <div class="input-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Customer Name" />
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Customer Name" readonly />
                           </div>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="address" class="col-md-3 control-label">Address :</label>
                         <div class="col-md-6">
-                          <textarea class="form-control" id="address" name="address" placeholder="Address"></textarea>
+                          <textarea class="form-control" id="address" name="address" placeholder="Address"readonly /></textarea>
                         </div>
                       </div>
                     </div>
@@ -674,22 +673,14 @@
                       <div class="form-group">      
                         <label for="date" class="col-md-5 control-label">Date :</label>
                         <div class="col-md-5">
-                          <input type="text" id="dateView" class="form-control" value="<?php echo date("m/d/Y") ?>" placeholder="Current Date"> 
+                          <input type="text" id="dateView" class="form-control" placeholder="Current Date" readonly/> 
                         </div>
                       </div>
-
-                      <script type="text/javascript">
-                        $('#dateView').datepicker({
-                          todayBtn: "linked",                                         
-                          autoclose: true,
-                          todayHighlight: true
-                        });
-                      </script>
 
                       <div class="form-group">
                         <label for="phone" class="col-md-5 control-label">Phone Number :</label>
                         <div class="col-md-6">
-                          <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" />
+                          <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" readonly/>
                         </div>
                       </div>
 
@@ -718,25 +709,18 @@
                           <div class="form-group">      
                             <label for="deliveryDate" class="col-md-5 control-label">Delivery Date :</label>
                             <div class="col-md-5">
-                              <input type="text" id="deliveryDateView" class="form-control" placeholder="Delivery Date"> 
+                              <input type="text" id="deliveryDateView" class="form-control" placeholder="Delivery Date" readonly/> 
                             </div>
                           </div>
                           <div class="form-group">
                             <label for="referrer" class="col-md-5 control-label">Refferer :</label>
                             <div class="col-md-5">
                               <div class="input-group">
-                                  <input type="text" class="form-control" id="referrer" name="referrer" placeholder="Referrer Name" />
+                                  <input type="text" class="form-control" id="referrer" name="referrer" placeholder="Referrer Name" readonly/>
                               </div>
                             </div>
                           </div>
 
-                          <script type="text/javascript">
-                            $('#deliveryDateView').datepicker({
-                              todayBtn: "linked",                                         
-                              autoclose: true,
-                              todayHighlight: true
-                            });
-                          </script>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
@@ -748,13 +732,13 @@
                           <div class="form-group">
                             <label for="discount" class="col-md-5 control-label">Discount :</label>
                             <div class="col-md-6">
-                              <input type="text" class="form-control" id="discount" name="discount" value="0" placeholder="Discount" />
+                              <input type="text" class="form-control" id="discount" name="discount" value="0" placeholder="Discount" readonly/>
                             </div>
                           </div>
                           <div class="form-group">
                             <label for="paid" class="col-md-5 control-label">Paid :</label>
                             <div class="col-md-6">
-                              <input type="text" class="form-control" id="paid" name="paid" value="0" placeholder="Paid" />
+                              <input type="text" class="form-control" id="`" name="paid" value="0" placeholder="Paid" readonly/>
                             </div>
                           </div>
                           <div class="form-group">
@@ -770,7 +754,7 @@
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                   <button type="button" class="btn btn-primary" name="dispatch" style="float:right;">Dispatch</button>
-                  <button type="button" class="btn btn-danger" name="deleteItem">Delete</button>
+                  <button type="button" class="btn btn-danger" name="deleteBill">Delete</button>
               </div>
 
             </form>
@@ -786,7 +770,7 @@
                     <h4 class="modal-title" id="taskViewModalLabel">View Task</h4>
                 </div>
 
-            <form action="DataProcessing/updateDeleteTask" data-get-action="DataProcessing/getWorkerByIdJson" onsubmit="updateDeleteData(this);return false;" method="post">
+            <form action="#" data-get-action="DataProcessing/getWorkerTaskByIdJson" onsubmit="return false;" method="post">
               <div class="modal-body">
                   <div class="form-group">
                       <label for="wrId">Worker ID</label>
@@ -818,9 +802,7 @@
               </div>
 
               <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-primary" name="updateItem" style="float:right;">Save</button>
-                  <button type="submit" class="btn btn-danger" name="deleteItem">Delete</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
               </div>
 
             </form>

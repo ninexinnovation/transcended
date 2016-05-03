@@ -220,7 +220,6 @@ $(document).ready(function(){
 
     
 
-
 });
 
 
@@ -282,6 +281,17 @@ function displayModalData(thisForm,dataName,dataValue){
 			appendAlert("Unable to get data","danger",5000);
 		}
 		loading(false);
+		if(msg.data.tasks!=undefined){
+			var tableData="";
+			for(var i=0;i<msg.data.tasks.length;i++){
+				tableData+="<tr><td>"+(i+1)+"</td><td>"+msg.data.tasks[i].bill_no+"</td><td>"+msg.data.tasks[i].catagory_name+"</td></tr>";
+			}
+			if(tableData!=""){
+				$(thisForm).find("tbody").html(tableData);
+			}else{
+				$(thisForm).find("tbody").html("<tr><td colspan='3' align='center'><h4>No Task Allocated</h4></td></tr>");
+			}
+		}
 	});
 }
 
@@ -737,4 +747,48 @@ function addNewBill(){
     	appendAlert("Please add all required Measurement data","danger",5000);
     	loading(false);
     }
+}
+
+
+function viewBill(thisEl){
+	var billNo=viewBills.row($(thisEl).closest("tr")).data()["bill_no"];
+	var modal=$("#billViewModal");
+	$.ajax({
+		url:"DataProcessing/getBillByIdJson",
+		dataType:"json",
+		method:"post",
+		data:{billNo:billNo}
+	}).done(function(msg){
+		console.log(msg);
+		if(msg!=null){
+			$("#billViewModal #billNo").val(msg.data[0].bill_no);
+			$("#billViewModal #name").val(msg.data[0].customer_name);
+			$("#billViewModal #address").val(msg.data[0].address);
+			$("#billViewModal #dateView").val(msg.data[0].f_current_date);
+			$("#billViewModal #phone").val(msg.data[0].phone_no);
+			$("#billViewModal #deliveryDateView").val(msg.data[0].f_delivery_date);
+			$("#billViewModal #referrer").val(msg.data[0].ref);
+			$("#billViewModal #discount").val(msg.data[0].discount);
+			$("#billViewModal #paid").val(msg.data[0].advance);
+			var items=msg.data[0].items;
+			var workers=msg.data[0].workers;
+			var itemEl="";
+			var subTotal=0;
+			for(var i=0;i<items.length;i++){
+				itemEl+="<tr data-item-id="+items[i]["bill_item_id"]+"><td>"+(i+1)+"</td><td>"+items[i]["details"];
+				itemEl+="<label style='float:right'>Select worker : <select>";
+				itemEl+="<option value='' class=''>Choose Workers</option>"
+				for(var j=0;j<workers.length;j++){
+					itemEl+="<option value='"+workers[j]["worker_id"]+"'>"+workers[j]["worker_name"]+"</option>";
+				}
+				itemEl+="</select></label>";
+				itemEl+="</td><td>"+items[i]["total"]+"</td></tr>";
+				subTotal+=items[i]['total'];
+			}
+			$("#billViewModal table tbody").html(itemEl);
+			$("#billViewModal #subTotal").val(subTotal);
+			$("#billViewModal #total").val(subTotal-msg.data[0].discount-msg.data[0].advance);
+
+		}
+	});
 }

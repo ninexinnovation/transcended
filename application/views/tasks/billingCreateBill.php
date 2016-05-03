@@ -36,7 +36,7 @@
 						<div class="form-group">      
 							<label for="date" class="col-md-5 control-label">Date :</label>
 							<div class="col-md-5">
-								<input type="text" id="date" class="form-control" value="<?php echo date("m/d/Y") ?>" placeholder="Current Date"> 
+								<input type="text" id="date" class="form-control" value="<?php echo date("m/d/Y") ?>" placeholder="Current Date">
 							</div>
 						</div>
 

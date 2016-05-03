@@ -88,6 +88,44 @@
                 .draw();
         }
     } );
-
+    $(document).on("click","#billViewModal button[name='deleteBill']",function(){
+    	var billNo=$(this).closest("form").find("#billNo").val();
+    	$.ajax({
+    		url:"DataProcessing/deleteBill",
+    		dataType:"json",
+    		method:"post",
+    		data:{bill_no:billNo}
+    	}).done(function(msg){
+    		appendAlert(msg.message,msg.messageType,5000);
+    		$("#billViewModal").modal("hide");
+    	});
+    })
+    $(document).on("click","#billViewModal button[name='dispatch']",function(){
+    	var billNo=$(this).closest("form").find("#billNo").val();
+    	var table=$(this).closest("form").find("table");
+    	var itemid=[];
+    	var workerid=[];
+    	var send=true;
+    	table.find("tbody tr").each(function(index,element){
+    		itemid.push($(this).attr("data-item-id"));
+    		workerid.push($(this).find("select").val());
+    		if($(this).find("select").val()==""){
+    			send=false;
+    		}
+    	});
+    	if(send){
+	    	$.ajax({
+	    		url:"DataProcessing/dispatchBill",
+	    		dataType:"json",
+	    		method:"post",
+	    		data:{bill_no:billNo,itemids:itemid,workerids:workerid}
+	    	}).done(function(msg){
+	    		appendAlert(msg.message,msg.messageType,5000);
+	    		$("#billViewModal").modal("hide");
+	    	});
+    	}else{
+    		appendAlert("You must first assign all items to worker before dispatching!!","danger",5000);
+    	}
+    })
 </script>
 		

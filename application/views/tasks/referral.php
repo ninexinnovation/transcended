@@ -1,25 +1,22 @@
-<div class="panel panel-primary">
-		
-	<div class="panel-body">
-			<div class="form-group">
-			    <label for="name">Reffer ID</label>
-			    <input type="number" class="form-control" id="ClId" placeholder="Enter Clerk ID" disabled required>
-  			</div>
+<?php
 
-		  	<div class="form-group">
-			    <label for="name">Reffer By</label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
-		 	 </div>
-   
-		   	<div class="form-group">
-			    <label for="name">Reffer to</label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
-		  	</div>
-		  	<div class="form-group">
-			    <label for="name">Royalty</label>
-			    <input type="text" class="form-control" id="ClName" placeholder="Enter Clerk Name" required>
-		  	</div>
-  			<button type="submit" class="btn btn-success">Submit</button>
-
+$customer_data=$this->DataModel->getRefferal();
+ ?>
+<div class="grid-container">
+	<div class="container">
+		<div class="form-group">
+			<input type="search" class="form-control" name="search" placeholder="Search" data-action="grid_search" data-search-id="customer_data">
+		</div>
+	</div>
+	<div class="row" id="refferal_data">
+	<?php
+		foreach ($refferal_data as $reffer_details) {
+			echo '<a class="col-md-4 col-lg-3 btn btn-default grid-btn" data-btn-type="task-result" data-view="#customerViewModal">';
+			echo '<i data-send="true" data-name="id">'.$reffer_details->reffer_by.'</i>';
+			echo '<span>'.$reffer_details->reffer_to.'</span>';
+			echo '</a>';
+		}
+	?>
 	</div>
 </div>
+

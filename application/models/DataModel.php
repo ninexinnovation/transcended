@@ -287,6 +287,38 @@ class DataModel extends CI_Model{
 		$this->db->delete('customer_details',array('customer_id'=>$value[0]));
 		return true;
 	}
+	function deleteBill(){
+		$billNo=$this->input->post("bill_no");
+		$this->db->delete('bill_details',array('bill_no'=>$billNo));
+		$this->db->delete('bill_item_details',array('bill_no'=>$billNo));
+		return true;
+	}
+	function dispatchBill(){
+		$billNo=$this->input->post("bill_no");
+		$itemids=$this->input->post("itemids");
+		$workerids=$this->input->post("workerids");
+
+		$prodData=[
+			"bill_no"=>$billNo,
+			"remarks"=>""
+		];
+		$this->db->insert("production_details",$prodData);
+		$production_id=$this->db->insert_id();
+		$i=0;
+		foreach ($itemids as $itemid) {
+			$data=[
+				'production_id'=>$production_id,
+				"bill_item_id"=>$itemid,
+				"user_id"=>$workerids[$i],
+				"assigned_date"=>time(),
+				"completed"=>0
+			];
+			$this->db->insert("production_item_details",$data);
+			$i++;
+		}
+
+		return true;
+	}
 
 
 	function updateItem($id,$value){
@@ -332,7 +364,6 @@ class DataModel extends CI_Model{
 				case "user_id":
 					$data["user_id"]=$value[$i];
 					break;
-				
 				case "f_name":
 					$data["f_name"]=$value[$i];
 					break;
@@ -344,7 +375,7 @@ class DataModel extends CI_Model{
 					break;
 				case "pwd":
 					if ($value[$i]!="") {
-						$data["password"]=sha1$value[$i];
+						$data["password"]=sha1($value[$i]);
 					}
 					break;
 				
@@ -564,6 +595,25 @@ class DataModel extends CI_Model{
 		// var_dump($data);
 		return $data;
 	}
+	function getRefferal(){
+		// $this->db->get("");
+	}
+
+	function getWorkersTaskById($worker_id){
+		$this->db->select("*");
+		$this->db->from("production_item_details as pi");
+		$this->db->join("production_details as p","p.production_id=pi.production_id","INNER");
+		$this->db->join("bill_details as b","b.bill_no=p.bill_no","INNER");
+		$this->db->join("bill_item_details as bi","pi.bill_item_id=bi.bill_item_id","INNER");
+		$this->db->join("catagory_details as cd","cd.catagory_id=bi.item_catagory_id","INNER");
+
+		$this->db->where("pi.user_id",$worker_id);
+		$this->db->where("pi.completed",0);
+		// var_dump($this->db->get());
+		$data=$this->db->get()->result();
+		return $data;
+	}
+
 
 	function getCustomers(){
 		$data=$this->db->get("customer_details")->result();
@@ -575,6 +625,52 @@ class DataModel extends CI_Model{
 		// var_dump($data);
 			return $data;
 	}
+	function getBillById($billNo){
+		$this->db->select("b.bill_no, b.advance, b.discount, b.current_date, b.delivery_date, c.customer_name, c.phone_no, c.address, r.customer_name as 'ref'");
+		$this->db->from("bill_details as b");
+		$this->db->join("customer_details as c","c.customer_id=b.customer_id","INNER");
+		$this->db->join("user as u","u.user_id=b.user_id","INNER");
+		$this->db->join("customer_details as r","r.customer_id=b.reffer_id","LEFT");
+		$this->db->where("b.bill_no",$billNo);
+		$data=$this->db->get()->result_array();
+
+		$data[0]["f_current_date"]=date("Y-m-d",$data[0]['current_date']);
+		$data[0]["f_delivery_date"]=date("Y-m-d",$data[0]['delivery_date']);
+
+		$data[0]["items"]=[];
+		$itemData=$this->getBillItems($billNo);
+		foreach ($itemData as $item) {
+			$itemDetails=[];
+			$itemDetails['bill_item_id']=$item['bill_item_id'];
+			$itemCost=($item["length"]*$item["selling_price"])+$item["stiching_charge"];
+			$itemDetails["details"]="(".$item["length"]." X ".$item["selling_price"].") + ".$item["stiching_charge"]." = ".$itemCost." X ".$item["quantity"];
+			$itemDetails['total']=$itemCost*$item["quantity"];
+			$data[0]["items"][]=$itemDetails;
+
+		}
+
+		$data[0]["workers"]=[];
+		$workerData=$this->getWorkers();
+		foreach ($workerData as $worker) {
+			$data[0]["workers"][]=$worker;
+		}
+
+		// var_dump($data[0]["items"]);
+			return $data;
+	}
+
+	function getBillItems($billNo){
+		// $this->db->order_by("item_code_no","asc");
+		$this->db->select("*");
+		$this->db->from("bill_item_details as bi");
+		$this->db->join("item_details as i","i.item_code_no=bi.item_code_no","INNER");
+		$this->db->join("catagory_details c","c.catagory_id=bi.item_catagory_id","INNER");
+		$this->db->where("bill_no",$billNo);
+		$data=$this->db->get()->result_array();
+		// var_dump($data);
+		return $data;
+	}
+
 	function getUserById($id){
 		$data=$this->db->get_where("user",array("user_id"=>$id))->result();
 		// var_dump($data);

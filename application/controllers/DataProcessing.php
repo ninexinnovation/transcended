@@ -472,6 +472,11 @@ public function updateDeleteUser()
 		$data=$this->DataModel->getCustomerById($id);
 		echo json_encode(["data"=>$data]);
 	}
+	public function getBillByIdJson(){
+		$billNo=$this->input->post("billNo");
+		$data=$this->DataModel->getBillById($billNo);
+		echo json_encode(["data"=>$data]);
+	}
 
 	public function getUserByIdJson(){
 		$name=$this->input->post("name");
@@ -595,5 +600,51 @@ public function updateDeleteUser()
 							'pant'=>$this->DataModel->getNoOfPantsPerMonth(),
 							'shirt'=>$this->DataModel->getNoOfShirtsPerMonth(),
 							'others'=>$this->DataModel->getNoOfOthersPerMonth()]);
+	}
+
+	public function deleteBill(){
+		if($this->DataModel->deleteBill()){
+			echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully Bill Deleted"]
+							]);
+		}else{
+			echo json_encode([
+								"success"=>"false",
+								"messageType"=>"danger",
+								"message"=>["Unable to delete Bill"]
+							]);
+		}
+	}
+	public function dispatchBill(){
+		if($this->DataModel->dispatchBill()){
+			echo json_encode([
+								"success"=>"true",
+								"messageType"=>"success",
+								"message"=>["Successfully Bill Dispatched"]
+							]);
+		}else{
+			echo json_encode([
+								"success"=>"false",
+								"messageType"=>"danger",
+								"message"=>["Unable to dispatch Bill"]
+							]);
+		}
+	}
+	public function getWorkerTaskByIdJson(){
+		$name=$this->input->post("name");
+		$value=$this->input->post("value");
+		$id=0;
+		$i=0;
+		foreach ($name as $n) {
+			if($n=="id"){
+				$id=$value[$i];
+			}
+			$i++;
+		}
+		$data=$this->DataModel->getWorkerById($id);
+		$data["tasks"]=$this->DataModel->getWorkersTaskById($id);
+		echo json_encode(["data"=>$data]);
 	}
 }

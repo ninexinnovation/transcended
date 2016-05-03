@@ -26,7 +26,7 @@
 	<!-- break line -->
 	<span class="clearfix"></span>
 
-	<a class="btn btn-danger menu-btn" data-btn-type="task" data-view="production">
+	<a class="btn btn-danger menu-btn" data-btn-type="task" data-view="customizedReport">
 		<i class="fa fa-list"></i>
 		<span>Production</span>
 	</a>
