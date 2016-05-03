@@ -3,10 +3,11 @@ $(document).ready(function(){
           		"searching":false,
 				"ajax":"DataProcessing/getDashboardStockJson",
 				"columns":[
-				{"data":"shadeNo"},
-				{"data":"catagory"},
-				{"data":"quantity"},
-				]
+					{"data":"shadeNo"},
+					{"data":"catagory"},
+					{"data":"quantity"},
+					],
+				"sorting":false
           	});
 	loading(false);
 	$(document).on("change","select",function(){

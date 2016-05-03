@@ -760,7 +760,7 @@ class DataModel extends CI_Model{
 		$this->db->select("*");
 		$this->db->from("item_details AS i");
 		$this->db->join("catagory_details AS cat",'cat.catagory_id=i.catagory_id','INNER');
-		$this->db->order_by("i.current_quantity","desc");
+		$this->db->order_by("i.current_quantity","asc");
 		$data=$this->db->get()->result();
 		// var_dump($data);
 		$returnData=array();
